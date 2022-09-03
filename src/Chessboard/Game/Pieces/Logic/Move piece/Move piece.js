@@ -2,6 +2,7 @@ import {clearField} from "../../../Dots";
 import updateState from "./Update state";
 import {recentPieceCrd} from "../../Piece";
 import {gameField} from "../../Gamefield";
+import {setPromoted} from "../Pawn promotion/Promotion";
 
 export let turn = "w"
 export const turns = {"w":"b","b":"w"}
@@ -41,12 +42,14 @@ export function movePiece(x2, y2){
 
     if (name === "P"  && (y2===7 || y2===0)){
 
-        updateState(setPiece,{
-            name: prompt("Enter piece name"),
-            x: x2,
-            y: y2,
-            from: {x: x1, y: y1}
-        })
+        setPromoted([x2, y2])
+
+        // updateState(setPiece,{
+        //     name: prompt("Enter piece name"),
+        //     x: x2,
+        //     y: y2,
+        //     from: {x: x1, y: y1}
+        // })
     }
     else {
 

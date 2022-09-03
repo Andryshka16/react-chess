@@ -99,6 +99,14 @@ body {
     height: 480px;
     right: 0;
     top: 0;
-    background: black;
     border: 3px solid red;
+}
+
+#promotion {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    border-radius: 10px;
+    z-index: 1;
+    background: rgba(0, 0, 0, 0.7);
 }
