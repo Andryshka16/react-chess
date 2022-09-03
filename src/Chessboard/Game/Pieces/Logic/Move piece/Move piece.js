@@ -43,13 +43,9 @@ export function movePiece(x2, y2){
     if (name === "P"  && (y2===7 || y2===0)){
 
         setPromoted([x2, y2])
+        document.querySelectorAll(".figure")
+            .forEach(p =>p.style.pointerEvents = "none")
 
-        // updateState(setPiece,{
-        //     name: prompt("Enter piece name"),
-        //     x: x2,
-        //     y: y2,
-        //     from: {x: x1, y: y1}
-        // })
     }
     else {
 

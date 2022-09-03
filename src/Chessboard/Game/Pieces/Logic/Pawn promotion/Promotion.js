@@ -4,7 +4,7 @@ import {PromotedContext} from "./Promotion context";
 
 export let promoted, setPromoted
 
-function getChoices([x,y]){
+function getChoices([x, y]){
     if (y === 0){
         if (x < 7) return ["Q", "N", "B", "R"]
         else return ["N", "Q", "R", "B"]
@@ -18,6 +18,7 @@ function getChoices([x,y]){
 export default function Promotion(){
 
     [promoted, setPromoted] = useContext(PromotedContext)
+
     if (!promoted) return
 
     const [x, y] = promoted
