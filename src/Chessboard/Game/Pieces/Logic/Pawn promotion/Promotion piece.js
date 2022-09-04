@@ -1,8 +1,9 @@
 import React, {useContext} from "react";
+import updateState from "../Move piece/Update state";
+import togglePointerEvents from "./togglePointerEvents";
 import {turn, turns} from "../Move piece/Move piece";
 import {PromotedContext} from "./Promotion context";
 import {recentPieceCrd} from "../../Piece";
-import updateState from "../Move piece/Update state";
 
 export default function PromotionPiece({index, name}){
 
@@ -22,8 +23,8 @@ export default function PromotionPiece({index, name}){
     let scale = scales[name] || 0.7
 
     const styles = {
-        top: `${Math.floor(index/2)*60}px`,
-        left: `${index%2*60}px`,
+        top: `${Math.floor(index / 2) * 60}px`,
+        left: `${index % 2 * 60}px`,
         transform: `scale(${scale})`,
         marginTop: marginTop[name],
     }
@@ -35,19 +36,19 @@ export default function PromotionPiece({index, name}){
     function handleMouseOut(event) {
         event.target.style.transform = `scale(${scale})`
     }
+
     function handleMouseClick() {
 
         let [x1, y1,,, setPiece] = recentPieceCrd
-
-        document.querySelectorAll(".figure")
-            .forEach(p => p.style.pointerEvents = "all")
+        togglePointerEvents("all")
 
         updateState(setPiece,{
-            name: turns[turn]+name,
-            x: x,
-            y: y,
+            name: turns[turn] + name,
+            x,
+            y,
             from: {x: x1, y: y1}
         })
+
         setPromoted(false)
     }
 

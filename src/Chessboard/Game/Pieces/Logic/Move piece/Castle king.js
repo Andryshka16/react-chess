@@ -1,4 +1,4 @@
-import {movePiece} from "./Move piece";
+import movePiece from "./Move piece";
 
 export default function doCastling(piece, setRook){
 

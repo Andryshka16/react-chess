@@ -1,10 +1,9 @@
 import {useState} from "react";
-import {turn, movePiece} from "./Logic/Move piece/Move piece";
+import movePiece, {turn} from "./Logic/Move piece/Move piece";
 import {getNextMove, nextMoves} from "./Logic/Next moves/NextMoves";
 import {clearField} from "../Dots";
 import doCastling from "./Logic/Move piece/Castle king";
 import {gameField} from "./Gamefield";
-
 export let recentPieceCrd
 
 export default function Piece(props){
@@ -20,14 +19,11 @@ export default function Piece(props){
         return
     }
 
-    let {name} = piece
+    let {x, y, name} = piece
 
-    gameField[piece.y][piece.x] = name
+    gameField[y][x] = name
 
-    if (piece.from){
-        gameField[piece.from.y][piece.from.x] = "0"
-    }
-
+    if (piece.from) gameField[piece.from.y][piece.from.x] = "0"
 
     let scales = {
         "P": 0.6,
@@ -39,13 +35,15 @@ export default function Piece(props){
     let marginTop = {
         "P": "-4px",
         "Q": "3px",
+        "R": "-1px",
+        "N": "-1px",
     }
 
     let scale = scales[name[1]] || 0.7
 
     let styles = {
-        top: `${piece.y * 60}px`,
-        left: `${piece.x * 60}px`,
+        top: `${y * 60}px`,
+        left: `${x * 60}px`,
         transform: `scale(${scale})`,
         marginTop: marginTop[name[1]],
     }
@@ -59,8 +57,6 @@ export default function Piece(props){
     }
 
     function handleMouseClick(){
-
-        let {x,y} = piece
 
         if (name[0] === turn && !nextMoves.map(i => i.toString()).includes([x,y].toString())) {
             getNextMove([x,y], false)

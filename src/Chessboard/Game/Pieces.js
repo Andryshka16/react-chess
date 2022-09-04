@@ -1,5 +1,5 @@
-import Piece from "./Piece";
-import {gameField} from "./Gamefield";
+import Piece from "./Pieces/Piece";
+import {gameField} from "./Pieces/Gamefield";
 
 export default function Pieces() {
 

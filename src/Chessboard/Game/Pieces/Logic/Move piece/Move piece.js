@@ -1,8 +1,10 @@
 import {clearField} from "../../../Dots";
 import updateState from "./Update state";
+
 import {recentPieceCrd} from "../../Piece";
 import {gameField} from "../../Gamefield";
 import {setPromoted} from "../Pawn promotion/Promotion";
+import togglePointerEvents from "../Pawn promotion/togglePointerEvents";
 
 export let turn = "w"
 export const turns = {"w":"b","b":"w"}
@@ -10,7 +12,7 @@ export const turns = {"w":"b","b":"w"}
 export let enPassing
 export let castlingMoved = []
 
-export function movePiece(x2, y2){
+export default function movePiece(x2, y2){
 
     clearField()
 
@@ -18,7 +20,8 @@ export function movePiece(x2, y2){
 
     turn = turns[turn]
 
-    if (name === "P" && x1 !== x2 && gameField[y2][x2] === "0"){
+    if (name === "P" && x1 !== x2
+        && gameField[y2][x2] === "0"){
         enPassing.remove()
     }
 
@@ -36,19 +39,18 @@ export function movePiece(x2, y2){
         enPassing = {
             x: x2,
             y: y2,
-            remove: () => setPiece(false)
+            remove: () => {
+                setPiece(false)
+                gameField[y2][x2] = "0"
+            }
         }
     }
 
     if (name === "P"  && (y2===7 || y2===0)){
-
         setPromoted([x2, y2])
-        document.querySelectorAll(".figure")
-            .forEach(p =>p.style.pointerEvents = "none")
-
+        togglePointerEvents("none")
     }
     else {
-
         updateState(setPiece,{
             ...piece,
             x: x2,
