@@ -22,18 +22,18 @@ export default function getPawnMoves(x, y){
     }
 
     if (x > 0 && gameField[y + k][x - 1] !== "0"){
-        nextMoves.push([x-1, y+k])
+        nextMoves.push([x - 1, y + k])
     }
 
     if (x < 7 && gameField[y + k][x + 1] !== "0"){
-        nextMoves.push([x+1, y+k])
+        nextMoves.push([x + 1, y + k])
     }
 
-    if (x > 0 && enPassing && y === enPassing.y && x + 1 === enPassing.x){
-        nextMoves.push([x+1, y+k])
+    if (x > 0 && enPassing && y === enPassing.y && x - 1 === enPassing.x){
+        nextMoves.push([x - 1, y + k])
     }
 
-    if (x < 7 && enPassing && y === enPassing.y && x - 1 === enPassing.x){
-        nextMoves.push([x-1, y+k])
+    if (x < 7 && enPassing && y === enPassing.y && x + 1 === enPassing.x){
+        nextMoves.push([x + 1, y + k])
     }
 }
