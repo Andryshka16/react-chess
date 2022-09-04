@@ -17,7 +17,7 @@ function Dot({x,y}){
     return  (
         <div
             className={gameField[y][x] !== "0" ? "food":"dot"}
-            style={{top: `${y*60}px`, left: `${x*60}px`}}>
+            style={{top: `${y * 60}px`, left: `${x * 60}px`}}>
         </div>
     )
 }
