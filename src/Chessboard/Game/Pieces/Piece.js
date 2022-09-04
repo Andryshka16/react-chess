@@ -58,8 +58,6 @@ export default function Piece(props){
 
     function handleMouseClick(){
 
-        console.log(nextMoves)
-
         if (name[0] === turn && !nextMoves.map(i => i.toString()).includes([x,y].toString())) {
             getNextMove([x,y], false)
             recentPieceCrd = [x, y, gameField[y][x], piece, setPiece]
