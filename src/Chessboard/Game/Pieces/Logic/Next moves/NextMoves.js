@@ -15,6 +15,7 @@ export function getNextMove([x,y], check=false){
 
     let piece = gameField[y][x]
     nextMoves = []
+    console.log(gameField[y][x])
 
     const steps = {
         "K": () => getKingMoves(x, y),

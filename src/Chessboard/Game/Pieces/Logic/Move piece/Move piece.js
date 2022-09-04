@@ -5,6 +5,7 @@ import {recentPieceCrd} from "../../Piece";
 import {gameField} from "../../Gamefield";
 import {setPromoted} from "../Pawn promotion/Promotion";
 import togglePointerEvents from "../Pawn promotion/togglePointerEvents";
+import {nextMoves} from "../Next moves/NextMoves";
 
 export let turn = "w"
 export const turns = {"w":"b","b":"w"}
@@ -47,6 +48,7 @@ export default function movePiece(x2, y2){
     }
 
     if (name === "P"  && (y2===7 || y2===0)){
+        console.log(nextMoves)
         setPromoted([x2, y2])
         togglePointerEvents("none")
     }
