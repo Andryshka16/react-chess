@@ -1,9 +1,10 @@
 import {useState} from "react";
 import movePiece, {turn} from "./Logic/Move piece/Move piece";
-import {getNextMove, nextMoves} from "./Logic/Next moves/NextMoves";
+import {getNextMove} from "./Logic/Next moves/NextMoves";
 import {clearField} from "../Dots";
 import doCastling from "./Logic/Move piece/Castle king";
 import {gameField} from "./Gamefield";
+import nextMovesInclude from "./Nextmoves include";
 export let recentPieceCrd
 
 export default function Piece(props){
@@ -33,7 +34,7 @@ export default function Piece(props){
     }
 
     let marginTop = {
-        "P": "-4px",
+        "P": "-5px",
         "Q": "3px",
         "R": "-1px",
         "N": "-1px",
@@ -49,7 +50,9 @@ export default function Piece(props){
     }
 
     function handleMouseOver(event) {
-        if (name[0] === turn) event.target.style.transform = `scale(${scale * 1.2})`
+        if (name[0] === turn || nextMovesInclude([x,y])){
+            event.target.style.transform = `scale(${scale * 1.2})`
+        }
     }
 
     function handleMouseOut(event) {
@@ -58,12 +61,13 @@ export default function Piece(props){
 
     function handleMouseClick(){
 
-        if (name[0] === turn && !nextMoves.map(i => i.toString()).includes([x,y].toString())) {
+        if (name[0] === turn && !nextMovesInclude([x,y])) {
             getNextMove([x,y], false)
+
             recentPieceCrd = [x, y, gameField[y][x], piece, setPiece]
         }
 
-        else if (nextMoves.map(i => i.toString()).includes([x,y].toString())){
+        else if (nextMovesInclude([x,y])){
 
             if (name[0] === turn){
                 doCastling(piece, setPiece)

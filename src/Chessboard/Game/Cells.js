@@ -1,15 +1,15 @@
-import {nextMoves} from "./Pieces/Logic/Next moves/NextMoves";
+
 import {clearField} from "./Dots";
 import movePiece from "./Pieces/Logic/Move piece/Move piece";
 import {gameField} from "./Pieces/Gamefield";
+import nextMovesInclude from "./Pieces/Nextmoves include";
 
 const color1 = "rgb(255,195,151)"
 const color2 = "rgb(39,39,39)"
 
 function handleCellClick(x,y){
 
-    if (nextMoves.map(i => i.toString())
-        .includes([x,y].toString())
+    if (nextMovesInclude([x,y])
         && gameField[y][x] === "0")
     {
         movePiece(x, y)
