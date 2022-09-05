@@ -10,26 +10,6 @@ body {
     height: 60px;
 }
 
-
-#gameContainer {
-    position: absolute;
-    width: 480px;
-    height: 480px;
-    right: 0;
-    top: 0;
-    background: black;
-    border: 3px solid red;
-}
-
-.pass {
-    visibility: hidden;
-    position: absolute;
-    width: 120px;
-    height: 120px;
-    background: rgba(0, 0, 0, 0.52);
-    border-radius: 20px;
-}
-
 .figure {
     position: absolute;
     cursor: pointer;
@@ -40,36 +20,24 @@ body {
     -webkit-user-select: none;
 }
 
-.choose {
-    width: 60px;
-    margin-top: -7px;
-    transform: scale(0.7);
-    transition: 170ms;
-    z-index: -1;
-}
-
-.dot, .food {
+.dot, .food, .hole {
     background: rgba(48, 128, 255, 0.7);
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    z-index: 1;
+    pointer-events: none;
 }
 
 .dot {
-    position: absolute;
-    width: 60px;
-    height: 60px;
     border-radius: 50%;
     transform: scale(0.25);
-    z-index: 1;
-    pointer-events: none;
 }
 
-.food {
-    position: absolute;
-    z-index: 1;
-    width: 60px;
-    height: 60px;
-    border-radius: 20px;
-    pointer-events: none;
+.hole {
+    border-radius: 25px;
 }
+
 
 
 .notation {
@@ -112,8 +80,6 @@ body {
     height: 480px;
     right: 0;
     top: 0;
-    /*border: 3px solid red;*/
-    background: #000000;
 }
 
 #promotion {
@@ -124,4 +90,3 @@ body {
     z-index: 2;
     background: rgba(0, 0, 0, 0.7);
 }
-

@@ -8,7 +8,9 @@ export default function PromotionContext({children}){
 
     return (
         <PromotedContext.Provider value={[promoted, setPromoted]}>
-            {children}
+            <div id={"chess"}>
+                {children}
+            </div>
         </PromotedContext.Provider>
     )
 }

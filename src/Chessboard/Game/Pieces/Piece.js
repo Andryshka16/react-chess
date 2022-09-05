@@ -34,10 +34,10 @@ export default function Piece(props){
     }
 
     let marginTop = {
-        "P": "-5px",
+        "P": "-6px",
         "Q": "3px",
-        "R": "-1px",
-        "N": "-1px",
+        "R": "-2px",
+        "N": "-2px",
     }
 
     let scale = scales[name[1]] || 0.7
