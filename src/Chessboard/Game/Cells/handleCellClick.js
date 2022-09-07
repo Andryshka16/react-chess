@@ -1,7 +1,7 @@
 import nextMovesInclude from "../Pieces/Nextmoves include";
 import {gameField} from "../Pieces/Gamefield";
 import movePiece from "../Pieces/Logic/Move piece/Move piece";
-import {clearField} from "../Indicators/Dots";
+import {clearField} from "../Indicators/ShowNextMoves";
 
 export default function handleCellClick(x,y){
 

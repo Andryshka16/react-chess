@@ -14,14 +14,14 @@ body {
 .figure {
     position: absolute;
     cursor: pointer;
-    -webkit-user-drag: none;
     width: 60px;
     z-index: 2;
     transition: 170ms;
-    -webkit-user-select: none;
+    user-select: none;
+    -webkit-user-drag: none;
 }
 
-.dot, .rectangle, .circle {
+.dot, .rectangle, .circle, .check{
     background: rgba(48, 128, 255, 0.7);
     position: absolute;
     width: 60px;
@@ -33,7 +33,7 @@ body {
 
 .dot {
     border-radius: 50%;
-    transform: scale(0.25);
+    scale: 0.25;
 }
 
 .circle {
@@ -90,4 +90,11 @@ body {
     border-radius: 10px;
     z-index: 2;
     background: rgba(0, 0, 0, 0.7);
+}
+
+.check {
+    background: red;
+    border-radius: 20px;
+    scale: 0.4;
+    box-shadow: 0 0 40px 40px red;
 }

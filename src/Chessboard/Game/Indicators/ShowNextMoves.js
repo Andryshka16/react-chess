@@ -16,25 +16,15 @@ export function clearField(){
 }
 
 
-function Indicate({x,y}){
-
-    return (
-        gameField[y][x]==="0" ?
-            <Dot x={x} y={y}/>:
-            <Target x={x} y={y}/>
-    )
-}
-
-export default function Dots(){
+export default function ShowNextMoves(){
 
     [dots, setDots] = useState([])
 
     return (
         dots.map(([x, y]) =>
-                  <Indicate
-                    x={x}
-                    y={y}
-                    key={`d${x}${y}`}
-                  />)
+            gameField[y][x]==="0" ?
+            <Dot x={x} y={y} key={`d${x}${y}`}/> :
+            <Target x={x} y={y} key={`t${x}${y}`}/>
+        )
     )
 }

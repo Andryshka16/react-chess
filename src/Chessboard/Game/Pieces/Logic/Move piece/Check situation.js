@@ -4,6 +4,7 @@ import {checkMate} from "../King activity/Mates";
 import {checkCRD, checkForChecks} from "../King activity/Checks";
 import {turn} from "./Move piece";
 import {clearNextMoves} from "../Next moves/NextMoves";
+import {setCheck} from "../../../Indicators/ShowCheck";
 
 export let coverMoves = []
 
@@ -12,7 +13,10 @@ export default function checkSituation(){
     coverMoves = []
 
     if (checkForChecks(kingCoordinates(turn+"K"))){
+
         console.log("CHECK!", checkCRD)
+        setCheck(kingCoordinates(turn+"K"))
+
         if (checkMate(kingCoordinates(turn+"K"), checkCRD)){
             console.log("MATE, GAME OVER!")
         }
