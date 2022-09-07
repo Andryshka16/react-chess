@@ -1,7 +1,7 @@
-import {clearField} from "../../../Dots";
+import {clearField} from "../../../Indicators/Dots";
 import updateState from "./Update state";
 
-import {recentPieceCrd} from "../../Piece";
+import {recentPieceCrd} from "../../piece";
 import {gameField} from "../../Gamefield";
 import {setPromoted} from "../Pawn promotion/Promotion";
 import togglePointerEvents from "../Pawn promotion/togglePointerEvents";

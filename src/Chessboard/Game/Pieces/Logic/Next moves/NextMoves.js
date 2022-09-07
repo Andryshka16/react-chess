@@ -1,4 +1,4 @@
-import {drawDots} from "../../../Dots";
+import {drawDots} from "../../../Indicators/Dots";
 import getBishopMoves from "./Piece moves/Bishop";
 import getRookMoves from "./Piece moves/Rook";
 import getKnightMoves from "./Piece moves/Knight";

@@ -8,6 +8,7 @@ body {
     display: inline-block;
     width: 60px;
     height: 60px;
+    user-select: none;
 }
 
 .figure {
@@ -20,13 +21,14 @@ body {
     -webkit-user-select: none;
 }
 
-.dot, .food, .hole {
+.dot, .rectangle, .circle {
     background: rgba(48, 128, 255, 0.7);
     position: absolute;
     width: 60px;
     height: 60px;
     z-index: 1;
     pointer-events: none;
+    user-select: none;
 }
 
 .dot {
@@ -34,10 +36,9 @@ body {
     transform: scale(0.25);
 }
 
-.hole {
+.circle {
     border-radius: 25px;
 }
-
 
 
 .notation {
@@ -54,7 +55,7 @@ body {
     position: absolute;
     right: 4px;
     top: -1px;
-    -webkit-user-select: none;
+    user-select: none;
 }
 
 #letters {
@@ -63,7 +64,7 @@ body {
     bottom: -1px;
     left: 1px;
     letter-spacing: 23.2px;
-    -webkit-user-select: none;
+    user-select: none;
 }
 
 #digits > p {

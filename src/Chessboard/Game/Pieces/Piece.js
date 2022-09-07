@@ -1,10 +1,10 @@
 import {useState} from "react";
 import movePiece, {turn} from "./Logic/Move piece/Move piece";
-import {getNextMove} from "./Logic/Next moves/NextMoves";
-import {clearField} from "../Dots";
 import doCastling from "./Logic/Move piece/Castle king";
-import {gameField} from "./Gamefield";
 import nextMovesInclude from "./Nextmoves include";
+import {getNextMove} from "./Logic/Next moves/NextMoves";
+import {clearField} from "../Indicators/Dots";
+import {gameField} from "./Gamefield";
 export let recentPieceCrd
 
 export default function Piece(props){

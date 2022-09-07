@@ -3,7 +3,7 @@ import updateState from "../Move piece/Update state";
 import togglePointerEvents from "./togglePointerEvents";
 import {turn, turns} from "../Move piece/Move piece";
 import {PromotedContext} from "./Promotion context";
-import {recentPieceCrd} from "../../Piece";
+import {recentPieceCrd} from "../../piece";
 
 export default function PromotionPiece({index, name}){
 
