@@ -5,7 +5,9 @@ export let check, setCheck
 export default function CheckIndicator(){
 
     [check, setCheck] = useState(false)
+
     if (!check) return
+
     const [x, y] = check
 
     const styles = {
@@ -13,9 +15,9 @@ export default function CheckIndicator(){
         top: `${y*60}px`
     }
 
-    return (
-        <div style={styles} className={"check"}>
+    return <div
+        style={styles}
+        className={"check"}>
+    </div>
 
-        </div>
-    )
 }

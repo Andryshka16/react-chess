@@ -16,9 +16,7 @@ export default function Piece(props){
         from: null
     })
 
-    if (!piece){
-        return
-    }
+    if (!piece) return
 
     let {x, y, name} = piece
 
@@ -27,17 +25,13 @@ export default function Piece(props){
     if (piece.from) gameField[piece.from.y][piece.from.x] = "0"
 
     let scales = {
-        "P": 0.6,
-        "Q": 0.85,
-        "K": 0.8,
-        "B": 0.8,
+        "P": 0.6, "B": 0.8,
+        "Q": 0.85, "K": 0.8,
     }
 
     let marginTop = {
-        "P": "-6px",
-        "Q": "3px",
-        "R": "-2px",
-        "N": "-2px",
+        "P": "-6px", "Q": "3px",
+        "R": "-2px", "N": "-2px",
     }
 
     let scale = scales[name[1]] || 0.7
@@ -50,7 +44,7 @@ export default function Piece(props){
     }
 
     function handleMouseOver(event) {
-        if (name[0] === turn || nextMovesInclude([x,y])){
+        if (name[0] === turn || nextMovesInclude([x,y])) {
             event.target.style.transform = `scale(${scale * 1.2})`
         }
     }
@@ -63,23 +57,21 @@ export default function Piece(props){
 
         if (name[0] === turn && !nextMovesInclude([x,y])) {
             getNextMove([x,y], false)
-
             recentPieceCrd = [x, y, gameField[y][x], piece, setPiece]
         }
 
         else if (nextMovesInclude([x,y])){
 
-            if (name[0] === turn){
-                doCastling(piece, setPiece)
-            }
+            if (name[0] === turn) doCastling(piece, setPiece)
+
             else {
                 setPiece(false)
                 movePiece(x, y)
             }
         }
-        else {
-            clearField()
-        }
+
+        else clearField()
+
     }
 
     return (

@@ -20,14 +20,17 @@ export default function Promotion(){
     }
 
     return (
-        <div id={"promotion"}
-             style={styles}>
-            {choices.map((piece, id) =>
-                <PromotionPiece
-                    key={piece}
-                    name={piece}
-                    index={id}/>
-            )}
-        </div>
+        <>
+            <div className={"shadow"}></div>
+            <div className={"promotion"}
+                 style={styles}>
+                {choices.map((piece, id) =>
+                    <PromotionPiece
+                        key={piece}
+                        name={piece}
+                        index={id}/>
+                )}
+            </div>
+        </>
     )
 }

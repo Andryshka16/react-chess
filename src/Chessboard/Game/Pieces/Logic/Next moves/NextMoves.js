@@ -11,10 +11,10 @@ export let nextMoves = []
 
 export const clearNextMoves = () => nextMoves = []
 
-export function getNextMove([x,y], check=false){
+export function getNextMove([x,y], returnArray){
 
-    let piece = gameField[y][x]
     nextMoves = []
+    let piece = gameField[y][x]
 
     const steps = {
         "K": () => getKingMoves(x, y),
@@ -32,8 +32,10 @@ export function getNextMove([x,y], check=false){
 
     nextMoves = filterNextMoves(x, y)
 
-    if (check){
-        return nextMoves
+    if (returnArray){
+        const copy = nextMoves
+        nextMoves = []
+        return copy
     }
 
     drawDots()
