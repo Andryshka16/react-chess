@@ -5,18 +5,22 @@ import Cells from "./Game/Cells/Cells";
 import Pieces from "./Game/Pieces/Pieces";
 import NextMoves from "./Game/Indicators/ShowNextMoves";
 import CheckIndicator from "./Game/Indicators/ShowCheck";
+import EatenPieces from "./Game/Eaten pieces/Eaten pieces";
 
 export default function Game(){
 
     return (
-        <PromotionContext>
-            <Cells/>
-            <Pieces/>
-            <NextMoves/>
-            <Notation/>
-            <Promotion/>
-            <CheckIndicator/>
-        </PromotionContext>
+        <EatenPieces>
+            <PromotionContext>
+                <Cells/>
+                <Pieces/>
+                <NextMoves/>
+                <Notation/>
+                <Promotion/>
+                <CheckIndicator/>
+            </PromotionContext>
+        </EatenPieces>
+
     )
 
 }

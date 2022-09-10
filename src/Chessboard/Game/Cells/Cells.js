@@ -10,6 +10,7 @@ export default function Cells(){
             <Cell
                 x={i % 8}
                 y={Math.floor(i/8)}
-                key={i}/>)
+                key={i}/>
+        )
     )
 }

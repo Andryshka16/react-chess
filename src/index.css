@@ -108,3 +108,21 @@ body {
     scale: 0.4;
     box-shadow: 0 0 40px 40px red;
 }
+
+.eaten {
+    background: rgba(0, 0, 0, 0.5);
+    position: relative;
+    display: inline-flex;
+    width: 460px;
+    height: 60px;
+    margin: 10px 10px;
+    border-radius: 5px;
+}
+
+.eaten > .figure {
+    position: absolute;
+    width: 50px;
+    padding: 5px;
+    cursor: auto;
+    -webkit-user-drag: none;
+}

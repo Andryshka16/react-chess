@@ -6,6 +6,7 @@ import {recentPieceCrd} from "../../piece";
 import {gameField} from "../../Gamefield";
 import {setPromoted} from "../Pawn promotion/Promotion";
 import {check, setCheck} from "../../../Indicators/ShowCheck";
+import {setKilled} from "../../../Eaten pieces/Eaten pieces";
 
 export let turn = "w"
 export const turns = {"w":"b","b":"w"}
@@ -20,6 +21,7 @@ export default function movePiece(x2, y2){
     let [x1, y1, [color, name], piece, setPiece] = recentPieceCrd
 
     turn = turns[turn]
+
     if (check) setCheck(false)
 
     if (name === "P" && x1 !== x2
@@ -43,6 +45,7 @@ export default function movePiece(x2, y2){
             y: y2,
             remove: () => {
                 setPiece(false)
+                setKilled(prev => [...prev, color+name])
                 gameField[y2][x2] = "0"
             }
         }

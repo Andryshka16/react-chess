@@ -3,12 +3,12 @@ import {gameField} from "./Gamefield";
 
 export default function Pieces() {
 
-    let arr = []
+    let piecesArray = []
 
     for (let y = 0; y < 8; y++){
         for (let x = 0;x < 8; x++){
             if (gameField[y][x]!=="0"){
-                arr.push(
+                piecesArray.push(
                     <Piece
                         x={x}
                         y={y}
@@ -19,5 +19,5 @@ export default function Pieces() {
         }
     }
 
-    return arr
+    return piecesArray
 }

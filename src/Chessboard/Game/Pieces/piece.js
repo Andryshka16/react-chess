@@ -5,6 +5,7 @@ import nextMovesInclude from "./Nextmoves include";
 import {getNextMove} from "./Logic/Next moves/NextMoves";
 import {clearField} from "../Indicators/ShowNextMoves";
 import {gameField} from "./Gamefield";
+import {setKilled, setWhiteKilled} from "../Eaten pieces/Eaten pieces";
 export let recentPieceCrd
 
 export default function Piece(props){
@@ -66,6 +67,7 @@ export default function Piece(props){
 
             else {
                 setPiece(false)
+                setKilled(prev => [...prev, name])
                 movePiece(x, y)
             }
         }
