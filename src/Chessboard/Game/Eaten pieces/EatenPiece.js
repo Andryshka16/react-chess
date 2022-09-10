@@ -1,4 +1,4 @@
-export default function EatenPiece({name, index}){
+export default function EatenPiece({name, index, count}){
 
     let scales = {
         "P": 0.6, "B": 0.8,
@@ -14,17 +14,25 @@ export default function EatenPiece({name, index}){
 
     let styles = {
         transform: `scale(${scale})`,
-        left: `${index % 9 * 50}px`,
-        top: `${Math.floor(index / 9) * 50}px`,
+        left: `${index % 9 * 80}px`,
         marginTop: marginTop[name[1]],
     }
 
     return (
-        <img
-            src={`./images/${name}.png`}
-            alt={"failed"}
-            className={"figure"}
-            style={styles}>
-        </img>
+        <>
+            <img
+                src={`./images/${name}.png`}
+                alt={"failed"}
+                className={"figure"}
+                style={styles}>
+            </img>
+            <h2
+                className={"count"}
+                style={{left: `${55 + index % 9 * 80}px`,}}
+            >
+                x{count}
+            </h2>
+        </>
+
     )
 }

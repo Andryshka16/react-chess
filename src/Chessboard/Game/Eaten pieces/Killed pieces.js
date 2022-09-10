@@ -4,19 +4,22 @@ export default function Pieces({arr}){
 
     if (!arr.length) return
 
-    const styles = {
-        height: `${60 + Math.floor((arr.length-1) / 9) * 50}px`,
-    }
+    const pieces = arr.filter((elm, index) => arr.indexOf(elm) === index)
+
+    const styles = {width: `${pieces.length * 80}px`}
 
     return (
-        <div className={"eaten"} style={styles}>
-            {arr.map((n, id) =>
-                <EatenPiece
-                    name={n}
-                    index={id}
-                    key={"e"+ n + id}
-                />
-            )}
+        <div className={"eaten"}>
+            <div className={"eatenPieces"} style={styles}>
+                {pieces.map((n, id) =>
+                    <EatenPiece
+                        name={n}
+                        index={id}
+                        count={arr.filter(x => x===n).length}
+                        key={"e"+ n + id}
+                    />
+                )}
+            </div>
         </div>
     )
 }
