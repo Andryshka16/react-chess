@@ -1,6 +1,6 @@
 import checkSituation from "./Check situation";
 
-export default async function updateState(setState, state){
-    await setState(state)
+export default async function updateState(func, params){
+    await func(params)
     checkSituation()
 }

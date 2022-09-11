@@ -5,9 +5,10 @@ import nextMovesInclude from "./Logic/Next moves/Nextmoves include";
 import {getNextMove} from "./Logic/Next moves/NextMoves";
 import {clearField} from "../Indicators/ShowNextMoves";
 import {gameField} from "./Gamefield";
-import {setKilled} from "../Eaten pieces/Eaten pieces";
-import follow from "./Logic/Move piece/Follow cursor";
+import startFollowing from "./Logic/Move piece/Follow cursor";
+
 export let recentPieceCrd
+export let stateTable = [...Array(8)].map(e => Array(8).fill("0"))
 
 export default function Piece(props){
 
@@ -23,8 +24,12 @@ export default function Piece(props){
     let {x, y, name} = piece
 
     gameField[y][x] = name
+    stateTable[y][x] = setPiece
 
-    if (piece.from) gameField[piece.from.y][piece.from.x] = "0"
+    if (piece.from) {
+        gameField[piece.from.y][piece.from.x] = "0"
+        stateTable[piece.from.y][piece.from.x] = "0"
+    }
 
 
     let scales = {
@@ -47,6 +52,7 @@ export default function Piece(props){
     }
 
     function handleMouseOver(event) {
+
         if (name[0] === turn || nextMovesInclude([x,y])) {
             event.target.style.transform = `scale(${scale * 1.2})`
         }
@@ -58,21 +64,16 @@ export default function Piece(props){
 
     function handleMouseClick(event){
 
+        if (event.button !== 0) return
+
         if (name[0] === turn && !nextMovesInclude([x,y])) {
             getNextMove([x,y], false)
             recentPieceCrd = [x, y, gameField[y][x], piece, setPiece]
-            follow(event)
+            startFollowing(event)
         }
 
         else if (nextMovesInclude([x,y])){
-
-            if (name[0] === turn) doCastling(piece, setPiece)
-
-            else {
-                setPiece(false)
-                setKilled(prev => [...prev, name])
-                movePiece(x, y)
-            }
+            movePiece(x, y)
         }
 
         else clearField()
@@ -87,8 +88,7 @@ export default function Piece(props){
             style={styles}
             onMouseOver={handleMouseOver}
             onMouseOut={handleMouseOut}
-            onMouseDown={handleMouseClick}
-        >
+            onMouseDown={handleMouseClick}>
         </img>
     )
 }

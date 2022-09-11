@@ -20,7 +20,6 @@ export default function Game(){
                 <CheckIndicator/>
             </PromotionContext>
         </EatenPieces>
-
     )
 
 }

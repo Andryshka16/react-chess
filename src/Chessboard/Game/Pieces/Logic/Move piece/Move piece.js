@@ -2,11 +2,12 @@ import {clearField} from "../../../Indicators/ShowNextMoves";
 import togglePointerEvents from "../Pawn promotion/togglePointerEvents";
 import updateState from "./Update state";
 
-import {recentPieceCrd} from "../../piece";
+import {recentPieceCrd, stateTable} from "../../piece";
 import {gameField} from "../../Gamefield";
 import {setPromoted} from "../Pawn promotion/Promotion";
 import {check, setCheck} from "../../../Indicators/ShowCheck";
 import {setKilled} from "../../../Eaten pieces/Eaten pieces";
+import doCastling from "./Castle king";
 
 export let turn = "w"
 export const turns = {"w":"b","b":"w"}
@@ -20,9 +21,20 @@ export default function movePiece(x2, y2){
 
     let [x1, y1, [color, name], piece, setPiece] = recentPieceCrd
 
-    turn = turns[turn]
+    enPassing = false
+     turn = turns[turn]
 
     if (check) setCheck(false)
+
+    if (name === "K" && Math.abs(x2-x1) > 1){
+        updateState(doCastling, [x2, y2])
+        return
+    }
+
+    if (gameField[y2][x2] !== "0") {
+        setKilled(prev => [...prev, gameField[y2][x2]])
+        stateTable[y2][x2](false)
+    }
 
     if (name === "P" && x1 !== x2
         && gameField[y2][x2] === "0"){
