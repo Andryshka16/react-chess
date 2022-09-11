@@ -58,11 +58,10 @@ export default function Piece(props){
 
     function handleMouseClick(event){
 
-        follow(event)
-
         if (name[0] === turn && !nextMovesInclude([x,y])) {
             getNextMove([x,y], false)
             recentPieceCrd = [x, y, gameField[y][x], piece, setPiece]
+            follow(event)
         }
 
         else if (nextMovesInclude([x,y])){
