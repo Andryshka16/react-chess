@@ -21,6 +21,7 @@ body {
     -webkit-user-drag: none;
 }
 
+
 .dot, .rectangle, .circle, .check{
     background: rgba(48, 128, 255, 0.7);
     position: absolute;
@@ -79,15 +80,12 @@ body {
     position: relative;
     width: 480px;
     height: 480px;
-    right: 0;
-    top: 0;
 }
 
 .promotion {
     position: absolute;
     width: 120px;
     height: 120px;
-    border-radius: 10px;
     z-index: 2;
     background: rgba(0, 0, 0, 0.4);
 }
@@ -95,9 +93,9 @@ body {
 .shadow {
     width: 480px;
     height: 480px;
+    position: absolute;
     top: 0;
     z-index: 2;
-    position: absolute;
     background: rgba(0, 0, 0, 0.6);
     pointer-events: none;
 }
@@ -111,11 +109,10 @@ body {
 
 .eaten {
     background: rgba(0, 0, 0, 0.4);
-    display: inline-flex;
-    width: 460px;
+    width: 480px;
     height: 60px;
-    margin: 10px 10px;
-    border-radius: 5px;
+    margin: 10px 0;
+    border-radius: 10px;
 }
 
 .eatenPieces {
@@ -136,4 +133,12 @@ body {
     position: absolute;
     margin: 25px 0;
     z-index: 3;
+    -webkit-user-select: none;
+}
+
+.drag {
+    position: absolute;
+    height: 100px;
+    width: 100px;
+    background: #000;
 }

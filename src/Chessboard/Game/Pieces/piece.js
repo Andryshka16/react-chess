@@ -1,11 +1,12 @@
 import {useState} from "react";
 import movePiece, {turn} from "./Logic/Move piece/Move piece";
 import doCastling from "./Logic/Move piece/Castle king";
-import nextMovesInclude from "./Nextmoves include";
+import nextMovesInclude from "./Logic/Next moves/Nextmoves include";
 import {getNextMove} from "./Logic/Next moves/NextMoves";
 import {clearField} from "../Indicators/ShowNextMoves";
 import {gameField} from "./Gamefield";
-import {setKilled, setWhiteKilled} from "../Eaten pieces/Eaten pieces";
+import {setKilled} from "../Eaten pieces/Eaten pieces";
+import follow from "./Logic/Move piece/Follow cursor";
 export let recentPieceCrd
 
 export default function Piece(props){
@@ -24,6 +25,7 @@ export default function Piece(props){
     gameField[y][x] = name
 
     if (piece.from) gameField[piece.from.y][piece.from.x] = "0"
+
 
     let scales = {
         "P": 0.6, "B": 0.8,
@@ -54,7 +56,9 @@ export default function Piece(props){
         event.target.style.transform = `scale(${scale})`
     }
 
-    function handleMouseClick(){
+    function handleMouseClick(event){
+
+        follow(event)
 
         if (name[0] === turn && !nextMovesInclude([x,y])) {
             getNextMove([x,y], false)
@@ -84,7 +88,8 @@ export default function Piece(props){
             style={styles}
             onMouseOver={handleMouseOver}
             onMouseOut={handleMouseOut}
-            onClick={handleMouseClick}>
+            onMouseDown={handleMouseClick}
+        >
         </img>
     )
 }

@@ -1,4 +1,4 @@
-import nextMovesInclude from "../Pieces/Nextmoves include";
+import nextMovesInclude from "../Pieces/Logic/Next moves/Nextmoves include";
 import movePiece from "../Pieces/Logic/Move piece/Move piece";
 import {gameField} from "../Pieces/Gamefield";
 import {clearField} from "../Indicators/ShowNextMoves";

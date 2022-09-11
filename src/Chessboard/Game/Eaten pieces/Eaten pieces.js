@@ -9,9 +9,9 @@ export default function EatenPieces({children}) {
 
     return (
         <>
-            <Pieces arr={killed.filter(n => n[0] === "b")}/>
-                {children}
             <Pieces arr={killed.filter(n => n[0] === "w")}/>
+                {children}
+            <Pieces arr={killed.filter(n => n[0] === "b")}/>
         </>
     )
 }

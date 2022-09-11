@@ -1,4 +1,4 @@
-import {nextMoves} from "./Logic/Next moves/NextMoves";
+import {nextMoves} from "./NextMoves";
 
 export default function nextMovesInclude([x,y]){
     return nextMoves.map(i => i.toString())
