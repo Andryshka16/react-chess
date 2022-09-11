@@ -22,11 +22,11 @@ export default function movePiece(x2, y2){
     let [x1, y1, [color, name], piece, setPiece] = recentPieceCrd
 
     enPassing = false
-     turn = turns[turn]
+    turn = turns[turn]
 
     if (check) setCheck(false)
 
-    if (name === "K" && Math.abs(x2-x1) > 1){
+    if (name === "K" && Math.abs(x2 - x1) > 1){
         updateState(doCastling, [x2, y2])
         return
     }
@@ -38,7 +38,8 @@ export default function movePiece(x2, y2){
 
     if (name === "P" && x1 !== x2
         && gameField[y2][x2] === "0"){
-        enPassing.remove()
+        updateState(stateTable[y2 + (color === "w" ? 1 : -1)][x2], false)
+        setKilled(prev => [...prev, turn + name])
     }
 
     else if (name === "R" && (x1 === 0 || x1 === 7)
@@ -55,11 +56,6 @@ export default function movePiece(x2, y2){
         enPassing = {
             x: x2,
             y: y2,
-            remove: () => {
-                setPiece(false)
-                setKilled(prev => [...prev, color+name])
-                gameField[y2][x2] = "0"
-            }
         }
     }
 
