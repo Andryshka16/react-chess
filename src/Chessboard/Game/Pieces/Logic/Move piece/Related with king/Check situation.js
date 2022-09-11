@@ -1,9 +1,9 @@
-import kingCoordinates from "../King activity/Find king";
-import checkForDraw from "../King activity/Draw";
-import {checkMate} from "../King activity/Mates";
-import {checkCRD, checkForChecks} from "../King activity/Checks";
-import {turn} from "./Move piece";
-import {setCheck} from "../../../Indicators/ShowCheck";
+import kingCoordinates from "../../King activity/Find king";
+import checkForDraw from "../../King activity/Draw";
+import {checkMate} from "../../King activity/Mates";
+import {checkCRD, checkForChecks} from "../../King activity/Checks";
+import {turn} from "../Move piece";
+import {setCheck} from "../../../../Indicators/ShowCheck";
 
 export let coverMoves = []
 

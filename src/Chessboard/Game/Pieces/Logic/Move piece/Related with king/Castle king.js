@@ -1,5 +1,5 @@
-import {stateTable} from "../../piece";
-import {turn, turns} from "./Move piece";
+import {stateTable} from "../../../piece";
+import {turn, turns} from "../Move piece";
 
 export default async function doCastling([x, y]){
 

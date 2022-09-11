@@ -1,12 +1,10 @@
 import {useState} from "react";
 import movePiece, {turn} from "./Logic/Move piece/Move piece";
-import doCastling from "./Logic/Move piece/Castle king";
 import nextMovesInclude from "./Logic/Next moves/Nextmoves include";
-import {getNextMove} from "./Logic/Next moves/NextMoves";
+import {getNextMove, nextMoves} from "./Logic/Next moves/NextMoves";
 import {clearField} from "../Indicators/ShowNextMoves";
+import startFollowing from "./Logic/Move piece/Drag and drog pieces/Start motion";
 import {gameField} from "./Gamefield";
-import startFollowing from "./Logic/Move piece/Follow cursor";
-
 export let recentPieceCrd
 export let stateTable = [...Array(8)].map(e => Array(8).fill("0"))
 
@@ -53,9 +51,8 @@ export default function Piece(props){
 
     function handleMouseOver(event) {
 
-        if (name[0] === turn || nextMovesInclude([x,y])) {
+        if (name[0] === turn || nextMovesInclude([x,y]))
             event.target.style.transform = `scale(${scale * 1.2})`
-        }
     }
 
     function handleMouseOut(event) {
@@ -69,12 +66,11 @@ export default function Piece(props){
         if (name[0] === turn && !nextMovesInclude([x,y])) {
             getNextMove([x,y], false)
             recentPieceCrd = [x, y, gameField[y][x], piece, setPiece]
-            startFollowing(event)
+            nextMoves.length && startFollowing(event)
         }
 
-        else if (nextMovesInclude([x,y])){
+        else if (nextMovesInclude([x,y]))
             movePiece(x, y)
-        }
 
         else clearField()
 

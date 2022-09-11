@@ -1,7 +1,7 @@
 import {getNextMove} from "../Next moves/NextMoves";
 import {checkForChecks} from "./Checks";
 import {turn} from "../Move piece/Move piece";
-import {coverMoves} from "../Move piece/Check situation";
+import {coverMoves} from "../Move piece/Related with king/Check situation";
 import {gameField} from "../../Gamefield";
 
 export let kingEscape = []

@@ -3,7 +3,7 @@ import isPiecePinned from "./Check for pin";
 import pinFilter from "./Piin filter";
 import canCastle from "./Allow castling";
 import {nextMoves} from "./NextMoves";
-import {coverMoves} from "../Move piece/Check situation";
+import {coverMoves} from "../Move piece/Related with king/Check situation";
 import {gameField} from "../../Gamefield";
 
 export default function filterNextMoves(x, y){
