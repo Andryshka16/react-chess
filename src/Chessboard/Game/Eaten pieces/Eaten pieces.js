@@ -24,9 +24,9 @@ export default function EatenPieces({children}) {
 
     return (
         <>
-            <Pieces arr={killed.filter(n => n[0] === "w")}/>
+            <Pieces arr={white} dif={whiteValue - blackValue}/>
                 {children}
-            <Pieces arr={killed.filter(n => n[0] === "b")}/>
+            <Pieces arr={black} dif={blackValue - whiteValue}/>
         </>
     )
 }

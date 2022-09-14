@@ -107,6 +107,28 @@ body {
     box-shadow: 0 0 40px 40px red;
 }
 
+.eatenDif {
+    display: flex;
+    width: 480px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dif {
+    background: rgba(0, 0, 0, 0.4);
+    text-align: center;
+    height: 35px;
+    width: fit-content;
+    border-radius: 10px;
+}
+
+.dif > p {
+    margin: 8px;
+    font-size: 20px;
+    font-weight: 600;
+    color: white;
+}
+
 .eaten {
     background: rgba(0, 0, 0, 0.4);
     position: relative;

@@ -8,6 +8,7 @@ export default function EatenPiece({name, index, count}){
     let marginTop = {
         "P": "-6px", "Q": "px",
         "R": "-2px", "N": "-4px",
+        "B": "-3px",
     }
 
     let scale = scales[name[1]] || 0.7
