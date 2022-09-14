@@ -109,36 +109,29 @@ body {
 
 .eaten {
     background: rgba(0, 0, 0, 0.4);
-    width: 480px;
-    height: 60px;
-    margin: 10px 0;
+    position: relative;
+    height: 35px;
+    margin: 5px;
     border-radius: 10px;
 }
 
-.eatenPieces {
-    position: relative;
-    margin: 0 auto;
-}
 
-.eatenPieces > .figure {
+.eaten > .figure {
     position: absolute;
-    width: 50px;
+    width: 30px;
     padding: 5px;
     cursor: auto;
     -webkit-user-drag: none;
 }
 
+.eaten > h2 {
+    font-size: 15px;
+}
+
 .count {
     color: #ffffff;
     position: absolute;
-    margin: 25px 0;
+    margin: 10px -20px;
     z-index: 3;
     -webkit-user-select: none;
-}
-
-.drag {
-    position: absolute;
-    height: 100px;
-    width: 100px;
-    background: #000;
 }
