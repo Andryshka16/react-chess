@@ -7,7 +7,7 @@ import startFollowing from "./Logic/Move piece/Drag and drog pieces/Start motion
 import {gameField} from "./Gamefield";
 import {allStates} from "../../Reset button";
 export let recentPieceCrd
-export let stateTable = [...Array(8)].map(e => Array(8).fill("0"))
+export let stateTable = [...Array(8)].map(_ => Array(8).fill("0"))
 
 export default function Piece(props){
 
