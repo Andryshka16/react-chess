@@ -5,6 +5,7 @@ import {getNextMove, nextMoves} from "./Logic/Next moves/NextMoves";
 import {clearField} from "../Indicators/ShowNextMoves";
 import startFollowing from "./Logic/Move piece/Drag and drog pieces/Start motion";
 import {gameField} from "./Gamefield";
+import {allStates} from "../../Reset button";
 export let recentPieceCrd
 export let stateTable = [...Array(8)].map(e => Array(8).fill("0"))
 
@@ -14,21 +15,29 @@ export default function Piece(props){
         x: props.x,
         y: props.y,
         name: gameField[props.y][props.x],
+        initial: {
+            x: props.x,
+            y: props.y,
+            dead: false,
+            name: gameField[props.y][props.x]},
+        dead: false,
         from: null
     })
 
-    if (!piece) return
+
+    if (piece.dead) return
 
     let {x, y, name} = piece
-
-    gameField[y][x] = name
-    stateTable[y][x] = setPiece
 
     if (piece.from) {
         gameField[piece.from.y][piece.from.x] = "0"
         stateTable[piece.from.y][piece.from.x] = "0"
     }
 
+    gameField[y][x] = name
+    stateTable[y][x] = setPiece
+
+    allStates.push(setPiece)
 
     let scales = {
         "P": 0.6, "B": 0.8,

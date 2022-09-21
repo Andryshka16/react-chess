@@ -6,6 +6,7 @@ import Pieces from "./Game/Pieces/Pieces";
 import NextMoves from "./Game/Indicators/ShowNextMoves";
 import CheckIndicator from "./Game/Indicators/ShowCheck";
 import EatenPieces from "./Game/Eaten pieces/Eaten pieces";
+import Button from "./Reset button";
 
 export default function Game(){
 
@@ -19,6 +20,7 @@ export default function Game(){
                 <Promotion/>
                 <CheckIndicator/>
             </PromotionContext>
+            <Button/>
         </EatenPieces>
     )
 

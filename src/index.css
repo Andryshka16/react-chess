@@ -157,3 +157,21 @@ body {
     z-index: 3;
     -webkit-user-select: none;
 }
+
+.reset {
+    height: 30px;
+    width: 100px;
+    position: absolute;
+    background: #279ebc;
+    border-radius: 40px;
+    font-size: 20px;
+    font-weight: 600;
+    color: white;
+    left: 200px;
+    margin: 10px 0;
+    transition: 200ms;
+}
+
+.reset:hover{
+    transform: scale(1.15);
+}
