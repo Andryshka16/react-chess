@@ -5,7 +5,7 @@ import {getNextMove, nextMoves} from "./Logic/Next moves/NextMoves";
 import {clearField} from "../Indicators/ShowNextMoves";
 import startFollowing from "./Logic/Move piece/Drag and drog pieces/Start motion";
 import {gameField} from "./Gamefield";
-import {allStates} from "../../Reset button";
+import {allStates} from "../../Restart game";
 export let recentPieceCrd
 export let stateTable = [...Array(8)].map(_ => Array(8).fill("0"))
 
