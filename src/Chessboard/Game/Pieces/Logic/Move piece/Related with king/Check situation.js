@@ -6,10 +6,11 @@ import {turn} from "../Move piece";
 import {setCheck} from "../../../../Indicators/ShowCheck";
 
 export let coverMoves = []
+export const clearCoverMoves = () => coverMoves = []
 
 export default function checkSituation(){
 
-    coverMoves = []
+    clearCoverMoves()
 
     if (checkForChecks(kingCoordinates(turn+"K"))){
 
