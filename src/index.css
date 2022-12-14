@@ -78,6 +78,7 @@ body {
 
 #chess {
     position: relative;
+    margin: auto;
     width: 480px;
     height: 480px;
 }

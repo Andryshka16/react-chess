@@ -1,8 +1,11 @@
 import React from "react";
-import {color1, color2} from "../Cells/Cells";
+import { useSelector } from 'react-redux';
+
 
 export default function Target({x,y}){
 
+    const [color1, color2] = useSelector(store => store.chess.colors)
+    
     const styles = {
         top: `${y * 60}px`,
         left: `${x * 60}px`,

@@ -1,43 +1,19 @@
-import {useState} from "react";
 import movePiece, {turn} from "./Logic/Move piece/Move piece";
 import nextMovesInclude from "./Logic/Next moves/Nextmoves include";
-import {getNextMove, nextMoves} from "./Logic/Next moves/NextMoves";
-import {clearField} from "../Indicators/ShowNextMoves";
+import {useGetNextMove} from "./Logic/Next moves/NextMoves";
 import startFollowing from "./Logic/Move piece/Drag and drog pieces/Start motion";
-import {gameField} from "./Gamefield";
-import {allStates} from "../../Restart game";
+import { useDispatch, useSelector } from 'react-redux';
+import { clearNextMoves } from '../../../features/chess/chessSlice';
 export let recentPieceCrd
 export let stateTable = [...Array(8)].map(_ => Array(8).fill("0"))
 
-export default function Piece(props){
+export default function Piece({x, y}){
 
-    const [piece, setPiece] = useState({
-        x: props.x,
-        y: props.y,
-        name: gameField[props.y][props.x],
-        initial: {
-            x: props.x,
-            y: props.y,
-            dead: false,
-            name: gameField[props.y][props.x]},
-        dead: false,
-        from: null
-    })
+    const { gameField, nextMoves } = useSelector(store => store.chess)
+    const dispatch = useDispatch()
 
-
-    if (piece.dead) return
-
-    let {x, y, name} = piece
-
-    if (piece.from) {
-        gameField[piece.from.y][piece.from.x] = "0"
-        stateTable[piece.from.y][piece.from.x] = "0"
-    }
-
-    gameField[y][x] = name
-    stateTable[y][x] = setPiece
-
-    allStates.push(setPiece)
+    const name = gameField[y][x]
+    const getNextMove = useGetNextMove([x, y], false)
 
     let scales = {
         "P": 0.6, "B": 0.8,
@@ -60,7 +36,7 @@ export default function Piece(props){
 
     function handleMouseOver(event) {
 
-        if (name[0] === turn || nextMovesInclude([x,y]))
+        if (name[0] === turn || nextMovesInclude([x,y], nextMoves))
             event.target.style.transform = `scale(${scale * 1.2})`
     }
 
@@ -72,16 +48,16 @@ export default function Piece(props){
 
         if (event.button !== 0) return
 
-        if (name[0] === turn && !nextMovesInclude([x,y])) {
+        if (name[0] === turn && !nextMovesInclude([x,y], nextMoves)) {
             getNextMove([x,y], false)
-            recentPieceCrd = [x, y, gameField[y][x], piece, setPiece]
-            nextMoves.length && startFollowing(event)
+            recentPieceCrd = [x, y, gameField[y][x]]
+            // nextMoves.length && startFollowing(event)
         }
 
         else if (nextMovesInclude([x,y]))
             movePiece(x, y)
 
-        else clearField()
+        else dispatch(clearNextMoves())
 
     }
 

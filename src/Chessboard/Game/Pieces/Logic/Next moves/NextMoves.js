@@ -1,43 +1,35 @@
-import {drawDots} from "../../../Indicators/ShowNextMoves";
-import getBishopMoves from "./Piece moves/Bishop";
-import getRookMoves from "./Piece moves/Rook";
-import getKnightMoves from "./Piece moves/Knight";
-import getKingMoves from "./Piece moves/King";
-import getPawnMoves from "./Piece moves/Pawn";
-import filterNextMoves from "./Filtration";
-import {gameField} from "../../Gamefield";
+import useGetBishopMoves from "./Piece moves/Bishop";
+import useGetRookMoves from "./Piece moves/Rook";
+import useGetKnightMoves from "./Piece moves/Knight";
+import useGetKingMoves from "./Piece moves/King";
+import useGetPawnMoves from "./Piece moves/Pawn";
+import useFilterMoves from "./Filtration";
+import { useDispatch, useSelector } from 'react-redux';
+import { clearNextMoves, setNextMoves } from '../../../../../features/chess/chessSlice';
 
-export let nextMoves = []
 
-export const clearNextMoves = () => nextMoves = []
+export function useGetNextMove([x,y], returnArray){
 
-export function getNextMove([x,y], returnArray){
+    const { gameField } = useSelector(store => store.chess) 
+    const dispatch = useDispatch()
+    
 
-    nextMoves = []
     let piece = gameField[y][x]
 
     const steps = {
-        "K": () => getKingMoves(x, y),
-        "N": () => getKnightMoves(x, y),
-        "Q": () => {
-            getBishopMoves(x, y)
-            getRookMoves(x, y)
-        },
-        "B": () => getBishopMoves(x, y),
-        "R": () => getRookMoves(x, y),
-        "P": () => getPawnMoves(x, y),
+        "K": useGetKingMoves(x, y),
+        "N": useGetKnightMoves(x, y),
+        "Q": [...useGetBishopMoves(x, y), ...useGetRookMoves(x, y)],
+        "B": useGetBishopMoves(x, y),
+        "R": useGetRookMoves(x, y),
+        "P": useGetPawnMoves(x, y),
     }
 
-    steps[piece[1]]()
+    const filteredMoves = useFilterMoves(x, y, steps[piece[1]])
 
-    nextMoves = filterNextMoves(x, y)
-
-    if (returnArray){
-        const copy = nextMoves
-        nextMoves = []
-        return copy
+    return () => {
+        dispatch(setNextMoves(filteredMoves))
     }
-
-    drawDots()
+    
 }
 

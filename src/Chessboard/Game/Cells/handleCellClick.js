@@ -7,6 +7,6 @@ export default function handleCellClick(x,y){
     if (nextMovesInclude([x,y])) {
         movePiece(x, y)
     }
-    else clearField()
+    // else clearField()
 
 }

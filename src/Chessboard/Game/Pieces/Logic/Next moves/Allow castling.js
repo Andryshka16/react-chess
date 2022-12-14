@@ -1,10 +1,10 @@
-import {checkForChecks} from "../King activity/Checks";
-import {castlingMoved, turn} from "../Move piece/Move piece";
-import {gameField} from "../../Gamefield";
+import checkForChecks from "../King activity/Checks";
+import { useSelector } from "react-redux"
 
-export default function canCastle(x, y) {
+export default function useCanCastle(x, y) {
 
     let castlingMoves = []
+    const {gameField, turn, castlingMoved} = useSelector(store => store.chess)
 
     for (let rook of [x-4, x+3]) {
 

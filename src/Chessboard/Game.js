@@ -18,9 +18,9 @@ export default function Game(){
                 <NextMoves/>
                 <Notation/>
                 <Promotion/>
-                <CheckIndicator/>
+                {/* <CheckIndicator/> */}
             </PromotionContext>
-            <Button/>
+            {/* <Button/> */}
         </EatenPieces>
     )
 

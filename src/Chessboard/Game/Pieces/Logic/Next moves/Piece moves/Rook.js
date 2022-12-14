@@ -1,23 +1,35 @@
-import {nextMoves} from "../NextMoves";
-import {gameField} from "../../../Gamefield";
+import { useSelector } from 'react-redux';
 
-export default function getRookMoves(x, y){
+export default function useGetRookMoves(x, y){
+
+    const { gameField } = useSelector(store => store.chess)
+
+    if (gameField[y][x][1] !== "R")
+        return []
+
+    const moves = []
 
     for (let i = 1; x + i < 8; i++){
-        nextMoves.push([x + i, y])
-        if(gameField[y][x + i] !== "0"){break}
+        moves.push([x + i, y])
+        if (gameField[y][x + i] !== "0") 
+            break
     }
     for (let i = 1; x-i>=0; i++) {
-        nextMoves.push([x - i, y])
-        if (gameField[y][x - i] !== "0") {break}
+        moves.push([x - i, y])
+        if (gameField[y][x - i] !== "0")  
+            break
     }
     for (let i = 1; y+i<8; i++){
-        nextMoves.push([x, y + i])
-        if(gameField[y + i][x] !== "0"){break}
+        moves.push([x, y + i])
+        if (gameField[y + i][x] !== "0")
+            break
     }
     for (let i = 1; y-i>=0; i++){
-        nextMoves.push([x, y - i])
-        if(gameField[y - i][x] !== "0"){break}
+        moves.push([x, y - i])
+        if (gameField[y - i][x] !== "0") 
+            break
     }
+
+    return moves
 
 }

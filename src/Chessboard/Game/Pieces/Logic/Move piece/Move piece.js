@@ -19,12 +19,12 @@ export let clearCastlingMoved = () => castlingMoved = []
 
 export default function movePiece(x2, y2){
 
-    clearField()
+    // clearField()
 
     let [x1, y1, [color, name], piece, setPiece] = recentPieceCrd
 
     updateTurn(turns[turn])
-    setCheck(false)
+    // setCheck(false)
 
     if (name === "K" && Math.abs(x2 - x1) > 1){
         updateState(doCastling, [x2, y2], true)

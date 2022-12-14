@@ -1,10 +1,9 @@
 import React, {useState} from "react";
-
-export let check, setCheck
+import { useSelector } from 'react-redux';
 
 export default function CheckIndicator(){
 
-    [check, setCheck] = useState(false)
+    const { check } = useSelector(store => store.chess)
 
     if (!check) return
 

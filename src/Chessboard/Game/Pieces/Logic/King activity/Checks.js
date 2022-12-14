@@ -1,10 +1,14 @@
-import {turn, turns} from "../Move piece/Move piece";
-import {gameField} from "../../Gamefield";
-export let checkCRD = []
+import { useSelector } from 'react-redux';
+import {turns} from "../Move piece/Move piece";
 
-export function checkForChecks([a,b], color=turns[turn]){
+let checkCRD = []
+
+export default function useCheckForChecks([a,b], Color){
+
+    const {gameField, turn} = useSelector(store => store.chess)
 
     let check = 0
+    const color = Color || turns[turn]
 
     function checkCell([x,y], piece, i) {
 

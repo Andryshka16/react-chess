@@ -1,8 +1,5 @@
 import Cell from "./cell";
 
-export const color1 = "rgb(255,195,151)"
-export const color2 = "rgb(39,39,39)"
-
 export default function Cells(){
 
     return (

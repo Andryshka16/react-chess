@@ -1,12 +1,12 @@
-import {checkForChecks} from "../King activity/Checks";
+import checkForChecks from "../King activity/Checks";
 import isPiecePinned from "./Check for pin";
 import pinFilter from "./Piin filter";
 import canCastle from "./Allow castling";
-import {nextMoves} from "./NextMoves";
-import {coverMoves} from "../Move piece/Related with king/Check situation";
-import {gameField} from "../../Gamefield";
+import { useSelector } from 'react-redux';
 
-export default function filterNextMoves(x, y){
+export default function useFilterNextMoves(x, y, nextMoves){
+
+    const { gameField, coverMoves } = useSelector(store => store.chess)
 
     let [color, piece] = gameField[y][x]
 
@@ -30,10 +30,10 @@ export default function filterNextMoves(x, y){
         newMoves = newMoves.filter(move => saves.includes(move.toString()))
     }
 
-    if (isPiecePinned([x, y])){
-        console.log(color + piece, "is Pinned")
-        newMoves = newMoves.filter(move => pinFilter(move, [x,y]))
-    }
+    // if (isPiecePinned([x, y])){
+    //     console.log(color + piece, "is Pinned")
+    //     newMoves = newMoves.filter(move => pinFilter(move, [x,y]))
+    // }
 
     return newMoves
 

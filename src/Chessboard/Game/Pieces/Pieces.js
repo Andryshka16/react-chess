@@ -1,8 +1,10 @@
+import { useSelector } from 'react-redux';
 import Piece from "./piece";
-import {gameField} from "./Gamefield";
 
 
 export default function Pieces() {
+
+    const {gameField} = useSelector(store=>store.chess)
 
     let piecesArray = []
 
