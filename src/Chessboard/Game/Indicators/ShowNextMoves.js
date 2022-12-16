@@ -6,7 +6,6 @@ import Target from "./Target";
 export default function ShowNextMoves(){
 
     const { nextMoves } = useSelector(store => store.chess)
-    console.log(nextMoves)
 
     return (
         nextMoves.map(([x, y]) =>

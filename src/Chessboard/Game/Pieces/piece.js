@@ -1,9 +1,9 @@
 import movePiece, {turn} from "./Logic/Move piece/Move piece";
-import nextMovesInclude from "./Logic/Next moves/Nextmoves include";
-import {useGetNextMove} from "./Logic/Next moves/NextMoves";
-import startFollowing from "./Logic/Move piece/Drag and drog pieces/Start motion";
+import useNextMovesInclude from "./Logic/Next moves/Nextmoves include";
+import startFollowing from "../Pieces/Drag and drog pieces/Start motion";
 import { useDispatch, useSelector } from 'react-redux';
-import { clearNextMoves } from '../../../features/chess/chessSlice';
+import { clearNextMoves, setNextMoves } from '../../../features/chess/chessSlice';
+import useGetNextMove from './Logic/Next moves/NextMoves';
 export let recentPieceCrd
 export let stateTable = [...Array(8)].map(_ => Array(8).fill("0"))
 
@@ -11,9 +11,10 @@ export default function Piece({x, y}){
 
     const { gameField, nextMoves } = useSelector(store => store.chess)
     const dispatch = useDispatch()
+    const nextMovesArray = useGetNextMove([x,y])
 
+    const nextMovesIncludeCell = useNextMovesInclude([x, y])
     const name = gameField[y][x]
-    const getNextMove = useGetNextMove([x, y], false)
 
     let scales = {
         "P": 0.6, "B": 0.8,
@@ -36,7 +37,7 @@ export default function Piece({x, y}){
 
     function handleMouseOver(event) {
 
-        if (name[0] === turn || nextMovesInclude([x,y], nextMoves))
+        if (name[0] === turn || nextMovesIncludeCell)
             event.target.style.transform = `scale(${scale * 1.2})`
     }
 
@@ -48,13 +49,13 @@ export default function Piece({x, y}){
 
         if (event.button !== 0) return
 
-        if (name[0] === turn && !nextMovesInclude([x,y], nextMoves)) {
-            getNextMove([x,y], false)
+        if (name[0] === turn && !nextMovesIncludeCell) {
+            dispatch(setNextMoves(nextMovesArray))
             recentPieceCrd = [x, y, gameField[y][x]]
-            // nextMoves.length && startFollowing(event)
+            nextMovesArray.length && startFollowing(event, x, y)
         }
 
-        else if (nextMovesInclude([x,y]))
+        else if (nextMovesIncludeCell([x,y]))
             movePiece(x, y)
 
         else dispatch(clearNextMoves())
