@@ -4,7 +4,7 @@ export default function useGetBishopMoves(x,y){
 
     const { gameField } = useSelector(store => store.chess)
 
-    if (gameField[y][x][1] !== "B")
+    if (!(gameField[y][x][1] === "B" || gameField[y][x][1] === "Q"))
         return []
 
     const moves = []

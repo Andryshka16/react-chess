@@ -1,11 +1,10 @@
 import { useSelector } from 'react-redux';
-import {gameField} from "../Pieces/Gamefield";
 import Dot from "./Dot";
 import Target from "./Target";
 
 export default function ShowNextMoves(){
 
-    const { nextMoves } = useSelector(store => store.chess)
+    const { gameField, nextMoves } = useSelector(store => store.chess)
 
     return (
         nextMoves.map(([x, y]) =>

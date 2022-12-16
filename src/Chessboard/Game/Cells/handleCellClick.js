@@ -1,12 +1,16 @@
 import nextMovesInclude from "../Pieces/Logic/Next moves/Nextmoves include";
-import movePiece from "../Pieces/Logic/Move piece/Move piece";
-import {clearField} from "../Indicators/ShowNextMoves";
+import useMovePiece from "../Pieces/Logic/Move piece/Move piece";
+import { useDispatch } from 'react-redux';
+import { clearNextMoves } from '../../../features/chess/chessSlice';
 
-export default function handleCellClick(x,y){
+export default function useHandleCellClick(x, y){
 
-    if (nextMovesInclude([x,y])) {
-        movePiece(x, y)
-    }
-    // else clearField()
+    const dispatch = useDispatch()
+    const movePiece = useMovePiece(x, y)
+    const nextMovesIncludeCell = nextMovesInclude([x, y])
+
+    if (nextMovesIncludeCell) return movePiece
+
+    return () => dispatch(clearNextMoves())
 
 }

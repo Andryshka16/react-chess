@@ -1,9 +1,10 @@
 import movePiece, {turn} from "./Logic/Move piece/Move piece";
 import useNextMovesInclude from "./Logic/Next moves/Nextmoves include";
-import startFollowing from "../Pieces/Drag and drog pieces/Start motion";
+import startFollowing from "./Start motion";
 import { useDispatch, useSelector } from 'react-redux';
-import { clearNextMoves, setNextMoves } from '../../../features/chess/chessSlice';
+import { clearNextMoves, setNextMoves, setSelected } from '../../../features/chess/chessSlice';
 import useGetNextMove from './Logic/Next moves/NextMoves';
+import useMovePiece from './Logic/Move piece/Move piece';
 export let recentPieceCrd
 export let stateTable = [...Array(8)].map(_ => Array(8).fill("0"))
 
@@ -11,6 +12,7 @@ export default function Piece({x, y}){
 
     const { gameField, nextMoves } = useSelector(store => store.chess)
     const dispatch = useDispatch()
+    const movePiece = useMovePiece(x, y)
     const nextMovesArray = useGetNextMove([x,y])
 
     const nextMovesIncludeCell = useNextMovesInclude([x, y])
@@ -51,12 +53,14 @@ export default function Piece({x, y}){
 
         if (name[0] === turn && !nextMovesIncludeCell) {
             dispatch(setNextMoves(nextMovesArray))
-            recentPieceCrd = [x, y, gameField[y][x]]
+            dispatch(setSelected({
+                x, y, name
+            }))
             nextMovesArray.length && startFollowing(event, x, y)
         }
 
-        else if (nextMovesIncludeCell([x,y]))
-            movePiece(x, y)
+        else if (nextMovesIncludeCell)
+            movePiece()
 
         else dispatch(clearNextMoves())
 

@@ -35,13 +35,13 @@ export default function useGetPawnMoves(x, y){
         moves.push([x + 1, y + k])
     }
 
-    if (x > 0 && enPassing && y === enPassing.y && x - 1 === enPassing.x){
-        moves.push([x - 1, y + k])
-    }
+    // if (x > 0 && enPassing && y === enPassing.y && x - 1 === enPassing.x){
+    //     moves.push([x - 1, y + k])
+    // }
 
-    if (x < 7 && enPassing && y === enPassing.y && x + 1 === enPassing.x){
-        moves.push([x + 1, y + k])
-    }
+    // if (x < 7 && enPassing && y === enPassing.y && x + 1 === enPassing.x){
+    //     moves.push([x + 1, y + k])
+    // }
 
     return moves
 }

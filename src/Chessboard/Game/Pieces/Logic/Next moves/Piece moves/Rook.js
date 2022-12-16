@@ -4,7 +4,7 @@ export default function useGetRookMoves(x, y){
 
     const { gameField } = useSelector(store => store.chess)
 
-    if (gameField[y][x][1] !== "R")
+    if (!(gameField[y][x][1] === "R" || gameField[y][x][1] === "Q"))
         return []
 
     const moves = []
