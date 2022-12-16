@@ -8,7 +8,6 @@ import useKingCoordinates from '../King activity/Find king';
 export default function useFilterNextMoves(x, y, nextMoves){
 
     const { gameField, coverMoves, turn } = useSelector(store => store.chess)
-
     let [color, piece] = gameField[y][x]
     const king = useKingCoordinates(turn + "K")
 
