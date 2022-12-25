@@ -1,4 +1,3 @@
-// import movePiece, {turn} from "./Logic/Move piece/Move piece";
 import useNextMovesInclude from "./Logic/Next moves/Nextmoves include";
 import startFollowing from "./Start motion";
 import { useDispatch, useSelector } from 'react-redux';

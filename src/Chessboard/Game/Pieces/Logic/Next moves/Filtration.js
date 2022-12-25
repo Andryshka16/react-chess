@@ -1,9 +1,9 @@
-import checkForChecks from "../King activity/Checks";
 import useIsPiecePinned from "./Check for pin";
 import pinFilter from "./Pin filter";
 import canCastle from "./Allow castling";
 import { useSelector } from 'react-redux';
 import useKingCoordinates from '../King activity/Find king';
+import useCheckForChecks from '../King activity/Checks';
 
 export default function useFilterNextMoves(x, y, nextMoves){
 
@@ -11,6 +11,7 @@ export default function useFilterNextMoves(x, y, nextMoves){
     let [color, piece] = gameField[y][x]
 
     const isPiecePinned = useIsPiecePinned([x, y])
+    const checkForChecks = useCheckForChecks()
     const king = useKingCoordinates(turn + "K")
     const castlingMoves = canCastle(x, y)
 
@@ -21,7 +22,7 @@ export default function useFilterNextMoves(x, y, nextMoves){
     )
 
     if (piece === "K"){
-        newMoves = newMoves.filter(move => !checkForChecks(gameField, turn, move))
+        newMoves = newMoves.filter(move => !checkForChecks(move))
         newMoves.push(...castlingMoves)
     }
 

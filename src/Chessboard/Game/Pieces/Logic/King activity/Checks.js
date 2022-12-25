@@ -3,7 +3,9 @@ import {turns} from "../Move piece/Move piece";
 
 let checkCRD = []
 
-export default function checkForChecks(gameField, turn, [a,b]){
+export default function useCheckForChecks(){
+
+    const { gameField, turn } = useSelector(store => store.chess)
 
     let check = 0
     const color = turns[turn]
@@ -34,71 +36,74 @@ export default function checkForChecks(gameField, turn, [a,b]){
         }
     }
 
-    // Rook check
+    return ([a, b]) => {
+        
+        // Rook check
 
-    for (let i = 1; a + i < 8; i++){
-        if(checkCell([a + i, b],"R", i)){
-            break
+        for (let i = 1; a + i < 8; i++) {
+            if (checkCell([a + i, b], "R", i)) {
+                break
+            }
         }
-    }
-    for (let i = 1; a - i >=  0; i++) {
-        if(checkCell([a - i, b],"R", i)){
-            break
+        for (let i = 1; a - i >= 0; i++) {
+            if (checkCell([a - i, b], "R", i)) {
+                break
+            }
         }
-    }
-    for (let i = 1; b + i < 8; i++){
-        if(checkCell([a, b + i],"R", i)){
-            break
+        for (let i = 1; b + i < 8; i++) {
+            if (checkCell([a, b + i], "R", i)) {
+                break
+            }
         }
-    }
-    for (let i = 1; b - i >= 0; i++){
-        if(checkCell([a, b - i],"R", i)){
-            break
+        for (let i = 1; b - i >= 0; i++) {
+            if (checkCell([a, b - i], "R", i)) {
+                break
+            }
         }
-    }
 
-    // Bishop check
+        // Bishop check
 
-    for (let i = 1; a + i < 8 && b + i < 8; i++){
-        if(checkCell([a + i, b + i],"B", i)){
-            break
+        for (let i = 1; a + i < 8 && b + i < 8; i++) {
+            if (checkCell([a + i, b + i], "B", i)) {
+                break
+            }
         }
+        for (let i = 1; a - i >= 0 && b - i >= 0; i++) {
+            if (checkCell([a - i, b - i], "B", -i)) {
+                break
+            }
+        }
+        for (let i = 1; b + i < 8 && a - i >= 0; i++) {
+            if (checkCell([a - i, b + i], "B", i)) {
+                break
+            }
+        }
+        for (let i = 1; b - i >= 0 && a + i < 8; i++) {
+            if (checkCell([a + i, b - i], "B", -i)) {
+                break
+            }
+        }
+
+        let knights = [
+            [a - 2, b - 1], [a - 1, b + 2],
+            [a - 2, b + 1], [a + 1, b + 2],
+            [a + 2, b - 1], [a - 1, b - 2],
+            [a + 2, b + 1], [a + 1, b - 2]
+        ]
+
+        knights = knights.filter(([x, y]) =>
+            x >= 0 && x < 8 &&
+            y >= 0 && y < 8 &&
+            gameField[y][x][0] !== turn
+        )
+
+        knights.forEach(([x, y]) => {
+            if (gameField[y][x][1] === "N") {
+                checkCRD = [x, y]
+                check += 1
+            }
+        })
+
+        return check
     }
-    for (let i = 1; a - i >= 0 && b - i >= 0; i++){
-        if(checkCell([a - i, b - i],"B", -i)){
-            break
-        }
-    }
-    for (let i = 1; b + i < 8 && a - i >= 0; i++){
-        if(checkCell([a - i, b + i],"B", i)){
-            break
-        }
-    }
-    for (let i = 1; b - i >= 0 && a + i < 8; i++){
-        if(checkCell([a + i, b - i],"B", -i)){
-            break
-        }
-    }
-
-    let knights = [
-      [ a - 2, b - 1 ],  [ a - 1, b + 2 ],
-      [ a - 2, b + 1 ],  [ a + 1, b + 2 ],
-      [ a + 2, b - 1 ],  [ a - 1, b - 2 ],
-      [ a + 2, b + 1 ],  [ a + 1, b - 2 ]
-    ]
-
-    knights = knights.filter(([x,y])=>
-        x >= 0 && x < 8 &&
-        y >= 0 && y < 8 &&
-        gameField[y][x][0] !== turn
-    )
-
-    knights.forEach(([x,y])=>{
-        if (gameField[y][x][1] === "N"){
-            checkCRD = [x,y]
-            check += 1
-        }
-    })
-
-    return check
 }
