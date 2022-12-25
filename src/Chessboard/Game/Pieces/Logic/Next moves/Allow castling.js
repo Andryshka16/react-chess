@@ -15,19 +15,18 @@ export default function useCanCastle(x, y) {
             || gameField[y][rook] !== turn + "R"
             || castlingMoved.includes(gameField[y][x])
             || castlingMoved.includes(rook + turn + "R")
-            || checkForChecks([x, y])
+            || checkForChecks(gameField, turn, [x, y])
         ) continue
 
         let k = rook > 4? 1: -1
 
         if (
-            (checkForChecks([4 + k, y]) || gameField[y][4 + k] !== "0") ||
-            (checkForChecks([4 + 2 * k, y]) || gameField[y][4 + 2 * k] !== "0")
+            (checkForChecks(gameField, turn, [4 + k, y]) || gameField[y][4 + k] !== "0") ||
+            (checkForChecks(gameField, turn, [4 + 2 * k, y]) || gameField[y][4 + 2 * k] !== "0")
         ) continue
 
         castlingMoves.push([rook, y])
     }
 
-    console.log(castlingMoves)
     return castlingMoves
 }

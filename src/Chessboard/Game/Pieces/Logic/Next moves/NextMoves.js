@@ -22,6 +22,7 @@ export default function useGetNextMove([x, y]) {
     }
 
     const filteredMoves = useFilterMoves(x, y, steps[piece[1]])
+    
     return filteredMoves
 
     // return steps[piece[1]]

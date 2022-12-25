@@ -3,12 +3,10 @@ import {turns} from "../Move piece/Move piece";
 
 let checkCRD = []
 
-export default function useCheckForChecks([a,b], Color){
-
-    const {gameField, turn} = useSelector(store => store.chess)
+export default function checkForChecks(gameField, turn, [a,b]){
 
     let check = 0
-    const color = Color || turns[turn]
+    const color = turns[turn]
 
     function checkCell([x,y], piece, i) {
 

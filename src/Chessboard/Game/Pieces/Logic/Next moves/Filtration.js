@@ -12,7 +12,7 @@ export default function useFilterNextMoves(x, y, nextMoves){
 
     const isPiecePinned = useIsPiecePinned([x, y])
     const king = useKingCoordinates(turn + "K")
-    // const castlingMoves = canCastle(x, y)
+    const castlingMoves = canCastle(x, y)
 
     let newMoves = nextMoves.filter(([x,y])=>
         x >= 0 && x < 8
@@ -21,8 +21,8 @@ export default function useFilterNextMoves(x, y, nextMoves){
     )
 
     if (piece === "K"){
-        // newMoves = newMoves.filter(move => !checkForChecks(move))
-        // newMoves.push(...castlingMoves)
+        newMoves = newMoves.filter(move => !checkForChecks(gameField, turn, move))
+        newMoves.push(...castlingMoves)
     }
 
     if (piece === "P"){
