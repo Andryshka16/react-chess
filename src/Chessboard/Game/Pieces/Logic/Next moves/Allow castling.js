@@ -3,9 +3,12 @@ import { useSelector } from "react-redux"
 
 export default function useCanCastle(x, y) {
 
+    const { gameField, turn, castlingMoved } = useSelector(store => store.chess)
+    
+    if (gameField[y][x][1] !== "K")
+        return []
+    
     let castlingMoves = []
-    const {gameField, turn, castlingMoved} = useSelector(store => store.chess)
-
     for (let rook of [x-4, x+3]) {
 
         if (x !== 4
@@ -19,11 +22,12 @@ export default function useCanCastle(x, y) {
 
         if (
             (checkForChecks([4 + k, y]) || gameField[y][4 + k] !== "0") ||
-            (checkForChecks([4 + 2*k, y]) || gameField[y][4 + 2*k] !== "0")
+            (checkForChecks([4 + 2 * k, y]) || gameField[y][4 + 2 * k] !== "0")
         ) continue
 
         castlingMoves.push([rook, y])
     }
 
+    console.log(castlingMoves)
     return castlingMoves
 }

@@ -12,5 +12,6 @@ export default function useHandleCellClick(x, y){
     if (nextMovesIncludeCell) return movePiece
 
     return () => dispatch(clearNextMoves())
+    // return () => movePiece()
 
 }

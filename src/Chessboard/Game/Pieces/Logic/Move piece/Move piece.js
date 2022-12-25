@@ -1,12 +1,12 @@
-import {clearField} from "../../../Indicators/ShowNextMoves";
-import togglePointerEvents from "../Pawn promotion/togglePointerEvents";
-import doCastling from "./Related with king/Castle king";
-import removePiece from "./Remove piece";
-import maybeCastlingPiecesMoved from "./Related with king/Mby castling pieces moved";
-import updateState from "./Update state";
-import {recentPieceCrd} from "../../piece";
-import {gameField} from "../../Gamefield";
-import {setPromoted} from "../Pawn promotion/Promotion";
+// import {clearField} from "../../../Indicators/ShowNextMoves";
+// import togglePointerEvents from "../Pawn promotion/togglePointerEvents";
+// import doCastling from "./Related with king/Castle king";
+// import removePiece from "./Remove piece";
+// import maybeCastlingPiecesMoved from "./Related with king/Mby castling pieces moved";
+// import updateState from "./Update state";
+// import {recentPieceCrd} from "../../piece";
+// import {gameField} from "../../Gamefield";
+// import {setPromoted} from "../Pawn promotion/Promotion";
 import { useDispatch, useSelector } from 'react-redux';
 import { clearNextMoves,setCheck, setTurn, movePiece, setSelected } from '../../../../../features/chess/chessSlice';
 

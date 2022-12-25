@@ -6,9 +6,10 @@ import useGetPawnMoves from "./Piece moves/Pawn";
 import useFilterMoves from "./Filtration";
 import { useDispatch, useSelector } from 'react-redux';
 
-export default function useGetNextMove([x,y]){
+export default function useGetNextMove([x, y]) {
+    
+    const { gameField } = useSelector(store => store.chess)
 
-    const { gameField } = useSelector(store => store.chess) 
     let piece = gameField[y][x]
 
     const steps = {
@@ -21,8 +22,9 @@ export default function useGetNextMove([x,y]){
     }
 
     const filteredMoves = useFilterMoves(x, y, steps[piece[1]])
-
     return filteredMoves
+
+    // return steps[piece[1]]
     
 }
 

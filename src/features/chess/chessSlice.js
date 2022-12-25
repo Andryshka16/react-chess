@@ -1,6 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit'
 import gameField from './Gamefield'
 
+const turns = {
+    "b": "w",
+    "w": "b"
+}
+
 const initialState = {
     gameField,
     turn: "w",
@@ -16,6 +21,17 @@ const initialState = {
     coverMoves: []
 
 }
+
+const gameField2 = [
+    [ '0', '0', '0', '0', '0', '0', '0', 'bR' ],
+    [ '0', '0', '0', '0', '0', 'bK', '0', '0' ],
+    [ '0', 'wB', '0', '0', '0', '0', '0', '0' ],
+    [ '0', '0', '0', '0', '0', '0', '0', '0' ],
+    [ '0', '0', '0', '0', '0', '0', '0', '0' ],
+    [ '0', '0', '0', '0', '0', '0', '0', '0' ],
+    [ '0', '0', '0', '0', '0', '0', '0', '0' ],
+    [ '0', "0", '0', 'wQ', 'wK', '0', '0', 'wR' ]
+]
 
 const chessSlice = createSlice({
     name: "chess",
@@ -37,9 +53,11 @@ const chessSlice = createSlice({
             state.selected = payload
         },
         movePiece: (state, { payload }) => {
-            if (!state.selected) {
-                return state
-            }
+
+            console.log('moved on', payload)
+            if (!state.selected) return state
+        
+            state.turn = turns[state.turn]
             const [x2, y2] = payload
             const { x, y, name} = state.selected
             state.gameField[y2][x2] = name
@@ -53,4 +71,11 @@ const chessSlice = createSlice({
 
 export default chessSlice.reducer
 
-export const {clearNextMoves, setNextMoves, setCheck, setTurn, setSelected, movePiece} = chessSlice.actions
+export const {
+    clearNextMoves,
+    setNextMoves,
+    setCheck,
+    setTurn,
+    setSelected,
+    movePiece
+} = chessSlice.actions
