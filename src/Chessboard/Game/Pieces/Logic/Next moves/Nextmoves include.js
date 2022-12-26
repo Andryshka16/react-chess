@@ -1,10 +1,10 @@
 import { useSelector } from 'react-redux'
 
 
-export default function useNextMovesInclude([x, y]) {
+export default function useNextMovesInclude() {
 
     const {nextMoves} = useSelector(store => store.chess)
     
-    return nextMoves.map(i => i.toString())
+    return ([x,y]) => nextMoves.map(i => i.toString())
         .includes([x,y].toString())
 }

@@ -18,11 +18,11 @@ export let enPassing
 export let castlingMoved = []
 export let clearCastlingMoved = () => castlingMoved = []
 
-export default function useMovePiece(x2, y2){
+export default function useMovePiece(){
 
     const dispatch = useDispatch()
 
-    return () => {
+    return (x2, y2) => {
         dispatch(movePiece([x2, y2]))
         // if (name === "K" && Math.abs(x2 - x1) > 1){
         //     updateState(doCastling, [x2, y2], true)
