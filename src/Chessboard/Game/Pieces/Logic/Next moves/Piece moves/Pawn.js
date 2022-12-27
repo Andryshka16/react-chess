@@ -1,9 +1,8 @@
-import {enPassing} from "../../Move piece/Move piece";
 import { useSelector } from 'react-redux';
 
 export default function useGetPawnMoves(x, y){
 
-    const { gameField } = useSelector(store => store.chess)
+    const { gameField, enPassing } = useSelector(store => store.chess)
 
     if (gameField[y][x][1] !== "P")
         return []
@@ -35,13 +34,15 @@ export default function useGetPawnMoves(x, y){
         moves.push([x + 1, y + k])
     }
 
-    // if (x > 0 && enPassing && y === enPassing.y && x - 1 === enPassing.x){
-    //     moves.push([x - 1, y + k])
-    // }
+    const {x2, y2} = enPassing || {}
 
-    // if (x < 7 && enPassing && y === enPassing.y && x + 1 === enPassing.x){
-    //     moves.push([x + 1, y + k])
-    // }
+    if (x > 0 &&  y === y2 && x - 1 === x2){
+        moves.push([x - 1, y + k])
+    }
+
+    if (x < 7 &&  y === y2 && x + 1 === x2){
+        moves.push([x + 1, y + k])
+    }
 
     return moves
 }

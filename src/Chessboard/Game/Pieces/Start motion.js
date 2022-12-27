@@ -1,9 +1,10 @@
 
+import { useSelector } from 'react-redux'
 import useMovePiece from './Logic/Move piece/Move piece'
 
 export default function useStartFollowing(nextMovesArray, x, y) {
     
-   const movePiece = useMovePiece()
+    const movePiece = useMovePiece()
 
     return (event) => {
         
@@ -28,6 +29,7 @@ export default function useStartFollowing(nextMovesArray, x, y) {
                 movePiece(newX, newY)
             }
             else {
+                target.style.transition = "170ms"
                 target.style.top = `${y * 60}px`
                 target.style.left = `${x * 60}px`
             }

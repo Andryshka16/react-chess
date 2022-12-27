@@ -15,7 +15,6 @@ export default function Piece({x, y}){
     const movePiece = useMovePiece()
     const nextMovesArray = useGetNextMove([x, y])
     const startFollowing = useStartFollowing(nextMovesArray, x, y)
-
     const nextMovesInclude = useNextMovesInclude()
     const name = gameField[y][x]
 
