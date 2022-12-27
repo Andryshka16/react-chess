@@ -67,10 +67,6 @@ const chessSlice = createSlice({
             const [x2, y2] = payload
             const { x, y, name } = state.selected
 
-            if (name[1] === "P" && x !== x2 && state.gameField[y2][x2] === "0") {
-                state.gameField[y][x2] = "0"
-            }
-
             if (name[1] === "K" && Math.abs(x2 - x) > 1) {
                 const k = x2 > x ? 1 : -1
                 state.gameField[y][4 + k] = name[0] + "R"
@@ -78,14 +74,20 @@ const chessSlice = createSlice({
                 state.gameField[y][4] = "0"
                 state.gameField[y][k > 0 ? 7 : 0] = "0"
             }
+
+            else if (name[1] === "P" && x !== x2 && state.gameField[y2][x2] === "0") {
+                state.gameField[y][x2] = "0"
+                state.gameField[y2][x2] = name
+                state.gameField[y][x] = "0"
+            }
+
             else {
                 state.gameField[y2][x2] = name
                 state.gameField[y][x] = "0"
             }
 
-            state.enPassing = name[1] === "P" && Math.abs(y2 - y) === 2
-                ? {x2, y2}
-                : null
+            state.enPassing = name[1] === "P"
+                && Math.abs(y2 - y) === 2 ? {x2, y2} : null
             
             state.turn = turns[state.turn]
             state.selected = null
