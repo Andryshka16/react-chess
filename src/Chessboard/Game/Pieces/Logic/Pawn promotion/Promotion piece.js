@@ -1,5 +1,4 @@
 import React, {useContext} from "react";
-import updateState from "../Move piece/Update state";
 import togglePointerEvents from "./togglePointerEvents";
 import {turn, turns} from "../Move piece/Move piece";
 import {PromotedContext} from "./Promotion context";
@@ -42,12 +41,12 @@ export default function PromotionPiece({index, name}){
         let [x1, y1,,, setPiece] = recentPieceCrd
         togglePointerEvents("all")
 
-        updateState(setPiece,{
-            name: turns[turn] + name,
-            x,
-            y,
-            from: {x: x1, y: y1}
-        })
+        // updateState(setPiece,{
+        //     name: turns[turn] + name,
+        //     x,
+        //     y,
+        //     from: {x: x1, y: y1}
+        // })
 
         setPromoted(false)
     }

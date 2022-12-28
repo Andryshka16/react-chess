@@ -1,11 +1,10 @@
-import Game from "./Chessboard/Game";
+import Chess from './Chessboard/Chess'
 
 export default function App(){
 
     return (
-        <>
-            <Game/>
-        </>
-
-    )
+		<>
+			<Chess />
+		</>
+	)
 }

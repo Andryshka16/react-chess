@@ -1,7 +1,7 @@
-import useNextMovesInclude from "../Pieces/Logic/Next moves/Nextmoves include";
 import useMovePiece from "../Pieces/Logic/Move piece/Move piece";
-import { useDispatch } from 'react-redux';
+import {useNextMovesInclude} from "../Pieces/Logic/Next moves/NextMoves";
 import { clearNextMoves } from '../../../features/chess/chessSlice';
+import { useDispatch } from 'react-redux';
 
 export default function useHandleCellClick(x, y){
 

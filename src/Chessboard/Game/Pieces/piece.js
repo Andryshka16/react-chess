@@ -1,4 +1,4 @@
-import useNextMovesInclude from './Logic/Next moves/Nextmoves include'
+import {useNextMovesInclude} from './Logic/Next moves/NextMoves'
 import { useDispatch, useSelector } from 'react-redux'
 import {
 	clearNextMoves,
