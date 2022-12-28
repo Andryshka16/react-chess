@@ -1,5 +1,5 @@
 import kingCoordinates from './Find king'
-import checkForDraw from './Draw'
+import useCheckForDraw from './Draw'
 import useCheckForChecks from './Checks'
 import { useDispatch, useSelector } from 'react-redux'
 import { setCheck } from '../../../../../features/chess/chessSlice'
@@ -7,7 +7,9 @@ import { setCheck } from '../../../../../features/chess/chessSlice'
 export default function useCheckSituation() {
 	const { turn } = useSelector((store) => store.chess)
 	const dispatch = useDispatch()
+
 	const checkForChecks = useCheckForChecks()
+	const checkForDraw = useCheckForDraw()
 	const king = kingCoordinates(turn + 'K')
 
 	return () => {

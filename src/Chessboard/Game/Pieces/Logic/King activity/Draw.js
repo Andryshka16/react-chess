@@ -1,18 +1,18 @@
-// import {getNextMove} from "../Next moves/NextMoves";
-// import {gameField} from "../../Gamefield";
+import { useSelector } from 'react-redux'
 
+export default function useCheckForDraw() {
+	const { gameField, turn } = useSelector((store) => store.chess)
 
-// export default function checkForDraw(turn) {
+	return () => {
+		for (let y = 0; y < 8; y++) {
+			for (let x = 0; x < 8; x++) {
+				let piece = gameField[y][x]
+				// if (piece[0] === turn && getNextMove([x, y]).length) {
+				// 	return false
+				// }
+			}
+		}
 
-//     for (let y = 0; y < 8; y++){
-//         for (let x = 0; x < 8; x++){
-
-//             let piece = gameField[y][x]
-//             if (piece[0] === turn && getNextMove([x,y],true).length){
-//                 return false
-//             }
-//         }
-//     }
-
-//     return true
-// }
+		return true
+	}
+}

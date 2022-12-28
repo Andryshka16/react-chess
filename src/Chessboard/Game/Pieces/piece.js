@@ -8,8 +8,6 @@ import {
 import useGetNextMove from './Logic/Next moves/NextMoves'
 import useMovePiece from './Logic/Move piece/Move piece'
 import useStartFollowing from './Start motion'
-export let recentPieceCrd
-export let stateTable = [...Array(8)].map((_) => Array(8).fill('0'))
 
 export default function Piece({ x, y }) {
 	const { gameField, turn } = useSelector((store) => store.chess)

@@ -11,7 +11,7 @@
 //     let [x1, y1] = king
 //     let [x2, y2] = check
 
-//     kingEscape = [...getNextMove([x1, y1],true)]
+//     kingEscape = [...getNextMove([x1, y1], true)]
 
 //     if (checkForChecks([x1,y1]) > 1){
 
