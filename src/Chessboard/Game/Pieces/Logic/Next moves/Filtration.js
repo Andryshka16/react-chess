@@ -1,45 +1,55 @@
-import useIsPiecePinned from "./Check for pin";
-import pinFilter from "./Pin filter";
-import canCastle from "./Allow castling";
-import { useSelector } from 'react-redux';
-import useKingCoordinates from '../King activity/Find king';
-import useCheckForChecks from '../King activity/Checks';
+import useIsPiecePinned from './Check for pin'
+import pinFilter from './Pin filter'
+import useCanCastle from './Allow castling'
+import { useSelector } from 'react-redux'
+import useKingCoordinates from '../King activity/Find king'
+import useCheckForChecks from '../King activity/Checks'
 
-export default function useFilterNextMoves(x, y, nextMoves){
+export default function useFilterNextMoves() {
+	const { gameField, coverMoves: _coverMoves, turn } = useSelector((store) => store.chess)
 
-    const { gameField, coverMoves, turn } = useSelector(store => store.chess)
-    let [color, piece] = gameField[y][x]
+	const isPiecePinned = useIsPiecePinned()
+	const checkForChecks = useCheckForChecks()
+	const canCastle = useCanCastle()
+	const king = useKingCoordinates(turn + 'K')
 
-    const isPiecePinned = useIsPiecePinned([x, y])
-    const checkForChecks = useCheckForChecks()
-    const king = useKingCoordinates(turn + "K")
-    const castlingMoves = canCastle(x, y)
+	return (x, y, nextMoves, coverMoves_) => {
 
-    let newMoves = nextMoves.filter(([x,y])=>
-        x >= 0 && x < 8
-        && y >= 0 && y < 8
-        && gameField[y][x][0] !== color
-    )
+		const coverMoves = coverMoves_ || _coverMoves 
 
-    if (piece === "K"){
-        newMoves = newMoves.filter(move => !checkForChecks(move))
-        newMoves.push(...castlingMoves)
-    }
+		let [color, piece] = gameField[y][x]
+		let newMoves = nextMoves.filter(
+			([x, y]) =>
+				x >= 0 &&
+				x < 8 &&
+				y >= 0 &&
+				y < 8 &&
+				gameField[y][x][0] !== color
+		)
 
-    if (piece === "P"){
-        newMoves = newMoves.filter(([a, b]) => ! (a === x && gameField[b][a] !== "0"))
-    }
+		if (piece === 'K') {
+			newMoves = newMoves.filter((move) => !checkForChecks(move).length)
+			newMoves.push(...canCastle(x, y))
+		}
 
-    if (coverMoves.length && piece !== "K"){
-        let saves = coverMoves.map(elm => elm.toString())
-        newMoves = newMoves.filter(move => saves.includes(move.toString()))
-    }
+		if (piece === 'P') {
+			newMoves = newMoves.filter(
+				([a, b]) => !(a === x && gameField[b][a] !== '0')
+			)
+		}
 
-    if (isPiecePinned){
-        console.log(color + piece, "is Pinned")
-        newMoves = newMoves.filter(move => pinFilter(move, [x,y], king))
-    }
+		if (coverMoves.length && piece !== 'K') {
+			let saves = coverMoves.map((elm) => elm.toString())
+			newMoves = newMoves.filter((move) =>
+				saves.includes(move.toString())
+			)
+		}
 
-    return newMoves
+		if (isPiecePinned([x, y])) {
+			console.log(color + piece, 'is Pinned')
+			newMoves = newMoves.filter((move) => pinFilter(move, [x, y], king))
+		}
 
+		return newMoves
+	}
 }

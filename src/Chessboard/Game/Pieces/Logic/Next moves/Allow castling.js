@@ -1,37 +1,35 @@
 import useCheckForChecks from '../King activity/Checks'
 import { useSelector } from 'react-redux'
 
-export default function useCanCastle(x, y) {
-	const { gameField, turn, castlingMoved } = useSelector(
-		(store) => store.chess
-	)
+export default function useCanCastle() {
+	const { gameField, turn, castlingMoved } = useSelector((store) => store.chess)
 	const checkForChecks = useCheckForChecks()
 
-	if (gameField[y][x][1] !== 'K') return []
+	return (x, y) => {
+		let castlingMoves = []
+		for (let rook of [x - 4, x + 3]) {
+			if (
+				x !== 4 ||
+				gameField[y][rook] !== turn + 'R' ||
+				castlingMoved.includes(gameField[y][x]) ||
+				castlingMoved.includes(rook + turn + 'R') ||
+				checkForChecks([x, y]).length
+			)
+				continue
 
-	let castlingMoves = []
-	for (let rook of [x - 4, x + 3]) {
-		if (
-			x !== 4 ||
-			gameField[y][rook] !== turn + 'R' ||
-			castlingMoved.includes(gameField[y][x]) ||
-			castlingMoved.includes(rook + turn + 'R') ||
-			checkForChecks([x, y])
-		)
-			continue
+			let k = rook > 4 ? 1 : -1
 
-		let k = rook > 4 ? 1 : -1
+			if (
+				checkForChecks([4 + k, y]).length ||
+				gameField[y][4 + k] !== '0' ||
+				checkForChecks([4 + 2 * k, y]).length ||
+				gameField[y][4 + 2 * k] !== '0'
+			)
+				continue
 
-		if (
-			checkForChecks([4 + k, y]) ||
-			gameField[y][4 + k] !== '0' ||
-			checkForChecks([4 + 2 * k, y]) ||
-			gameField[y][4 + 2 * k] !== '0'
-		)
-			continue
+			castlingMoves.push([rook, y])
+		}
 
-		castlingMoves.push([rook, y])
+		return castlingMoves
 	}
-
-	return castlingMoves
 }

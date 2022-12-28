@@ -59,6 +59,9 @@ const chessSlice = createSlice({
 		setFollowing: (state, { payload }) => {
 			state.followingPiece = payload
 		},
+		setCoverMoves: (state, { payload }) => {
+			state.coverMoves = payload
+		},
 		movePiece: (state, { payload }) => {
 			const [x2, y2] = payload
 			const { x, y, name } = state.selected
@@ -118,6 +121,7 @@ export const {
 	setTurn,
 	setSelected,
 	setFollowing,
+	setCoverMoves,
 	movePiece,
 	castle,
 } = chessSlice.actions

@@ -1,20 +1,19 @@
 import { useSelector } from 'react-redux'
 
-export default function useGetKingMoves(x, y) {
-	const { gameField } = useSelector((store) => store.chess)
+export default function useGetKingMoves() {
 
-	if (gameField[y][x][1] !== 'K') return []
+	return (x, y) => {
+		const moves = [
+			[x - 1, y - 1],
+			[x - 1, y],
+			[x - 1, y + 1],
+			[x, y + 1],
+			[x + 1, y - 1],
+			[x, y - 1],
+			[x + 1, y + 1],
+			[x + 1, y],
+		]
 
-	const moves = [
-		[x - 1, y - 1],
-		[x - 1, y],
-		[x - 1, y + 1],
-		[x, y + 1],
-		[x + 1, y - 1],
-		[x, y - 1],
-		[x + 1, y + 1],
-		[x + 1, y],
-	]
-
-	return moves
+		return moves
+	}
 }

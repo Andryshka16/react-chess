@@ -7,28 +7,31 @@ import useFilterMoves from './Filtration'
 import { useSelector } from 'react-redux'
 
 export function useNextMovesInclude() {
-    const { nextMoves } = useSelector((store) => store.chess)
-    
+	const { nextMoves } = useSelector((store) => store.chess)
 	return ([x, y]) =>
 		nextMoves.map((i) => i.toString()).includes([x, y].toString())
 }
 
-export default function useGetNextMove([x, y]) {
-
+export default function useGetNextMoves() {
 	const { gameField } = useSelector((store) => store.chess)
+	const filter = useFilterMoves()
 
-	let piece = gameField[y][x]
+	const bishop = useGetBishopMoves()
+	const rook = useGetRookMoves()
 
 	const steps = {
-		K: useGetKingMoves(x, y),
-		N: useGetKnightMoves(x, y),
-		Q: [...useGetBishopMoves(x, y), ...useGetRookMoves(x, y)],
-		B: useGetBishopMoves(x, y),
-		R: useGetRookMoves(x, y),
-		P: useGetPawnMoves(x, y),
+		K: useGetKingMoves(),
+		N: useGetKnightMoves(),
+		Q: (x, y) => [...rook(x, y), ...bishop(x, y)],
+		B: useGetBishopMoves(),
+		P: useGetPawnMoves(),
+		R: useGetRookMoves(),
 	}
 
-	const filteredMoves = useFilterMoves(x, y, steps[piece[1]])
-
-	return filteredMoves
+	return (x, y, coverMoves) => {
+		let piece = gameField[y][x][1]
+		const getMoves = steps[piece]
+		const filtered = filter(x, y, getMoves(x, y), coverMoves)
+		return filtered
+	}
 }
