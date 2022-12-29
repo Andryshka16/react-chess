@@ -49,6 +49,7 @@ const chessSlice = createSlice({
 				const { x1, y1, name} = state.promoted
 				state.gameField[y1][x1] = name
 				state.promoted = payload
+				state.turn = turns[state.turn]
 			} else if (payload.length > 1) {
 				state.promoted = payload
 			} else {
