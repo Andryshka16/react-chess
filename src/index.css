@@ -1,178 +1,177 @@
-
 body {
-    background: #002a4a;
+	background: #002a4a;
 }
 
 .cell {
-    margin-bottom: -4px;
-    display: inline-block;
-    width: 60px;
-    height: 60px;
-    user-select: none;
+	margin-bottom: -4px;
+	display: inline-block;
+	width: 60px;
+	height: 60px;
+	user-select: none;
 }
 
 .figure {
-    position: absolute;
-    cursor: pointer;
-    width: 60px;
-    z-index: 2;
-    transition: 170ms;
-    user-select: none;
-    -webkit-user-drag: none;
+	position: absolute;
+	cursor: pointer;
+	width: 60px;
+	z-index: 2;
+	transition: 170ms;
+	user-select: none;
+	-webkit-user-drag: none;
 }
 
-
-.dot, .rectangle, .circle, .check{
-    background: rgba(48, 128, 255, 0.7);
-    position: absolute;
-    width: 60px;
-    height: 60px;
-    z-index: 1;
-    pointer-events: none;
-    user-select: none;
+.dot,
+.rectangle,
+.circle,
+.check {
+	background: rgba(48, 128, 255, 0.7);
+	position: absolute;
+	width: 60px;
+	height: 60px;
+	z-index: 1;
+	pointer-events: none;
+	user-select: none;
 }
 
 .dot {
-    border-radius: 50%;
-    scale: 0.25;
+	border-radius: 50%;
+	scale: 0.25;
 }
 
 .circle {
-    border-radius: 25px;
+	border-radius: 25px;
 }
 
-
 .notation {
-    font-size: 20px;
-    font-weight: 560;
-    font-family: Calibri, serif;
-    color: white;
-    z-index: -1;
-    opacity: 0.9;
+	font-size: 20px;
+	font-weight: 560;
+	font-family: Calibri, serif;
+	color: white;
+	z-index: -1;
+	opacity: 0.9;
 }
 
 #digits {
-    z-index: 0;
-    position: absolute;
-    right: 4px;
-    top: -1px;
-    user-select: none;
+	z-index: 0;
+	position: absolute;
+	right: 4px;
+	top: -1px;
+	user-select: none;
 }
 
 #letters {
-    z-index: 0;
-    position: absolute;
-    bottom: -1px;
-    left: 1px;
-    letter-spacing: 23.2px;
-    user-select: none;
+	z-index: 0;
+	position: absolute;
+	bottom: -1px;
+	left: 1px;
+	letter-spacing: 23.2px;
+	user-select: none;
 }
 
 #digits > p {
-    margin: 0 0 35.4px;
+	margin: 0 0 35.4px;
 }
 
 #letters > p {
-    margin: 0;
+	margin: 0;
 }
 
 #chess {
-    position: relative;
-    margin: auto;
-    width: 480px;
-    height: 480px;
+	position: relative;
+	margin: auto;
+	width: 480px;
+	height: 480px;
 }
 
 .promotion {
-    position: absolute;
-    width: 120px;
-    height: 120px;
-    z-index: 2;
-    background: rgba(0, 0, 0, 0.4);
+	position: absolute;
+	width: 120px;
+	height: 120px;
+	z-index: 2;
+	background: rgba(0, 0, 0, 0.4);
 }
 
 .shadow {
-    width: 480px;
-    height: 480px;
-    position: absolute;
-    top: 0;
-    z-index: 2;
-    background: rgba(0, 0, 0, 0.6);
-    pointer-events: none;
+	width: 480px;
+	height: 480px;
+	position: absolute;
+	top: 0;
+	z-index: 2;
+	background: rgba(0, 0, 0, 0.6);
+	pointer-events: none;
 }
 
 .check {
-    background: red;
-    border-radius: 20px;
-    scale: 0.4;
-    box-shadow: 0 0 40px 40px red;
+	background: red;
+	border-radius: 20px;
+	scale: 0.4;
+	box-shadow: 0 0 40px 40px red;
 }
 
 .eatenDif {
-    display: flex;
-    width: 480px;
-    justify-content: space-between;
-    align-items: center;
+	display: flex;
+	width: 480px;
+	justify-content: space-between;
+	align-items: center;
 }
 
 .dif {
-    background: rgba(0, 0, 0, 0.4);
-    text-align: center;
-    height: 35px;
-    width: fit-content;
-    border-radius: 10px;
+	background: rgba(0, 0, 0, 0.4);
+	text-align: center;
+	height: 35px;
+	width: fit-content;
+	border-radius: 10px;
 }
 
 .dif > p {
-    margin: 8px;
-    font-size: 20px;
-    font-weight: 600;
-    color: white;
+	margin: 8px;
+	font-size: 20px;
+	font-weight: 600;
+	color: white;
 }
 
 .eaten {
-    background: rgba(0, 0, 0, 0.4);
-    position: relative;
-    height: 35px;
-    margin: 5px;
-    border-radius: 10px;
+	background: rgba(0, 0, 0, 0.4);
+	position: relative;
+	height: 35px;
+	margin: 5px;
+	border-radius: 10px;
 }
 
-
 .eaten > .figure {
-    position: absolute;
-    width: 30px;
-    padding: 5px;
-    cursor: auto;
-    -webkit-user-drag: none;
+	position: absolute;
+	width: 30px;
+	padding: 5px;
+	cursor: auto;
+	-webkit-user-drag: none;
 }
 
 .eaten > h2 {
-    font-size: 15px;
+	font-size: 15px;
 }
 
 .count {
-    color: #ffffff;
-    position: absolute;
-    margin: 10px -20px;
-    z-index: 3;
-    -webkit-user-select: none;
+	color: #ffffff;
+	position: absolute;
+	margin: 10px -20px;
+	z-index: 3;
+	-webkit-user-select: none;
 }
 
 .reset {
-    height: 30px;
-    width: 100px;
-    position: absolute;
-    background: #279ebc;
-    border-radius: 40px;
-    font-size: 20px;
-    font-weight: 600;
-    color: white;
-    left: 200px;
-    margin: 10px 0;
-    transition: 200ms;
+	height: 30px;
+	width: 100px;
+	position: absolute;
+	background: #279ebc;
+	border-radius: 40px;
+	font-size: 20px;
+	font-weight: 600;
+	color: white;
+	left: 200px;
+	margin: 10px 0;
+	transition: 200ms;
 }
 
-.reset:hover{
-    transform: scale(1.15);
+.reset:hover {
+	transform: scale(1.15);
 }

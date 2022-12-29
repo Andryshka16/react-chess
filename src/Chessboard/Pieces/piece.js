@@ -2,20 +2,19 @@ import { useNextMovesInclude } from './Logic/Next moves/NextMoves'
 import { useDispatch, useSelector } from 'react-redux'
 import {
 	clearNextMoves,
+	movePiece,
 	setNextMoves,
 	setSelected,
-} from '../../../features/chess/chessSlice'
+} from '../../features/chess/chessSlice'
 import useGetNextMoves from './Logic/Next moves/NextMoves'
-import useMovePiece from './Logic/Move piece/Move piece'
-import useStartFollowing from './Start motion'
+import useStartDragging from './Start dragging'
 
 export default function Piece({ x, y }) {
 	const { gameField, turn } = useSelector((store) => store.chess)
 	const dispatch = useDispatch()
-	const movePiece = useMovePiece()
 	const getNextMoves = useGetNextMoves()
 	const nextMovesArray = getNextMoves(x, y)
-	const startFollowing = useStartFollowing(nextMovesArray, x, y)
+	const startFollowing = useStartDragging(nextMovesArray, x, y)
 	const nextMovesInclude = useNextMovesInclude()
 
 	const name = gameField[y][x]
@@ -60,7 +59,7 @@ export default function Piece({ x, y }) {
 			dispatch(setSelected({ x, y, name }))
 			nextMovesArray.length && startFollowing(event)
 		} else if (nextMovesInclude([x, y])) {
-			movePiece(x, y)
+			dispatch(movePiece([x, y]))
 		} else {
 			dispatch(clearNextMoves())
 		}

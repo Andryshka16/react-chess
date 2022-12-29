@@ -1,7 +1,8 @@
-import useMovePiece from './Logic/Move piece/Move piece'
+import { useDispatch } from 'react-redux'
+import { movePiece } from '../../features/chess/chessSlice'
 
-export default function useStartFollowing(nextMovesArray, x, y) {
-	const movePiece = useMovePiece()
+export default function useStartDragging(nextMovesArray, x, y) {
+	const dispatch = useDispatch()
 
 	return (event) => {
 		const startingX = event.clientX
@@ -24,7 +25,7 @@ export default function useStartFollowing(nextMovesArray, x, y) {
 					.map((i) => i.toString())
 					.includes([newX, newY].toString())
 			) {
-				movePiece(newX, newY)
+				dispatch(movePiece([newX, newY]))
 			} else {
 				target.style.transition = '170ms'
 				target.style.top = `${y * 60}px`

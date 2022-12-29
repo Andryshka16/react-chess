@@ -1,8 +1,10 @@
 import useCheckForChecks from '../King activity/Checks'
 import { useSelector } from 'react-redux'
 
-export default function useCanCastle() {
-	const { gameField, turn, castlingMoved } = useSelector((store) => store.chess)
+export default function useCastling() {
+	const { gameField, turn, castlingMoved } = useSelector(
+		(store) => store.chess
+	)
 	const checkForChecks = useCheckForChecks()
 
 	return (x, y) => {

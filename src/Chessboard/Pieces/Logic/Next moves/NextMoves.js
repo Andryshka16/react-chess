@@ -1,8 +1,11 @@
-import useGetBishopMoves from './Piece moves/Bishop'
-import useGetRookMoves from './Piece moves/Rook'
-import useGetKnightMoves from './Piece moves/Knight'
-import useGetKingMoves from './Piece moves/King'
-import useGetPawnMoves from './Piece moves/Pawn'
+import {
+	bishopMoves,
+	rookMoves,
+	knightMoves,
+	kingMoves,
+	pawnMoves,
+} from './Piece moves'
+
 import useFilterMoves from './Filtration'
 import { useSelector } from 'react-redux'
 
@@ -16,16 +19,16 @@ export default function useGetNextMoves() {
 	const { gameField } = useSelector((store) => store.chess)
 	const filter = useFilterMoves()
 
-	const bishop = useGetBishopMoves()
-	const rook = useGetRookMoves()
+	const bishop = bishopMoves()
+	const rook = rookMoves()
 
 	const steps = {
-		K: useGetKingMoves(),
-		N: useGetKnightMoves(),
+		K: kingMoves(),
+		N: knightMoves(),
 		Q: (x, y) => [...rook(x, y), ...bishop(x, y)],
-		B: useGetBishopMoves(),
-		P: useGetPawnMoves(),
-		R: useGetRookMoves(),
+		B: bishopMoves(),
+		P: pawnMoves(),
+		R: rookMoves(),
 	}
 
 	return (x, y, coverMoves) => {

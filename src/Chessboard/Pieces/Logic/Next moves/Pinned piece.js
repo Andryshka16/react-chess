@@ -1,6 +1,7 @@
-import { turns } from '../Move piece/Move piece'
-import useKingCoordinates from '../King activity/Find king'
+import useKingCoordinates from '../King activity/King coordinates'
 import { useSelector } from 'react-redux'
+
+const turns = { w: 'b', b: 'w' }
 
 export default function usePieceIsPinned() {
 	const { gameField, turn } = useSelector((store) => store.chess)

@@ -17,25 +17,10 @@ const initialState = {
 	check: null,
 	previousMove: [],
 	castlingMoved: [],
+	promoted: [],
 	coverMoves: [],
 	enpassing: null,
-	followingPiece: {
-		target: null,
-		startingX: null,
-		startingY: null,
-	},
 }
-
-const gameField2 = [
-	['0', '0', '0', '0', '0', '0', '0', 'bR'],
-	['0', '0', '0', '0', '0', 'bK', '0', '0'],
-	['0', 'wB', '0', '0', '0', '0', '0', '0'],
-	['0', '0', '0', '0', '0', '0', '0', '0'],
-	['0', '0', '0', '0', '0', '0', '0', '0'],
-	['0', '0', '0', '0', '0', '0', '0', '0'],
-	['0', '0', '0', '0', '0', '0', '0', '0'],
-	['0', '0', '0', 'wQ', 'wK', '0', '0', 'wR'],
-]
 
 const chessSlice = createSlice({
 	name: 'chess',
@@ -59,6 +44,9 @@ const chessSlice = createSlice({
 		setFollowing: (state, { payload }) => {
 			state.followingPiece = payload
 		},
+		setPromoted: (state, { payload }) => {
+			state.promoted = payload
+		},
 		setCoverMoves: (state, { payload }) => {
 			state.coverMoves = payload
 		},
@@ -81,6 +69,10 @@ const chessSlice = createSlice({
 				state.gameField[y][x2] = '0'
 				state.gameField[y2][x2] = name
 				state.gameField[y][x] = '0'
+			}
+
+			if (piece === 'P' && (y2 === 7 || y2 === 0)) {
+				state.promoted = [x2, y2]
 			} else {
 				state.gameField[y2][x2] = name
 				state.gameField[y][x] = '0'
@@ -92,7 +84,6 @@ const chessSlice = createSlice({
 				!state.castlingMoved.includes(x + name)
 			) {
 				state.castlingMoved.push(x + name)
-
 			} else if (
 				piece === 'K' &&
 				x === 4 &&

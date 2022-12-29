@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux'
-import { turns } from '../Move piece/Move piece'
+
+const turns = { w: 'b', b: 'w' }
 
 export default function useCheckForChecks() {
 	const { gameField, turn } = useSelector((store) => store.chess)

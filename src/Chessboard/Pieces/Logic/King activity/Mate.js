@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { setCoverMoves } from '../../../../../features/chess/chessSlice'
+import { setCoverMoves } from '../../../../features/chess/chessSlice'
 import useGetNextMoves from '../Next moves/NextMoves'
 
 export default function useCheckMate() {
@@ -47,10 +47,8 @@ export default function useCheckMate() {
 		for (let y = 0; y < 8; y++) {
 			for (let x = 0; x < 8; x++) {
 				let piece = gameField[y][x]
-				if (piece[0] === turn && getNextMoves(x, y, coverMoves).length) {
-					console.log(getNextMoves(x, y))
+				if (piece[0] === turn && getNextMoves(x, y, coverMoves).length)
 					return false
-				}
 			}
 		}
 

@@ -4,8 +4,9 @@ export default function useGetPawnMoves() {
 	const { gameField, enPassing } = useSelector((store) => store.chess)
 
 	return (x, y) => {
-		const moves = []
+		if (y === 0 || y === 7) return []
 
+		const moves = []
 		let pawn = gameField[y][x]
 		let k = pawn === 'wP' ? -1 : 1
 
