@@ -1,5 +1,5 @@
 import { useNextMovesInclude } from '../Pieces/Logic/Next moves/NextMoves'
-import { clearNextMoves, movePiece } from '../../features/chess/chessSlice'
+import { movePiece, setNextMoves } from '../../features/chess/chessSlice'
 import { useDispatch } from 'react-redux'
 
 export default function useHandleCellClick(x, y) {
@@ -8,5 +8,5 @@ export default function useHandleCellClick(x, y) {
 
 	if (nextMovesInclude([x, y])) return () => dispatch(movePiece([x, y]))
 
-	return () => dispatch(clearNextMoves())
+	return () => dispatch(setNextMoves([]))
 }

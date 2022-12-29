@@ -1,7 +1,6 @@
 import { useNextMovesInclude } from './Logic/Next moves/NextMoves'
 import { useDispatch, useSelector } from 'react-redux'
 import {
-	clearNextMoves,
 	movePiece,
 	setNextMoves,
 	setSelected,
@@ -56,12 +55,12 @@ export default function Piece({ x, y }) {
 
 		if (name[0] === turn && !nextMovesInclude([x, y])) {
 			dispatch(setNextMoves(nextMovesArray))
-			dispatch(setSelected({ x, y, name }))
-			nextMovesArray.length && startFollowing(event)
+			dispatch(setSelected({ x1: x, y1: y, name }))
+			if (nextMovesArray.length) startFollowing(event)
 		} else if (nextMovesInclude([x, y])) {
 			dispatch(movePiece([x, y]))
 		} else {
-			dispatch(clearNextMoves())
+			dispatch(setNextMoves([]))
 		}
 	}
 

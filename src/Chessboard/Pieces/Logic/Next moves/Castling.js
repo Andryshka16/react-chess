@@ -13,9 +13,9 @@ export default function useCastling() {
 			if (
 				x !== 4 ||
 				gameField[y][rook] !== turn + 'R' ||
-				castlingMoved.includes(gameField[y][x]) ||
+				castlingMoved.includes(4 + gameField[y][4]) ||
 				castlingMoved.includes(rook + turn + 'R') ||
-				checkForChecks([x, y]).length
+				checkForChecks([4, y]).length
 			)
 				continue
 
@@ -23,9 +23,10 @@ export default function useCastling() {
 
 			if (
 				checkForChecks([4 + k, y]).length ||
-				gameField[y][4 + k] !== '0' ||
 				checkForChecks([4 + 2 * k, y]).length ||
-				gameField[y][4 + 2 * k] !== '0'
+				gameField[y][4 + k] !== '0' ||
+				gameField[y][4 + 2 * k] !== '0' ||
+				(k < 0 && gameField[y][1] !== '0')
 			)
 				continue
 

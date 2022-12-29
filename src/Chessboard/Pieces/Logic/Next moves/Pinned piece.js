@@ -1,10 +1,8 @@
 import useKingCoordinates from '../King activity/King coordinates'
 import { useSelector } from 'react-redux'
 
-const turns = { w: 'b', b: 'w' }
-
 export default function usePieceIsPinned() {
-	const { gameField, turn } = useSelector((store) => store.chess)
+	const { gameField, turn, turns } = useSelector((store) => store.chess)
 	let [x2, y2] = useKingCoordinates(turn + 'K')
 
 	return (piece) => {

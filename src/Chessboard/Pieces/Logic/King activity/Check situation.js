@@ -1,7 +1,5 @@
 import kingCoordinates from './King coordinates'
-import useCheckForDraw from './Draw'
-import useCheckForChecks from './Checks'
-import useCheckForMate from './Mate'
+import { useCheckForDraw, useCheckMate, useCheckForChecks } from './'
 import { useDispatch, useSelector } from 'react-redux'
 import { setCheck } from '../../../../features/chess/chessSlice'
 
@@ -11,7 +9,7 @@ export default function useCheckSituation() {
 
 	const checkForChecks = useCheckForChecks()
 	const checkForDraw = useCheckForDraw()
-	const checkForMate = useCheckForMate()
+	const checkMate = useCheckMate()
 	const king = kingCoordinates(turn + 'K')
 
 	return () => {
@@ -22,7 +20,7 @@ export default function useCheckSituation() {
 			// console.log('CHECK!', [amount, check])
 			dispatch(setCheck(king))
 
-			if (checkForMate(king, check, amount)) {
+			if (checkMate(king, check, amount)) {
 				console.log('MATE, GAME OVER!')
 			}
 		} else if (checkForDraw()) {

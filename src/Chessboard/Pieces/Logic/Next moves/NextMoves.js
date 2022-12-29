@@ -4,7 +4,7 @@ import {
 	knightMoves,
 	kingMoves,
 	pawnMoves,
-} from './Piece moves'
+} from './Piece moves/'
 
 import useFilterMoves from './Filtration'
 import { useSelector } from 'react-redux'

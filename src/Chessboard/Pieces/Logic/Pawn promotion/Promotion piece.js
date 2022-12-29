@@ -1,12 +1,10 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { setPromoted } from '../../../../features/chess/chessSlice'
 
-const turns = { w: 'b', b: 'w' }
-
 export default function PromotionPiece({ index, name }) {
 	const dispatch = useDispatch()
-	const { turn } = useSelector((store) => store.chess)
+	const { turn, turns } = useSelector((store) => store.chess)
 
 	let scales = {
 		Q: 0.85,

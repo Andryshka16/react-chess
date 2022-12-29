@@ -4,7 +4,6 @@ export default function useGetBishopMoves() {
 	const { gameField } = useSelector((store) => store.chess)
 
 	return (x, y) => {
-		
 		const moves = []
 
 		for (let i = 1; x + i < 8 && y + i < 8; i++) {

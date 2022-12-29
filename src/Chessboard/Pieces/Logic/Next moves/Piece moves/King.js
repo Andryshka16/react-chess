@@ -1,7 +1,4 @@
-import { useSelector } from 'react-redux'
-
 export default function useGetKingMoves() {
-
 	return (x, y) => {
 		const moves = [
 			[x - 1, y - 1],

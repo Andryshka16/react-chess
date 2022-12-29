@@ -1,7 +1,4 @@
-import { useDispatch, useSelector } from 'react-redux'
-
 export default function useGetKnightMoves() {
-
 	return (x, y) => {
 		const moves = [
 			[x + 2, y - 1],
