@@ -17,7 +17,7 @@ const initialState = {
 	check: null,
 	previousMove: [],
 	castlingMoved: [],
-	promoted: [],
+	promoted: null,
 	coverMoves: [],
 	enpassing: null,
 }
@@ -45,7 +45,17 @@ const chessSlice = createSlice({
 			state.followingPiece = payload
 		},
 		setPromoted: (state, { payload }) => {
-			state.promoted = payload
+			if (!payload) {
+				const { x1, y1, name} = state.promoted
+				state.gameField[y1][x1] = name
+				state.promoted = payload
+			} else if (payload.length > 1) {
+				state.promoted = payload
+			} else {
+				const { x2, y2 } = state.promoted
+				state.gameField[y2][x2] = payload.name
+				state.promoted = null
+			}
 		},
 		setCoverMoves: (state, { payload }) => {
 			state.coverMoves = payload
@@ -72,7 +82,8 @@ const chessSlice = createSlice({
 			}
 
 			if (piece === 'P' && (y2 === 7 || y2 === 0)) {
-				state.promoted = [x2, y2]
+				state.promoted = { x1:x, y1:y, x2, y2, name }
+				state.gameField[y][x] = '0'
 			} else {
 				state.gameField[y2][x2] = name
 				state.gameField[y][x] = '0'
@@ -115,4 +126,5 @@ export const {
 	setCoverMoves,
 	movePiece,
 	castle,
+	setPromoted,
 } = chessSlice.actions

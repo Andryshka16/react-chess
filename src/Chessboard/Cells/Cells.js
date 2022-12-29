@@ -1,13 +1,21 @@
-import Cell from "./cell";
+import { useSelector } from 'react-redux'
+import useHandleCellClick from './handleCellClick'
 
-export default function Cells(){
+function Cell({ x, y }) {
+	const [color1, color2] = useSelector((store) => store.chess.colors)
+    const handleCellClick = useHandleCellClick(x, y)
+    
+	const styles = {
+		background: (x + y) % 2 ? color2 : color1,
+    }
+    
+	return (
+		<div className={'cell'} style={styles} onClick={handleCellClick}></div>
+	)
+}
 
-    return (
-        Array.from({length: 64}, (_,i)=>
-            <Cell
-                x={i % 8}
-                y={Math.floor(i/8)}
-                key={i}/>
-        )
-    )
+export default function Cells() {
+	return Array.from({ length: 64 }, (_, i) => (
+		<Cell x={i % 8} y={Math.floor(i / 8)} key={i} />
+	))
 }

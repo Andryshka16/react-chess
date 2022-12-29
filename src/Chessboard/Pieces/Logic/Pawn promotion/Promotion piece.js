@@ -1,17 +1,12 @@
 import React, { useContext } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { setPromoted } from '../../../../features/chess/chessSlice'
 
 const turns = { w: 'b', b: 'w' }
 
-function togglePointerEvents(state) {
-	document
-		.querySelectorAll('.figure')
-		.forEach((p) => (p.style.pointerEvents = state))
-}
-
 export default function PromotionPiece({ index, name }) {
 	const dispatch = useDispatch()
-	const { selected, turn } = useSelector((store) => store.chess)
+	const { turn } = useSelector((store) => store.chess)
 
 	let scales = {
 		Q: 0.85,
@@ -41,17 +36,7 @@ export default function PromotionPiece({ index, name }) {
 	}
 
 	function handleMouseClick() {
-		// let [x1, y1, , , setPiece] = recentPieceCrd
-		togglePointerEvents('all')
-
-		// updateState(setPiece,{
-		//     name: turns[turn] + name,
-		//     x,
-		//     y,
-		//     from: {x: x1, y: y1}
-		// })
-
-		// setPromoted(false)
+		dispatch(setPromoted({ name: turns[turn] + name }))
 	}
 
 	return (

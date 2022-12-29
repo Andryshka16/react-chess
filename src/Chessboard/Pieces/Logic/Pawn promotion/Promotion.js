@@ -1,4 +1,5 @@
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { setPromoted } from '../../../../features/chess/chessSlice'
 import PromotionPiece from './Promotion piece'
 
 function getChoices([x, y]) {
@@ -10,11 +11,12 @@ function getChoices([x, y]) {
 }
 
 export default function Promotion() {
+    const dispatch = useDispatch()
 	const { promoted } = useSelector((store) => store.chess)
 
-	if (!promoted.length) return
+	if (!promoted) return
 
-	const [x, y] = promoted
+	const { x2: x, y2: y } = promoted
 	const choices = getChoices([x, y])
 
 	const styles = {
@@ -24,7 +26,7 @@ export default function Promotion() {
 
 	return (
 		<>
-			<div className={'shadow'}></div>
+			<div className={'shadow'} onClick={() => dispatch(setPromoted(null))}></div>
 			<div className={'promotion'} style={styles}>
 				{choices.map((piece, id) => (
 					<PromotionPiece key={piece} name={piece} index={id} />
