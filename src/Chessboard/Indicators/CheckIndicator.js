@@ -9,8 +9,8 @@ export default function CheckIndicator() {
 	const [x, y] = check
 
 	const styles = {
-		left: `${x * 60}px`,
-		top: `${y * 60}px`,
+		left: `${x * 80}px`,
+		top: `${y * 80}px`,
 	}
 
 	return <div style={styles} className={'check'}></div>

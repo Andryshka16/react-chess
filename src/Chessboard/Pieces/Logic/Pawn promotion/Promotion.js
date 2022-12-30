@@ -20,8 +20,8 @@ export default function Promotion() {
 	const choices = getChoices([x, y])
 
 	const styles = {
-		left: `${(x < 7 ? x : x - 1) * 60}px`,
-		top: `${(y < 7 ? y : y - 1) * 60}px`,
+		left: `${(x < 7 ? x : x - 1) * 80}px`,
+		top: `${(y < 7 ? y : y - 1) * 80}px`,
 	}
 
 	return (

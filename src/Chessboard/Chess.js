@@ -7,6 +7,7 @@ import CheckIndicator from './Indicators/CheckIndicator'
 import useCheckSituation from './Pieces/Logic/King activity/Check situation'
 import { useSelector } from 'react-redux'
 import { useEffect } from 'react'
+import LastMove from './Indicators/HiglightedMoves'
 
 export default function Chess() {
 	const { gameField } = useSelector((store) => store.chess)
@@ -15,10 +16,11 @@ export default function Chess() {
 	useEffect(checkSituation, [gameField])
 
 	return (
-		<div id={'chess'}>
+		<div className='chess'>
 			<Cells />
 			<Pieces />
 			<NextMoves />
+			<LastMove/>
 			<Notation />
 			<Promotion />
 			<CheckIndicator />

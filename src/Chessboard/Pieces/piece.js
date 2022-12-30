@@ -26,17 +26,17 @@ export default function Piece({ x, y }) {
 	}
 
 	let marginTop = {
-		P: '-6px',
+		P: '-8px',
 		Q: '3px',
-		R: '-2px',
-		N: '-2px',
+		R: '-3px',
+		N: '-3px',
 	}
 
 	let scale = scales[name[1]] || 0.7
 
 	let styles = {
-		top: `${y * 60}px`,
-		left: `${x * 60}px`,
+		top: `${y * 80}px`,
+		left: `${x * 80}px`,
 		transform: `scale(${scale})`,
 		marginTop: marginTop[name[1]],
 	}

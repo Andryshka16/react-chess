@@ -13,14 +13,15 @@ export default function PromotionPiece({ index, name }) {
 
 	let marginTop = {
 		Q: '3px',
-		R: '-1px',
+		R: '-2px',
+		N: '-2px',
 	}
 
 	let scale = scales[name] || 0.7
 
 	const styles = {
-		top: `${Math.floor(index / 2) * 60}px`,
-		left: `${(index % 2) * 60}px`,
+		top: `${Math.floor(index / 2) * 80}px`,
+		left: `${(index % 2) * 80}px`,
 		transform: `scale(${scale})`,
 		marginTop: marginTop[name],
 	}

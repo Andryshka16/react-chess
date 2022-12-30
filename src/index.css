@@ -5,15 +5,15 @@ body {
 .cell {
 	margin-bottom: -4px;
 	display: inline-block;
-	width: 60px;
-	height: 60px;
+	width: 80px;
+	height: 80px;
 	user-select: none;
 }
 
 .figure {
 	position: absolute;
 	cursor: pointer;
-	width: 60px;
+	width: 80px;
 	z-index: 2;
 	transition: 170ms;
 	user-select: none;
@@ -26,8 +26,8 @@ body {
 .check {
 	background: rgba(48, 128, 255, 0.7);
 	position: absolute;
-	width: 60px;
-	height: 60px;
+	width: 80px;
+	height: 80px;
 	z-index: 1;
 	pointer-events: none;
 	user-select: none;
@@ -43,7 +43,7 @@ body {
 }
 
 .notation {
-	font-size: 20px;
+	font-size: 25px;
 	font-weight: 560;
 	font-family: Calibri, serif;
 	color: white;
@@ -51,7 +51,7 @@ body {
 	opacity: 0.9;
 }
 
-#digits {
+.digits {
 	z-index: 0;
 	position: absolute;
 	right: 4px;
@@ -59,42 +59,42 @@ body {
 	user-select: none;
 }
 
-#letters {
+.letters {
 	z-index: 0;
 	position: absolute;
 	bottom: -1px;
-	left: 1px;
-	letter-spacing: 23.2px;
+	left: 4px;
+	letter-spacing: 31.4px;
 	user-select: none;
 }
 
-#digits > p {
-	margin: 0 0 35.4px;
+.digits > p {
+	margin: 0 0 50px;
 }
 
-#letters > p {
+.letters > p {
 	margin: 0;
 }
 
-#chess {
+.chess {
 	position: relative;
 	margin: auto;
-	width: 480px;
-	height: 480px;
+	width: 640px;
+	height: 640px;
 	user-select: none;
 }
 
 .promotion {
 	position: absolute;
-	width: 120px;
-	height: 120px;
+	width: 160px;
+	height: 160px;
 	z-index: 2;
 	background: rgba(0, 0, 0, 0.4);
 }
 
 .shadow {
-	width: 480px;
-	height: 480px;
+	width: 640px;
+	height: 640px;
 	position: absolute;
 	top: 0;
 	z-index: 2;
@@ -104,56 +104,8 @@ body {
 .check {
 	background: red;
 	border-radius: 20px;
-	scale: 0.4;
+	scale: 0.45;
 	box-shadow: 0 0 40px 40px red;
-}
-
-.eatenDif {
-	display: flex;
-	width: 480px;
-	justify-content: space-between;
-	align-items: center;
-}
-
-.dif {
-	background: rgba(0, 0, 0, 0.4);
-	text-align: center;
-	height: 35px;
-	width: fit-content;
-	border-radius: 10px;
-}
-
-.dif > p {
-	margin: 8px;
-	font-size: 20px;
-	font-weight: 600;
-	color: white;
-}
-
-.eaten {
-	background: rgba(0, 0, 0, 0.4);
-	position: relative;
-	height: 35px;
-	margin: 5px;
-	border-radius: 10px;
-}
-
-.eaten > .figure {
-	position: absolute;
-	width: 30px;
-	padding: 5px;
-	cursor: auto;
-}
-
-.eaten > h2 {
-	font-size: 15px;
-}
-
-.count {
-	color: #ffffff;
-	position: absolute;
-	margin: 10px -20px;
-	z-index: 3;
 }
 
 .reset {
@@ -172,4 +124,12 @@ body {
 
 .reset:hover {
 	transform: scale(1.15);
+}
+
+.highlighted {
+	width: 80px;
+	height: 80px;
+	background: gold;
+	opacity: 0.4;
+	position: absolute;
 }

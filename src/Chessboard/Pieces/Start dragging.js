@@ -13,12 +13,12 @@ export default function useStartDragging(nextMovesArray, x, y) {
 		target.style.zIndex = '3'
 
 		const follow = (event) => {
-			target.style.left = `${x * 60 + event.x - startingX}px`
-			target.style.top = `${y * 60 + event.y - startingY}px`
+			target.style.left = `${x * 80 + event.x - startingX}px`
+			target.style.top = `${y * 80 + event.y - startingY}px`
 		}
 		const unFollow = (event) => {
-			let newX = x + Math.round((event.x - startingX) / 60)
-			let newY = y + Math.round((event.y - startingY) / 60)
+			let newX = x + Math.round((event.x - startingX) / 80)
+			let newY = y + Math.round((event.y - startingY) / 80)
 
 			if (
 				nextMovesArray
@@ -28,8 +28,8 @@ export default function useStartDragging(nextMovesArray, x, y) {
 				dispatch(movePiece([newX, newY]))
 			} else {
 				target.style.transition = '170ms'
-				target.style.top = `${y * 60}px`
-				target.style.left = `${x * 60}px`
+				target.style.top = `${y * 80}px`
+				target.style.left = `${x * 80}px`
 			}
 
 			window.removeEventListener('mousemove', follow)

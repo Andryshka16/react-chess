@@ -12,6 +12,7 @@ const initialState = {
 	check: null,
 	promoted: null,
 	enpassing: null,
+	lastMoves: [],
 	nextMoves: [],
 	castlingMoved: [],
 	coverMoves: [],

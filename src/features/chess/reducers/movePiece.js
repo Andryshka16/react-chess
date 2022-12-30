@@ -33,6 +33,7 @@ export default function movePiece(state, { payload }) {
 	state.enPassing =
 		name[1] === 'P' && Math.abs(y2 - y1) === 2 ? { x2, y2 } : null
 
+	state.lastMoves = [[x1, y1], [x2, y2]]
 	state.turn = turns[turn]
 	state.selected = null
 	state.coverMoves = []
