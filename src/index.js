@@ -9,13 +9,13 @@ import chess from './features/chess/chessSlice'
 const root = ReactDOM.createRoot(document.getElementById('root'))
 
 const store = configureStore({
-	reducer: {
-		chess,
-	},
+    reducer: {
+        chess
+    }
 })
 
 root.render(
-	<Provider store={store}>
-		<App />
-	</Provider>
+    <Provider store={store}>
+        <App />
+    </Provider>
 )
