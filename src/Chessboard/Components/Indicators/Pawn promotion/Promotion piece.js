@@ -42,7 +42,7 @@ export default function PromotionPiece({ index, name }) {
 		<img
 			src={`./images/${turns[turn] + name}.png`}
 			alt={'failed'}
-			className={'figure'}
+			className={'piece'}
 			style={styles}
 			onMouseOver={handleMouseOver}
 			onMouseOut={handleMouseOut}
