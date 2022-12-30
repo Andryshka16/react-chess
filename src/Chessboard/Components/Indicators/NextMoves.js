@@ -10,11 +10,10 @@ export default function NextMoves() {
 		return gameField[y][x] === '0' ? (
 			<div className={'dot'} style={styles} key={`${x}${y}d`}></div>
 		) : (
-			<>
+			<div key={`${x}${y}t`}>
 				<div
 					className={'rectangle'}
 					style={styles}
-					key={`${x}${y}t`}
 				></div>
 				<div
 					className={'circle'}
@@ -23,7 +22,7 @@ export default function NextMoves() {
 						background: (y + x) % 2 ? color2 : color1,
 					}}
 				></div>
-			</>
+			</div>
 		)
 	})
 }

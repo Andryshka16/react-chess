@@ -11,7 +11,7 @@ function getChoices([x, y]) {
 }
 
 export default function Promotion() {
-    const dispatch = useDispatch()
+	const dispatch = useDispatch()
 	const { promoted } = useSelector((store) => store.chess)
 
 	if (!promoted) return
@@ -26,7 +26,10 @@ export default function Promotion() {
 
 	return (
 		<>
-			<div className={'shadow'} onClick={() => dispatch(setPromoted(null))}></div>
+			<div
+				className={'shadow'}
+				onClick={() => dispatch(setPromoted(null))}
+			></div>
 			<div className={'promotion'} style={styles}>
 				{choices.map((piece, id) => (
 					<PromotionPiece key={piece} name={piece} index={id} />

@@ -4,7 +4,7 @@ import {
 	movePiece,
 	setNextMoves,
 	setSelected,
-} from '../../features/chess/chessSlice'
+} from '../../../features/chess/chessSlice'
 import useGetNextMoves from './Logic/Next moves/NextMoves'
 import useStartDragging from './Start dragging'
 
@@ -68,7 +68,7 @@ export default function Piece({ x, y }) {
 		<img
 			src={`./images/${name}.png`}
 			alt={'failed'}
-			className={'figure'}
+			className={'piece'}
 			style={styles}
 			onMouseOver={handleMouseOver}
 			onMouseOut={handleMouseOut}
