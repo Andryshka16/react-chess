@@ -4,6 +4,10 @@ export default function movePiece(state, { payload }) {
     const [color, piece] = name
     const { turn, turns } = state
 
+    if (piece === 'P' && x1 !== x2 && state.gameField[y2][x2] === '0') {
+        state.gameField[y1][x2] = '0'
+    }
+
     if (piece === 'K' && Math.abs(x2 - x1) > 1) {
         const k = x2 > x1 ? 1 : -1
         state.gameField[y1][4 + k] = color + 'R'
@@ -12,10 +16,6 @@ export default function movePiece(state, { payload }) {
         state.gameField[y1][k > 0 ? 7 : 0] = '0'
     } else if (piece === 'P' && (y2 === 7 || y2 === 0)) {
         state.promoted = { x1, y1, x2, y2, name }
-        state.gameField[y1][x1] = '0'
-    } else if (piece === 'P' && x1 !== x2 && state.gameField[y2][x2] === '0') {
-        state.gameField[y1][x2] = '0'
-        state.gameField[y2][x2] = name
         state.gameField[y1][x1] = '0'
     } else {
         state.gameField[y2][x2] = name
