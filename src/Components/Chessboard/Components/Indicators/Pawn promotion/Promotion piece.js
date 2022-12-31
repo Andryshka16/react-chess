@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { setPromoted } from '../../../../features/chess/chessSlice'
+import { setPromoted } from '../../../../../features/chess/chessSlice'
 
 export default function PromotionPiece({ index, name }) {
     const dispatch = useDispatch()

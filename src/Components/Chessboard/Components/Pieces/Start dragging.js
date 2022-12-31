@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux'
-import { movePiece } from '../../../features/chess/chessSlice'
+import { movePiece } from '../../../../features/chess/chessSlice'
 
 export default function useStartDragging(nextMovesArray, x, y) {
 	const dispatch = useDispatch()

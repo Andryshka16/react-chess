@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { setPromoted } from '../../../../features/chess/chessSlice'
+import { setPromoted } from '../../../../../features/chess/chessSlice'
 import PromotionPiece from './Promotion piece'
 
 function getChoices([x, y]) {

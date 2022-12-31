@@ -1,10 +1,10 @@
 import { useNextMovesInclude } from './Logic/Next moves/NextMoves'
 import { useDispatch, useSelector } from 'react-redux'
 import {
-	movePiece,
-	setNextMoves,
-	setSelected,
-} from '../../../features/chess/chessSlice'
+    movePiece,
+    setNextMoves,
+    setSelected
+} from '../../../../features/chess/chessSlice'
 import useGetNextMoves from './Logic/Next moves/NextMoves'
 import useStartDragging from './Start dragging'
 

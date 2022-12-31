@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { setCoverMoves } from '../../../../../features/chess/chessSlice'
+import { setCoverMoves } from '../../../../../../features/chess/chessSlice'
 import useGetNextMoves from '../Next moves/NextMoves'
 
 export default function useCheckMate() {
