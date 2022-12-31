@@ -39,7 +39,11 @@ export default function Piece({ x, y }) {
         left: `${x * 80}px`,
         transform: `scale(${scale})`,
         marginTop: marginTop[name[1]],
-        pointerEvents: nextMovesArray.length ? 'all' : 'none'
+        pointerEvents:
+            (!nextMovesArray.length || name[0] !== turn) &&
+            !nextMovesInclude([x, y])
+                ? 'none'
+                : 'all'
     }
 
     function handleMouseOver(event) {
