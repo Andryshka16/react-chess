@@ -1,3 +1,4 @@
+import initialState from './initialState'
 import { movePiece, setPromoted } from './reducers/'
 
 const reducers = {
@@ -13,6 +14,7 @@ const reducers = {
 	setCoverMoves: (state, { payload }) => {
 		state.coverMoves = payload
 	},
+	restart: () => initialState,
 	setPromoted,
 	movePiece,
 }

@@ -7,7 +7,7 @@ body {
 
 .chess {
 	position: relative;
-	margin: auto;
+	margin: 20px auto;
 	width: 640px;
 	height: 640px;
 	user-select: none;

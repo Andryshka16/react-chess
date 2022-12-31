@@ -1,1 +1,7 @@
-@import "./Components/Chessboard/styling/chess.css";
+@import './Components/Chessboard/styling/chess.css';
+@import './Components/Navbar/navbar.css';
+
+body {
+    margin: 0;
+    color: white;
+}

@@ -1,0 +1,31 @@
+nav {
+    background: rgb(31, 100, 250);
+    height: 70px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+nav > *,
+.option {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+    cursor: pointer;
+    text-decoration: none;
+    margin: 10px;
+    color: white;
+}
+.option:hover {
+    text-decoration: underline 2.5px;
+}
+
+.options {
+    position: absolute;
+    display: flex;
+    left: 50%;
+    translate: -50%;
+}
+
+.title {
+    margin: 0 70px;
+    font-size: 25px;
+}
