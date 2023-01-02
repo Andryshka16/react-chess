@@ -7,7 +7,7 @@ const options = [
         name: 'Create game'
     },
     {
-        link: '/joinMatch',
+        link: '/joinGame',
         name: 'Join game'
     }
 ]

@@ -3,27 +3,57 @@
     left: 50%;
     translate: -50%;
     background: var(--navbg);
+    width: 600px;
     border-radius: 10px;
-    padding: 0 20px;
-    margin: 100px 0;
+    padding: 0 20px 20px;
+    margin: 50px 0;
     font-family: 'Gill Sans', Calibri, sans-serif;
     font-weight: 100;
     justify-content: center;
     align-items: center;
+    text-align: center;
     height: fit-content;
 }
 
 .input-field {
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    margin: 10px auto;
+    width: 500px;
     height: 60px;
 }
 
-
-.input-field > label, h2 {
+.input-field > label,
+.input-field > label {
     margin: 0;
+    font-size: 20px;
 }
 
 .input-field > input {
-    line-height: 25px;
+    font-size: 20px;
+    padding: 5px;
+    width: 170px;
+    border-radius: 5px;
+}
+
+.input-field > input:focus {
+    outline: none;
+}
+
+.createRoom {
+    background: rgb(34, 255, 0);
+    cursor: pointer;
+    color: white;
+    height: 50px;
+    width: 250px;
+    border-radius: 10px;
+    font-size: 25px;
+    font-weight: 900;
+    border: none;
+    transition: 200ms;
+}
+
+.createRoom:hover {
+    scale: 1.05;
 }
