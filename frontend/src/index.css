@@ -1,7 +1,11 @@
 @import './Components/Chessboard/styling/chess.css';
 @import './Components/Navbar/navbar.css';
+@import './Components/Create game/form.css';
 
 body {
     margin: 0;
     color: white;
+    --navbg: rgb(31, 100, 250);
+    --bodybg: #002a4a;
+    background: var(--bodybg);
 }

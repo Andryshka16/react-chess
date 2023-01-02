@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 
 const options = [
     {
-        link: '/createRoom',
+        link: '/createGame',
         name: 'Create game'
     },
     {

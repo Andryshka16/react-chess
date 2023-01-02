@@ -6,7 +6,7 @@ import {
 	NextMoves,
 	CheckIndicator,
 	HiglightedMoves,
-} from './Components/'
+} from './Components'
 import useCheckSituation from './Components/Pieces/Logic/King activity/Check situation'
 import { useSelector } from 'react-redux'
 import { useEffect } from 'react'

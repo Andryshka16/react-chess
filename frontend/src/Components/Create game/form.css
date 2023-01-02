@@ -1,0 +1,29 @@
+.form-div {
+    position: absolute;
+    left: 50%;
+    translate: -50%;
+    background: var(--navbg);
+    border-radius: 10px;
+    padding: 0 20px;
+    margin: 100px 0;
+    font-family: 'Gill Sans', Calibri, sans-serif;
+    font-weight: 100;
+    justify-content: center;
+    align-items: center;
+    height: fit-content;
+}
+
+.input-field {
+    display: flex;
+    align-items: center;
+    height: 60px;
+}
+
+
+.input-field > label, h2 {
+    margin: 0;
+}
+
+.input-field > input {
+    line-height: 25px;
+}

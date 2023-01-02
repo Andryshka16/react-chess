@@ -1,10 +1,6 @@
 @import './notation.css';
 @import './indicators.css';
 
-body {
-	background: #002a4a;
-}
-
 .chess {
 	position: relative;
 	margin: 20px auto;
