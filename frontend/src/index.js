@@ -5,12 +5,14 @@ import App from './App'
 import { configureStore } from '@reduxjs/toolkit'
 import { Provider } from 'react-redux'
 import chess from './features/chess/chessSlice'
+import rooms from './features/rooms/roomsSlice'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 
 const store = configureStore({
     reducer: {
-        chess
+        chess,
+        rooms
     }
 })
 

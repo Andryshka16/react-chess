@@ -30,8 +30,8 @@ io.on('connection', (socket) => {
     socket.emit('userConnected', connected)
     socket.broadcast.emit('userConnected', connected)
 
-    socket.on('sendMessage', (message) => {
-        socket.broadcast.emit('getMessage', message)
+    socket.on('createRoom', (message) => {
+        socket.broadcast.emit('addRoom', message)
     })
 })
 
