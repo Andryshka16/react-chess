@@ -4,7 +4,6 @@ import Modal from './Modal.jsx'
 import Button from './Button'
 
 function Room({ name, password, user, id, setModal }) {
-
     const props = { id, password, setModal }
 
     return (
@@ -27,6 +26,9 @@ export default function Rooms() {
             {rooms.map((room) => (
                 <Room {...room} setModal={setModal} key={room.id} />
             ))}
+            {!rooms.length && (
+                <h1 className="h1-info">No empty rooms found.</h1>
+            )}
             <Modal state={[modal, setModal]} />
         </>
     )

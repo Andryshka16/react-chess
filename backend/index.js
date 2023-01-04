@@ -19,11 +19,14 @@ const io = new Server(server, {
 })
 
 let connected = 0
+const rooms = []
 
 io.on('connection', (socket) => {
     connected += 1
     
     socket.emit('userConnected', connected)
+    socket.emit('getRooms', rooms)
+    
     socket.broadcast.emit('userConnected', connected)
 
     socket.on('disconnect', () => {
@@ -32,13 +35,12 @@ io.on('connection', (socket) => {
     socket.on('createRoom', (room) => {
         socket.broadcast.emit('addRoom', room)
         socket.emit('addRoom', room)
+        rooms.push(room)
     })
     socket.on('removeRoom', (id) => {
         socket.broadcast.emit('removeRoom', id)
         socket.emit('removeRoom', id)
     })
-
-
 })
 
 server.listen(PORT, (error) => {

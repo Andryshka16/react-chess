@@ -3,12 +3,12 @@ import { NavLink } from 'react-router-dom'
 
 const options = [
     {
-        link: '/createGame',
-        name: 'Create game'
+        link: '/newRoom',
+        name: 'Create room'
     },
     {
-        link: '/joinGame',
-        name: 'Join game'
+        link: '/public',
+        name: 'Public rooms'
     },
     {
         link: '/chess',

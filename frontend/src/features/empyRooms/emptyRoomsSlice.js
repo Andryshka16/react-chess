@@ -11,10 +11,14 @@ const roomSlice = createSlice({
         },
         removeRoom: (state, { payload }) => {
             return state.filter((elm) => elm.id !== payload)
+        },
+        updateRooms: (state, { payload }) => { 
+            return payload
         }
+
     }
 })
 
 export default roomSlice.reducer
 
-export const { newRoom, removeRoom } = roomSlice.actions
+export const { newRoom, removeRoom, updateRooms } = roomSlice.actions
