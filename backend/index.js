@@ -22,17 +22,19 @@ let connected = 0
 
 io.on('connection', (socket) => {
     connected += 1
+    
+    socket.emit('userConnected', connected)
+    socket.broadcast.emit('userConnected', connected)
 
     socket.on('disconnect', () => {
         connected -= 1
     })
-
-    socket.emit('userConnected', connected)
-    socket.broadcast.emit('userConnected', connected)
-
-    socket.on('createRoom', (message) => {
-        socket.broadcast.emit('addRoom', message)
+    socket.on('createRoom', (room) => {
+        socket.broadcast.emit('addRoom', room)
+        socket.emit('addRoom', room)
     })
+
+
 })
 
 server.listen(PORT, (error) => {

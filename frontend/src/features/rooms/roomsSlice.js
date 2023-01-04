@@ -1,15 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-const initialState = {
-    rooms: []
-}
+import room from './createRoom'
+
+const initialState = [room('123', '123', 'guest')]
 
 const roomSlice = createSlice({
     name: 'rooms',
     initialState,
     reducers: {
-        createRoom: (state, payload) => {
-            state.rooms.push(payload)
+        createRoom: (state, { payload }) => {
+            state.push(payload)
         }
     }
 })

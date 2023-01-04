@@ -27,7 +27,7 @@ export default function Promotion() {
     return (
         <>
             <div
-                className={'shadow'}
+                className={'promotion-shadow'}
                 onClick={() => dispatch(setPromoted(null))}
             ></div>
             <div className={'promotion'} style={styles}>
