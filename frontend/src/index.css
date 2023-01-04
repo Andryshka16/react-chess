@@ -1,7 +1,8 @@
-@import './Components/Chessboard/styling/chess.css';
-@import './Components/Navbar/navbar.css';
-@import './Components/Create game/form.css';
-@import './Components/Join game/room.css';
+@import './Components/Chessboard/styles/chess.css';
+@import './Components/styles/navbar.css';
+@import './Components/styles/joinRoomForm.css';
+@import './Components/styles/room.css';
+@import './Components/styles/chessGame.css';
 
 body {
     margin: 0;

@@ -33,6 +33,10 @@ io.on('connection', (socket) => {
         socket.broadcast.emit('addRoom', room)
         socket.emit('addRoom', room)
     })
+    socket.on('removeRoom', (id) => {
+        socket.broadcast.emit('removeRoom', id)
+        socket.emit('removeRoom', id)
+    })
 
 
 })

@@ -9,6 +9,10 @@ const options = [
     {
         link: '/joinGame',
         name: 'Join game'
+    },
+    {
+        link: '/chess',
+        name: 'Chess'
     }
 ]
 

@@ -1,13 +1,11 @@
 import { useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { socket } from '../../App'
-import createRoom from '../../features/rooms/createRoom'
+import { CreateButton } from './CreateButton'
 
 const roomOptions = ['name', 'password']
 
+
 export default function Form() {
-    const [state, setState] = useState({})
-    const dispatch = useDispatch()
+    const [state, setState] = useState({ name: '', password: '' })
     return (
         <div className="form-div">
             {roomOptions.map((key) => (
@@ -29,18 +27,7 @@ export default function Form() {
                     />
                 </div>
             ))}
-            <button
-                className="createRoom"
-                onClick={() => {
-                    const { name, password } = state
-                    socket.emit(
-                        'createRoom',
-                        createRoom(name, password, 'guest')
-                    )
-                }}
-            >
-                Create game!
-            </button>
+            <CreateButton state={state} />
         </div>
     )
 }
