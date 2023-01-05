@@ -1,0 +1,39 @@
+.alert {
+    background: rgb(255, 21, 0);
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 900px;
+    height: 60px;
+    top: 50px;
+    left: 50%;
+    translate: -50%;
+    font-family: var(--font);
+    font-size: 20px;
+    border-radius: 20px;
+    z-index: 2;
+}
+
+.alert > * {
+    margin: 0;
+}
+
+.alert-div-enter {
+    opacity: 0;
+    top: 20px;
+}
+.alert-div-enter-active {
+    opacity: 1;
+    top: 50px;
+    transition: 400ms;
+}
+.alert-div-exit {
+    opacity: 1;
+    top: 50px;
+}
+.alert-div-exit-active {
+    opacity: 0;
+    top: 80px;
+    transition: 400ms;
+}

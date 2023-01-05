@@ -5,6 +5,7 @@ import { createServer } from 'http'
 import { Server } from 'socket.io'
 
 const PORT = process.env.PORT || 4000
+const origin = 'http://localhost:3000'
 
 const app = express()
 app.use(cors())
@@ -13,21 +14,18 @@ const server = createServer(app)
 
 const io = new Server(server, {
     cors: {
-        origin: 'http://localhost:3000',
+        origin,
         methods: ['GET', 'POST']
     }
 })
 
 let connected = 0
-const rooms = []
+let rooms = []
 
 io.on('connection', (socket) => {
     connected += 1
-    
-    socket.emit('userConnected', connected)
-    socket.emit('getRooms', rooms)
-    
-    socket.broadcast.emit('userConnected', connected)
+
+    socket.emit('userConnected', [rooms, connected])
 
     socket.on('disconnect', () => {
         connected -= 1
@@ -40,6 +38,7 @@ io.on('connection', (socket) => {
     socket.on('removeRoom', (id) => {
         socket.broadcast.emit('removeRoom', id)
         socket.emit('removeRoom', id)
+        rooms = rooms.filter((elm) => elm.id !== id)
     })
 })
 

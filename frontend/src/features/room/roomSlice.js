@@ -16,7 +16,6 @@ const roomSLice = createSlice({
         deleteRoom: () => {
             return initialState
         }
-    
     }
 })
 

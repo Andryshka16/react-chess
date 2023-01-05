@@ -4,11 +4,17 @@ import { io } from 'socket.io-client'
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import CreateGameForm from './Components/Create room/CreateRoomForm'
-import { newRoom, removeRoom, updateRooms } from './features/empyRooms/emptyRoomsSlice'
+import {
+    newRoom,
+    removeRoom,
+    updateRooms
+} from './features/empyRooms/emptyRoomsSlice'
 import JoinGame from './Components/Join room/EmptyRooms'
 import ChessGame from './Components/ChessGame/ChessGame'
+import Alert from './Components/Alert/Alert'
 
-export const socket = io('http://localhost:4000/')
+const server = 'http://localhost:4000/'
+export const socket = io(server)
 
 export default function App() {
     const dispatch = useDispatch()
@@ -20,7 +26,7 @@ export default function App() {
         socket.on('removeRoom', (id) => {
             dispatch(removeRoom(id))
         })
-        socket.on('getRooms', (rooms) => {
+        socket.on('userConnected', ([rooms, connected]) => {
             dispatch(updateRooms(rooms))
         })
     }, [socket])
@@ -28,6 +34,7 @@ export default function App() {
     return (
         <BrowserRouter>
             <Navbar />
+            <Alert/>
             <Routes>
                 <Route path="/newRoom" element={<CreateGameForm />} />
                 <Route path="/public" element={<JoinGame />} />

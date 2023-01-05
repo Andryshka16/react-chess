@@ -7,6 +7,7 @@ import { Provider } from 'react-redux'
 import chess from './features/chess/chessSlice'
 import rooms from "./features/empyRooms/emptyRoomsSlice"
 import room from './features/room/roomSlice'
+import alert from './features/alert/alertSlice'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 
@@ -14,7 +15,8 @@ const store = configureStore({
     reducer: {
         chess,
         rooms,
-        room
+        room,
+        alert
     }
 })
 

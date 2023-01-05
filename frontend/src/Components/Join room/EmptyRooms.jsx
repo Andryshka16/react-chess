@@ -1,10 +1,12 @@
 import { useState } from 'react'
 import { useSelector } from 'react-redux'
-import Modal from './Modal.jsx'
-import Button from './Button'
+import Modal from './ModalWindow/Modal.jsx'
+import JoinBtn from './JoinBtn'
+import RemoveBtn from './RemoveBtn'
 
 function Room({ name, password, user, id, setModal }) {
     const props = { id, password, setModal }
+    const { myRoom } = useSelector((store) => store.room)
 
     return (
         <div className="room">
@@ -12,7 +14,7 @@ function Room({ name, password, user, id, setModal }) {
                 <h2>{name}</h2>
                 <h3>{user}</h3>
             </div>
-            <Button {...props} />
+            {myRoom !== id ? <JoinBtn id={id} /> : <RemoveBtn {...props} />}
         </div>
     )
 }
@@ -23,12 +25,14 @@ export default function Rooms() {
 
     return (
         <>
-            {rooms.map((room) => (
-                <Room {...room} setModal={setModal} key={room.id} />
-            ))}
-            {!rooms.length && (
+            {rooms.length ? (
+                rooms.map((room) => (
+                    <Room {...room} setModal={setModal} key={room.id} />
+                ))
+            ) : (
                 <h1 className="h1-info">No empty rooms found.</h1>
             )}
+
             <Modal state={[modal, setModal]} />
         </>
     )

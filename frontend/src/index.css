@@ -3,6 +3,7 @@
 @import './Components/styles/joinRoomForm.css';
 @import './Components/styles/room.css';
 @import './Components/styles/chessGame.css';
+@import './Components/styles/alert.css';
 
 body {
     margin: 0;
