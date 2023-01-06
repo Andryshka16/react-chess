@@ -3,10 +3,12 @@ import { useEffect } from 'react'
 import { newRoom, removeRoom, updateRooms } from './features/emptyRooms/emptyRoomsSlice'
 import { handleConnection } from './features/thisRoom/thisRoomSlice'
 import { setChess } from './features/chess/chessSlice'
-import { socket } from './App'
+import { io } from 'socket.io-client'
 
-export default function useSocketHandlers() {
+const server = 'http://localhost:4000/'
+const socket = io(server)
 
+function useSocketHandlers() {
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -27,3 +29,6 @@ export default function useSocketHandlers() {
         })
     }, [socket])
 }
+
+export default useSocketHandlers
+export { socket }

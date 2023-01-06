@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { socket } from '../../../App'
+import { socket } from '../../../Socket'
 import { showAlert } from '../../../features/alert/alertSlice'
 import { connectTo, joinRoom } from '../../../features/thisRoom/thisRoomSlice'
 

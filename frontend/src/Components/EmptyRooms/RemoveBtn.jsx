@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux'
-import { socket } from '../../App'
+import { socket } from '../../Socket'
 import { showAlert } from '../../features/alert/alertSlice'
 import { deleteRoom } from '../../features/thisRoom/thisRoomSlice'
 

@@ -1,10 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { io } from 'socket.io-client'
 import { ChessBoard, CreateRoom, ChessGame, EmptyRooms, Navbar, Alert } from './Components/'
-import useSocketHandlers from './useSocketHandlers'
-
-const server = 'http://localhost:4000/'
-const socket = io(server)
+import useSocketHandlers from './Socket'
 
 function App() {
     useSocketHandlers()
@@ -24,4 +20,3 @@ function App() {
 }
 
 export default App
-export { socket }

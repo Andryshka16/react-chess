@@ -1,4 +1,4 @@
-import { socket } from '../../../App'
+import { socket } from '../../../Socket'
 
 export default function setPromoted(state, { payload }) {
     const { x1, y1, x2, y2, name } = state.promoted

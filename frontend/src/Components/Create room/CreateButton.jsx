@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { socket } from '../../App'
 import { showAlert } from '../../features/alert/alertSlice'
 import { initializeRoom } from '../../features/thisRoom/thisRoomSlice'
+import { socket } from '../../Socket'
 import buildRoom from './buildRoom'
 
 export function CreateButton({ globalState }) {

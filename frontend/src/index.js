@@ -6,8 +6,6 @@ import { Provider } from 'react-redux'
 import { chess, emptyRooms, thisRoom, alert } from './features/'
 import './index.css'
 
-const root = ReactDOM.createRoot(document.getElementById('root'))
-
 const store = configureStore({
     reducer: {
         chess,
@@ -17,6 +15,7 @@ const store = configureStore({
     }
 })
 
+const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
     <Provider store={store}>
         <App />

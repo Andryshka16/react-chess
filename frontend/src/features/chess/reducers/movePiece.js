@@ -1,4 +1,4 @@
-import { socket } from '../../../App'
+import { socket } from '../../../Socket'
 
 export default function movePiece(state, { payload }) {
     const [x2, y2, roomID] = payload
