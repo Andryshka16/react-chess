@@ -1,9 +1,11 @@
 import React from 'react'
+import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
+import { socket } from '../../App'
 import ChessBoard from '../Chessboard/ChessBoard'
 
 export default function ChessGame() {
-    const { myRoom, participants } = useSelector((store) => store.room)
+    const { myRoom, participants } = useSelector((store) => store.myRoom)
 
     if (participants === 1) {
         return (

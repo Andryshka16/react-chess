@@ -20,6 +20,7 @@ const gameField = [
     ['wR', 'wN', 'wB', 'wQ', 'wK', 'wB', 'wN', 'wR']
 ]
 
+
 const initialState = {
     gameField,
     turn: 'w',

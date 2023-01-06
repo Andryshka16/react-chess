@@ -1,12 +1,16 @@
 import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import { socket } from '../../App'
 import { showAlert } from '../../features/alert/alertSlice'
-import { createRoom } from '../../features/room/roomSlice'
+import { createRoom } from '../../features/myRoom/myRoomSlice'
 import buildRoom from './buildRoom'
 
 export function CreateButton({ globalState }) {
-    const { myRoom } = useSelector((store) => store.room)
+    const { myRoom } = useSelector((store) => store.myRoom)
     const dispatch = useDispatch()
+    const navigate = useNavigate()
+
+    const alert = (text) => dispatch(showAlert(text))
 
     const [{ name, password }, setState] = globalState
     const newRoom = buildRoom(name, password, 'guest')
@@ -16,16 +20,17 @@ export function CreateButton({ globalState }) {
             className="createRoom"
             onClick={() => {
                 if (!name.trim() || !password.trim()) {
-                    dispatch(showAlert('Cannot create empty room!'))
+                    alert('Cannot create empty room!')
                 } else if (myRoom) {
-                    dispatch(showAlert('Cannot have more than one room!'))
-                    setState({ name: '', password: '' })
+                    alert('Cannot have more than one room!')
                 } else {
-                    setState({ name: '', password: '' })
                     socket.emit('createRoom', newRoom)
+                    socket.emit('joinRoom', newRoom.id)
                     dispatch(createRoom(newRoom.id))
-                    dispatch(showAlert('Room has been created.'))
+                    navigate('/chess')
+                    alert('Room has been created.')
                 }
+                setState({ name: '', password: '' })
             }}
         >
             Create room!

@@ -22,7 +22,9 @@ export default function ModalWindow({ state }) {
                     <div className="modal-buttons">
                         <PlayBtn
                             passwordIsCorrect={modal.password === value}
+                            closeModal={() => setModal(false)}
                             clearInput={() => setValue('')}
+                            id={modal.id}
                         />
                         <CancelBtn closeModal={() => setModal(false)} />
                     </div>

@@ -1,4 +1,3 @@
-import Navbar from './Components/Navbar/Navbar'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { io } from 'socket.io-client'
 import { useEffect } from 'react'
@@ -8,10 +7,13 @@ import {
     newRoom,
     removeRoom,
     updateRooms
-} from './features/empyRooms/emptyRoomsSlice'
-import JoinGame from './Components/Join room/EmptyRooms'
+} from './features/emptyRooms/emptyRoomsSlice'
 import ChessGame from './Components/ChessGame/ChessGame'
+import JoinGame from './Components/Join room/EmptyRooms'
+import Navbar from './Components/Navbar/Navbar'
 import Alert from './Components/Alert/Alert'
+import { joinRoom } from './features/myRoom/myRoomSlice'
+import { setCheck, setChess } from './features/chess/chessSlice'
 
 const server = 'http://localhost:4000/'
 export const socket = io(server)
@@ -22,6 +24,13 @@ export default function App() {
     useEffect(() => {
         socket.on('addRoom', (room) => {
             dispatch(newRoom(room))
+        })
+        socket.on('handleChessMove', (chess) => {
+            console.log('got update');
+            dispatch(setChess(chess))
+        })
+        socket.on('joinRoom', (id) => {
+            dispatch(joinRoom(id))
         })
         socket.on('removeRoom', (id) => {
             dispatch(removeRoom(id))
@@ -34,7 +43,7 @@ export default function App() {
     return (
         <BrowserRouter>
             <Navbar />
-            <Alert/>
+            <Alert />
             <Routes>
                 <Route path="/newRoom" element={<CreateGameForm />} />
                 <Route path="/public" element={<JoinGame />} />

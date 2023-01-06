@@ -6,7 +6,7 @@ import RemoveBtn from './RemoveBtn'
 
 function Room({ name, password, user, id, setModal }) {
     const props = { id, password, setModal }
-    const { myRoom } = useSelector((store) => store.room)
+    const { myRoom } = useSelector((store) => store.myRoom)
 
     return (
         <div className="room">
@@ -14,19 +14,19 @@ function Room({ name, password, user, id, setModal }) {
                 <h2>{name}</h2>
                 <h3>{user}</h3>
             </div>
-            {myRoom !== id ? <JoinBtn id={id} /> : <RemoveBtn {...props} />}
+            {myRoom !== id ? <JoinBtn {...props} /> : <RemoveBtn id={id} />}
         </div>
     )
 }
 
 export default function Rooms() {
-    const { rooms } = useSelector((store) => store)
+    const { emptyRooms } = useSelector((store) => store)
     const [modal, setModal] = useState(false)
 
     return (
         <>
-            {rooms.length ? (
-                rooms.map((room) => (
+            {emptyRooms.length ? (
+                emptyRooms.map((room) => (
                     <Room {...room} setModal={setModal} key={room.id} />
                 ))
             ) : (

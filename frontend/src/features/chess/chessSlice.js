@@ -12,6 +12,7 @@ const chessSlice = createSlice({
 export default chessSlice.reducer
 
 export const {
+    setChess,
     setNextMoves,
     setCheck,
     setSelected,

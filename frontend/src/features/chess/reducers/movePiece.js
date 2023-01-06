@@ -1,5 +1,7 @@
+import { socket } from '../../../App'
+
 export default function movePiece(state, { payload }) {
-    const [x2, y2] = payload
+    const [x2, y2, roomID] = payload
     const { x1, y1, name } = state.selected
     const [color, piece] = name
     const { turn, turns } = state
@@ -41,4 +43,9 @@ export default function movePiece(state, { payload }) {
     state.selected = null
     state.coverMoves = []
     state.nextMoves = []
+
+    if (roomID) { 
+        socket.emit('handleChessMove', [state, roomID])
+    }
+    
 }

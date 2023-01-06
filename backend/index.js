@@ -30,15 +30,25 @@ io.on('connection', (socket) => {
     socket.on('disconnect', () => {
         connected -= 1
     })
+
+    socket.on('joinRoom', (id) => {
+        socket.join(id)
+        socket.to(id).emit("joinRoom", id)
+    })
+
+    socket.on('handleChessMove', ([chess, id]) => { 
+        socket.to(id).emit('handleChessMove', chess)
+    })
+
     socket.on('createRoom', (room) => {
         socket.broadcast.emit('addRoom', room)
         socket.emit('addRoom', room)
-        rooms.push(room)
+        // rooms.push(room)
     })
     socket.on('removeRoom', (id) => {
         socket.broadcast.emit('removeRoom', id)
         socket.emit('removeRoom', id)
-        rooms = rooms.filter((elm) => elm.id !== id)
+        // rooms = rooms.filter((elm) => elm.id !== id)
     })
 })
 

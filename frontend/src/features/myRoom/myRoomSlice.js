@@ -2,7 +2,8 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
     myRoom: '',
-    participants: 0
+    participants: 0,
+    reverse: false
 }
 
 const roomSLice = createSlice({
@@ -13,6 +14,13 @@ const roomSLice = createSlice({
             state.myRoom = payload
             state.participants += 1
         },
+        joinRoom: (state, { payload }) => {
+            if (state.myRoom) { 
+                state.reverse = true
+            }
+            state.myRoom = payload
+            state.participants = 2
+        },
         deleteRoom: () => {
             return initialState
         }
@@ -20,4 +28,4 @@ const roomSLice = createSlice({
 })
 
 export default roomSLice.reducer
-export const { createRoom, deleteRoom } = roomSLice.actions
+export const { createRoom, joinRoom, deleteRoom } = roomSLice.actions
