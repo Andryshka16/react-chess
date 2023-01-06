@@ -7,13 +7,13 @@ import {
 import { useDispatch, useSelector } from 'react-redux'
 
 export default function useHandleCellClick(x, y) {
-    const { myRoom, reverse } = useSelector((store) => store.myRoom)
+    const { id, initialized } = useSelector((store) => store.thisRoom)
 
     const dispatch = useDispatch()
     const nextMovesInclude = useNextMovesInclude()
 
-    if (nextMovesInclude([x, reverse ? 7 - y : y])) {
-        return () => dispatch(movePiece([x, reverse ? 7 - y : y, myRoom]))
+    if (nextMovesInclude([x, initialized ? y : 7 - y])) {
+        return () => dispatch(movePiece([x, initialized ? y : 7 - y, id]))
     }
 
     return () => {

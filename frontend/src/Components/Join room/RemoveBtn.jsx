@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux'
 import { socket } from '../../App'
 import { showAlert } from '../../features/alert/alertSlice'
-import { deleteRoom } from '../../features/myRoom/myRoomSlice'
+import { deleteRoom } from '../../features/thisRoom/thisRoomSlice'
 
 export default function RemoveBtn({ id }) {
     const dispatch = useDispatch()

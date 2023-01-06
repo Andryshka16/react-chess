@@ -2,7 +2,7 @@ import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { socket } from '../../../App'
 import { showAlert } from '../../../features/alert/alertSlice'
-import { joinRoom } from '../../../features/myRoom/myRoomSlice'
+import { connectTo, joinRoom } from '../../../features/thisRoom/thisRoomSlice'
 
 export default function PlayBtn({
     passwordIsCorrect,
@@ -22,7 +22,7 @@ export default function PlayBtn({
                 if (passwordIsCorrect) {
                     socket.emit('joinRoom', id)
                     closeModal()
-                    dispatch(joinRoom(id))
+                    dispatch(connectTo(id))
                     navigate('/chess')
                     alert('Success!')
                 } else {

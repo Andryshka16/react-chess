@@ -10,7 +10,7 @@ import useStartDragging from './Start dragging'
 
 export default function Piece({ x, y }) {
     const { gameField, turn } = useSelector((store) => store.chess)
-    const { myRoom, reverse } = useSelector((store) => store.myRoom)
+    const { id, initialized } = useSelector((store) => store.thisRoom)
     const dispatch = useDispatch()
     const getNextMoves = useGetNextMoves()
     const nextMovesArray = getNextMoves(x, y)
@@ -36,7 +36,7 @@ export default function Piece({ x, y }) {
     let scale = scales[name[1]] || 0.7
 
     let styles = {
-        top: `${(reverse ? 7 - y : y) * 80}px`,
+        top: `${(initialized ? y : 7 - y) * 80}px`,
         left: `${x * 80}px`,
         transform: `scale(${scale})`,
         marginTop: marginTop[name[1]],
@@ -65,7 +65,7 @@ export default function Piece({ x, y }) {
                 startFollowing(event)
             }
         } else if (nextMovesInclude([x, y])) {
-            dispatch(movePiece([x, y, myRoom]))
+            dispatch(movePiece([x, y, id]))
         } else {
             dispatch(setNextMoves([]))
         }

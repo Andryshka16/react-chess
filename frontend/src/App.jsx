@@ -12,7 +12,7 @@ import ChessGame from './Components/ChessGame/ChessGame'
 import JoinGame from './Components/Join room/EmptyRooms'
 import Navbar from './Components/Navbar/Navbar'
 import Alert from './Components/Alert/Alert'
-import { joinRoom } from './features/myRoom/myRoomSlice'
+import { handleConnection, joinRoom } from './features/thisRoom/thisRoomSlice'
 import { setCheck, setChess } from './features/chess/chessSlice'
 
 const server = 'http://localhost:4000/'
@@ -26,11 +26,10 @@ export default function App() {
             dispatch(newRoom(room))
         })
         socket.on('handleChessMove', (chess) => {
-            console.log('got update');
             dispatch(setChess(chess))
         })
         socket.on('joinRoom', (id) => {
-            dispatch(joinRoom(id))
+            dispatch(handleConnection(id))
         })
         socket.on('removeRoom', (id) => {
             dispatch(removeRoom(id))

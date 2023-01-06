@@ -2,11 +2,11 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { socket } from '../../App'
 import { showAlert } from '../../features/alert/alertSlice'
-import { createRoom } from '../../features/myRoom/myRoomSlice'
+import { initializeRoom } from '../../features/thisRoom/thisRoomSlice'
 import buildRoom from './buildRoom'
 
 export function CreateButton({ globalState }) {
-    const { myRoom } = useSelector((store) => store.myRoom)
+    const { id } = useSelector((store) => store.thisRoom)
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
@@ -21,12 +21,12 @@ export function CreateButton({ globalState }) {
             onClick={() => {
                 if (!name.trim() || !password.trim()) {
                     alert('Cannot create empty room!')
-                } else if (myRoom) {
+                } else if (id) {
                     alert('Cannot have more than one room!')
                 } else {
                     socket.emit('createRoom', newRoom)
                     socket.emit('joinRoom', newRoom.id)
-                    dispatch(createRoom(newRoom.id))
+                    dispatch(initializeRoom(newRoom.id))
                     navigate('/chess')
                     alert('Room has been created.')
                 }
