@@ -2,8 +2,8 @@ import { useSelector } from 'react-redux'
 
 export default function NextMoves() {
     const { gameField, nextMoves } = useSelector((store) => store.chess)
-    const { initialized } = useSelector((store) => store.thisRoom)
     const [color1, color2] = useSelector((store) => store.chess.colors)
+    const { initialized } = useSelector((store) => store.thisRoom)
 
     return nextMoves.map(([x, y]) => {
         const styles = {
@@ -20,10 +20,7 @@ export default function NextMoves() {
                     className={'circle'}
                     style={{
                         ...styles,
-                        background:
-                            ((initialized ? y : 7 - y) + x) % 2
-                                ? color2
-                                : color1
+                        background: (x + y) % 2 ? color2 : color1
                     }}
                 ></div>
             </div>

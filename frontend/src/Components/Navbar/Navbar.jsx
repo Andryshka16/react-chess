@@ -13,6 +13,10 @@ const options = [
     {
         link: '/chess',
         name: 'Chess'
+    },
+    {
+        link: '/practice',
+        name: 'Practice'
     }
 ]
 

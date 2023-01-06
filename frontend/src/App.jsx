@@ -12,8 +12,9 @@ import ChessGame from './Components/ChessGame/ChessGame'
 import JoinGame from './Components/Join room/EmptyRooms'
 import Navbar from './Components/Navbar/Navbar'
 import Alert from './Components/Alert/Alert'
-import { handleConnection, joinRoom } from './features/thisRoom/thisRoomSlice'
-import { setCheck, setChess } from './features/chess/chessSlice'
+import ChessBoard from './Components/Chessboard/ChessBoard'
+import { handleConnection } from './features/thisRoom/thisRoomSlice'
+import { setChess } from './features/chess/chessSlice'
 
 const server = 'http://localhost:4000/'
 export const socket = io(server)
@@ -47,6 +48,7 @@ export default function App() {
                 <Route path="/newRoom" element={<CreateGameForm />} />
                 <Route path="/public" element={<JoinGame />} />
                 <Route path="/chess" element={<ChessGame />} />
+                {/* <Route path="/practice" element={<ChessBoard/>} /> */}
             </Routes>
         </BrowserRouter>
     )

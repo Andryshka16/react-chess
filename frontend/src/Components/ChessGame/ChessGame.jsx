@@ -10,6 +10,11 @@ export default function ChessGame() {
     } else if (participants === 0) {
         return <h1 className="h1-info">Create room or join one to play chess!</h1>
     } else {
-        return <ChessBoard />
+        return (
+            <>
+                <h1>Room id: { id }</h1>
+                <ChessBoard />
+            </>
+        )
     }
 }

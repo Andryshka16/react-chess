@@ -1,16 +1,12 @@
 import { useNextMovesInclude } from './Logic/Next moves/NextMoves'
 import { useDispatch, useSelector } from 'react-redux'
-import {
-    movePiece,
-    setNextMoves,
-    setSelected
-} from '../../../../features/chess/chessSlice'
+import { movePiece, setNextMoves, setSelected } from '../../../../features/chess/chessSlice'
 import useGetNextMoves from './Logic/Next moves/NextMoves'
 import useStartDragging from './Start dragging'
 
 export default function Piece({ x, y }) {
     const { gameField, turn } = useSelector((store) => store.chess)
-    const { id, initialized } = useSelector((store) => store.thisRoom)
+    const { id, initialized, color } = useSelector((store) => store.thisRoom)
     const dispatch = useDispatch()
     const getNextMoves = useGetNextMoves()
     const nextMovesArray = getNextMoves(x, y)
@@ -41,8 +37,8 @@ export default function Piece({ x, y }) {
         transform: `scale(${scale})`,
         marginTop: marginTop[name[1]],
         pointerEvents:
-            (!nextMovesArray.length || name[0] !== turn) &&
-            !nextMovesInclude([x, y])
+            ((!nextMovesArray.length || name[0] !== turn) && !nextMovesInclude([x, y])) ||
+            (color && color !== turn)
                 ? 'none'
                 : 'all'
     }

@@ -4,7 +4,8 @@ const initialState = {
     id: '',
     initialized: true,
     participants: 0,
-    online: true
+    color: undefined,
+    online: false
 }
 
 const thisRoomSLice = createSlice({
@@ -17,11 +18,15 @@ const thisRoomSLice = createSlice({
         },
         connectTo: (state, { payload }) => {
             state.id = payload
+            state.online = true
+            state.color = 'b'
             state.initialized = false
             state.participants = 2
         },
         handleConnection: (state, { payload }) => {
             state.id = payload
+            state.online = true
+            state.color = 'w'
             state.initialized = true
             state.participants = 2
         },
