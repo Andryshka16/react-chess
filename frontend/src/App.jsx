@@ -2,19 +2,15 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { io } from 'socket.io-client'
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import CreateGameForm from './Components/Create room/CreateRoomForm'
 import { newRoom, removeRoom, updateRooms } from './features/emptyRooms/emptyRoomsSlice'
-import ChessGame from './Components/ChessGame/ChessGame'
-import JoinGame from './Components/Join room/EmptyRooms'
-import Navbar from './Components/Navbar/Navbar'
-import Alert from './Components/Alert/Alert'
 import { handleConnection } from './features/thisRoom/thisRoomSlice'
 import { setChess } from './features/chess/chessSlice'
+import { ChessBoard, CreateRoom, ChessGame, EmptyRooms, Navbar, Alert } from './Components/'
 
 const server = 'http://localhost:4000/'
-export const socket = io(server)
+const socket = io(server)
 
-export default function App() {
+function App() {
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -40,11 +36,14 @@ export default function App() {
             <Navbar />
             <Alert />
             <Routes>
-                <Route path="/newRoom" element={<CreateGameForm />} />
-                <Route path="/public" element={<JoinGame />} />
-                <Route path="/chess" element={<ChessGame />} />
+                <Route path='/newRoom' element={<CreateRoom />} />
+                <Route path='/public' element={<EmptyRooms />} />
+                <Route path='/chess' element={<ChessGame />} />
                 {/* <Route path="/practice" element={<ChessBoard/>} /> */}
             </Routes>
         </BrowserRouter>
     )
 }
+
+export default App
+export { socket }

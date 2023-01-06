@@ -2,12 +2,12 @@ export function NameInput({ globalState }) {
     const [state, setState] = globalState
 
     return (
-        <div className="input-field">
+        <div className='input-field'>
             <label htmlFor={'name'}>
                 <h2>Room name:</h2>
             </label>
             <input
-                type="text"
+                type='text'
                 id={'name'}
                 value={state.name}
                 placeholder={'Name'}

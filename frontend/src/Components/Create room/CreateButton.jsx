@@ -17,7 +17,7 @@ export function CreateButton({ globalState }) {
 
     return (
         <button
-            className="createRoom"
+            className='createRoom'
             onClick={() => {
                 if (!name.trim() || !password.trim()) {
                     alert('Cannot create empty room!')

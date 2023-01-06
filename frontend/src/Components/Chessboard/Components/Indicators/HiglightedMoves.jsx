@@ -17,12 +17,6 @@ export default function LastMove() {
     return highLighted.map(
         ([x, y]) =>
             !isNaN(x) &&
-            !isNaN(y) && (
-                <div
-                    style={styles(x, y)}
-                    className="highlighted"
-                    key={`${x}${y}l`}
-                ></div>
-            )
+            !isNaN(y) && <div style={styles(x, y)} className="highlighted" key={`${x}${y}l`}></div>
     )
 }

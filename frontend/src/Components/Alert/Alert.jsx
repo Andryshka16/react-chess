@@ -8,13 +8,8 @@ export default function Alert() {
     setTimeout(() => dispatch(hideAlert()), 1500)
 
     return (
-        <CSSTransition
-            in={show}
-            timeout={400}
-            classNames="alert-div"
-            unmountOnExit
-        >
-            <div className="alert">
+        <CSSTransition in={show} timeout={400} classNames='alert-div' unmountOnExit>
+            <div className='alert'>
                 <h2>{text}</h2>
             </div>
         </CSSTransition>

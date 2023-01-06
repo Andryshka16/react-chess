@@ -2,7 +2,7 @@ import { useNextMovesInclude } from './Logic/Next moves/NextMoves'
 import { useDispatch, useSelector } from 'react-redux'
 import { movePiece, setNextMoves, setSelected } from '../../../../features/chess/chessSlice'
 import useGetNextMoves from './Logic/Next moves/NextMoves'
-import useStartDragging from './Start dragging'
+import useStartDragging from './DragAndDrop'
 
 export default function Piece({ x, y }) {
     const { gameField, turn } = useSelector((store) => store.chess)

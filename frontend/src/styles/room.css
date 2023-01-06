@@ -41,7 +41,8 @@
     width: 120px;
 }
 
-.join-btn, .remove-btn {
+.join-btn,
+.remove-btn {
     height: 35px;
     font-size: 22px;
 }

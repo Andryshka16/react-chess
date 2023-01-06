@@ -1,0 +1,28 @@
+@import './chess/indicators.css';
+@import './chess/notation.css';
+
+.chess {
+    position: relative;
+    margin: 20px auto;
+    width: 640px;
+    height: 640px;
+    user-select: none;
+}
+
+.cell {
+    margin-bottom: -4px;
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+    user-select: none;
+}
+
+.piece {
+    position: absolute;
+    cursor: pointer;
+    width: 80px;
+    z-index: 2;
+    transition: 170ms;
+    user-select: none;
+    -webkit-user-drag: none;
+}

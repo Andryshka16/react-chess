@@ -33,10 +33,10 @@ io.on('connection', (socket) => {
 
     socket.on('joinRoom', (id) => {
         socket.join(id)
-        socket.to(id).emit("joinRoom", id)
+        socket.to(id).emit('joinRoom', id)
     })
 
-    socket.on('handleChessMove', ([chess, id]) => { 
+    socket.on('handleChessMove', ([chess, id]) => {
         socket.to(id).emit('handleChessMove', chess)
     })
 

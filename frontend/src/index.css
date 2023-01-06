@@ -1,9 +1,10 @@
-@import './Components/Chessboard/styles/chess.css';
-@import './Components/styles/navbar.css';
-@import './Components/styles/joinRoomForm.css';
-@import './Components/styles/room.css';
-@import './Components/styles/chessGame.css';
-@import './Components/styles/alert.css';
+@import './styles/chess.css';
+@import './styles/navbar.css';
+@import './styles/joinRoomForm.css';
+@import './styles/room.css';
+@import './styles/chessGame.css';
+@import './styles/alert.css';
+
 
 body {
     margin: 0;

@@ -7,7 +7,7 @@ export default function Form() {
     const globalState = useState({ name: '', password: '' })
 
     return (
-        <div className="form-div">
+        <div className='form-div'>
             <NameInput globalState={globalState} />
             <PasswordInput globalState={globalState} />
             <CreateButton globalState={globalState} />

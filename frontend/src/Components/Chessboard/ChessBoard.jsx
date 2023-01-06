@@ -18,7 +18,7 @@ export default function Chess() {
     useEffect(checkSituation, [gameField])
 
     return (
-        <div className="chess">
+        <div className='chess'>
             <Cells />
             <Pieces />
             <NextMoves />
