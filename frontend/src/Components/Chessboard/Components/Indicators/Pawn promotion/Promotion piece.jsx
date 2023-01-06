@@ -5,16 +5,17 @@ import { setPromoted } from '../../../../../features/chess/chessSlice'
 export default function PromotionPiece({ index, name }) {
     const dispatch = useDispatch()
     const { turn, turns } = useSelector((store) => store.chess)
+    const { id } = useSelector((store) => store.thisRoom)
 
     let scales = {
         Q: 0.85,
-        B: 0.8,
+        B: 0.8
     }
 
     let marginTop = {
         Q: '3px',
         R: '-2px',
-        N: '-2px',
+        N: '-2px'
     }
 
     let scale = scales[name] || 0.7
@@ -23,7 +24,7 @@ export default function PromotionPiece({ index, name }) {
         top: `${Math.floor(index / 2) * 80}px`,
         left: `${(index % 2) * 80}px`,
         transform: `scale(${scale})`,
-        marginTop: marginTop[name],
+        marginTop: marginTop[name]
     }
 
     function handleMouseOver(event) {
@@ -35,7 +36,7 @@ export default function PromotionPiece({ index, name }) {
     }
 
     function handleMouseClick() {
-        dispatch(setPromoted({ name: turns[turn] + name }))
+        dispatch(setPromoted({ name: turns[turn] + name, id }))
     }
 
     return (

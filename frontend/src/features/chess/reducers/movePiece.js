@@ -25,15 +25,13 @@ export default function movePiece(state, { payload }) {
     }
 
     if (
-        ((piece === 'R' && (x1 === 0 || x1 === 7)) ||
-            (piece === 'K' && x1 === 4)) &&
+        ((piece === 'R' && (x1 === 0 || x1 === 7)) || (piece === 'K' && x1 === 4)) &&
         !state.castlingMoved.includes(x1 + name)
     ) {
         state.castlingMoved.push(x1 + name)
     }
 
-    state.enPassing =
-        name[1] === 'P' && Math.abs(y2 - y1) === 2 ? { x2, y2 } : null
+    state.enPassing = name[1] === 'P' && Math.abs(y2 - y1) === 2 ? { x2, y2 } : null
 
     state.lastMoves = [
         [x1, y1],
@@ -44,8 +42,7 @@ export default function movePiece(state, { payload }) {
     state.coverMoves = []
     state.nextMoves = []
 
-    if (roomID) { 
+    if (roomID && !state.promoted) {
         socket.emit('handleChessMove', [state, roomID])
     }
-    
 }

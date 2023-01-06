@@ -1,5 +1,6 @@
 import initialState from './initialState'
-import { movePiece, setPromoted } from './reducers/'
+import movePiece from './reducers/movePiece'
+import setPromoted from './reducers/setPromoted'
 
 const reducers = {
     setNextMoves: (state, { payload }) => {

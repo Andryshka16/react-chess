@@ -3,16 +3,11 @@ import { io } from 'socket.io-client'
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import CreateGameForm from './Components/Create room/CreateRoomForm'
-import {
-    newRoom,
-    removeRoom,
-    updateRooms
-} from './features/emptyRooms/emptyRoomsSlice'
+import { newRoom, removeRoom, updateRooms } from './features/emptyRooms/emptyRoomsSlice'
 import ChessGame from './Components/ChessGame/ChessGame'
 import JoinGame from './Components/Join room/EmptyRooms'
 import Navbar from './Components/Navbar/Navbar'
 import Alert from './Components/Alert/Alert'
-import ChessBoard from './Components/Chessboard/ChessBoard'
 import { handleConnection } from './features/thisRoom/thisRoomSlice'
 import { setChess } from './features/chess/chessSlice'
 

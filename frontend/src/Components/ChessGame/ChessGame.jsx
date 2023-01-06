@@ -12,7 +12,7 @@ export default function ChessGame() {
     } else {
         return (
             <>
-                <h1>Room id: { id }</h1>
+                <h2>Room id: {id}</h2>
                 <ChessBoard />
             </>
         )
