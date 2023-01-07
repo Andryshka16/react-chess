@@ -36,7 +36,7 @@ const thisRoomSLice = createSlice({
         unReadyToPlay: (state) => {
             state.readyPlayers -= 1
         },
-        setReadyPlayers: (state, {payload}) => {
+        setReadyPlayers: (state, { payload }) => {
             state.readyPlayers = payload
         },
         deleteRoom: () => {

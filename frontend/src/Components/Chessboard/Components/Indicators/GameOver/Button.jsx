@@ -1,13 +1,10 @@
 import React from 'react'
 import { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { restart } from '../../../../../features/chess/chessSlice'
-import { unReadyToPlay, readyToPlay } from '../../../../../features/thisRoom/thisRoomSlice'
+import { useSelector } from 'react-redux'
 import { socket } from '../../../../../Socket'
 
 export function Button() {
     const { readyPlayers, id } = useSelector((store) => store.thisRoom)
-    const dispatch = useDispatch()
 
     const color1 = 'rgb(105, 105, 105)'
     const color2 = 'green'
@@ -18,15 +15,9 @@ export function Button() {
         if (ready) {
             socket.emit('unReadyToPlayAgain', id)
             setReady(false)
-            dispatch(unReadyToPlay())
         } else {
-            if (readyPlayers === 1) {
-                socket.emit('restart', id)
-            } else {
-                socket.emit('readyToPlayAgain', id)
-                dispatch(readyToPlay())
-                setReady(true)
-            }
+            socket.emit('readyToPlayAgain', id)
+            setReady(true)
         }
     }
 
@@ -40,7 +31,7 @@ export function Button() {
         >
             {
                 <>
-                    Play again?<h4>{readyPlayers + '/2'}</h4>
+                    Play again? <h4>{readyPlayers + '/2'}</h4>
                 </>
             }
         </button>

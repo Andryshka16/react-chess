@@ -2,7 +2,7 @@ import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { socket } from '../../../Socket'
 import { showAlert } from '../../../features/alert/alertSlice'
-import { connectTo, deleteRoom, joinRoom } from '../../../features/thisRoom/thisRoomSlice'
+import { connectTo } from '../../../features/thisRoom/thisRoomSlice'
 
 export default function PlayBtn({ passwordIsCorrect, closeModal, clearInput, id }) {
     const dispatch = useDispatch()

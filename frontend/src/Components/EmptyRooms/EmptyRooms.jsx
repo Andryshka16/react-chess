@@ -9,8 +9,8 @@ function Room({ name, password, user, id, setModal }) {
     const { id: ID } = useSelector((store) => store.thisRoom)
 
     return (
-        <div className="room">
-            <div className="room-info">
+        <div className='room'>
+            <div className='room-info'>
                 <h2>{name}</h2>
                 <h3>{user}</h3>
             </div>
@@ -19,18 +19,16 @@ function Room({ name, password, user, id, setModal }) {
     )
 }
 
-export default function Rooms() {
+export default function EmptyRooms() {
     const { emptyRooms } = useSelector((store) => store)
     const [modal, setModal] = useState(false)
 
     return (
         <>
             {emptyRooms.length ? (
-                emptyRooms.map((room) => (
-                    <Room {...room} setModal={setModal} key={room.id} />
-                ))
+                emptyRooms.map((room) => <Room {...room} setModal={setModal} key={room.id} />)
             ) : (
-                <h1 className="h1-info">No empty rooms found.</h1>
+                <h1 className='h1-info'>No empty rooms found.</h1>
             )}
 
             <Modal state={[modal, setModal]} />

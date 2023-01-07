@@ -1,8 +1,9 @@
 import express from 'express'
 import cors from 'cors'
-
 import { createServer } from 'http'
 import { Server } from 'socket.io'
+
+import handleSocketEvents from './handleSocketEvents'
 
 const PORT = process.env.PORT || 4000
 const origin = 'http://localhost:3000'
@@ -19,49 +20,7 @@ const io = new Server(server, {
     }
 })
 
-let connected = 0
-let rooms = []
-
-io.on('connection', (socket) => {
-    connected += 1
-
-    socket.emit('userConnected', [rooms, connected])
-
-    socket.on('disconnect', () => {
-        connected -= 1
-    })
-
-    socket.on('joinRoom', (id) => {
-        socket.join(id)
-        socket.to(id).emit('joinRoom', id)
-    })
-
-    socket.on('handleChessMove', ([chess, id]) => {
-        socket.to(id).emit('handleChessMove', chess)
-    })
-
-    socket.on('createRoom', (room) => {
-        socket.broadcast.emit('addRoom', room)
-        socket.emit('addRoom', room)
-    })
-
-    socket.on('removeRoom', (id) => {
-        socket.broadcast.emit('removeRoom', id)
-        socket.emit('removeRoom', id)
-    })
-
-    socket.on('readyToPlayAgain', (id) => {
-        socket.to(id).emit('readyToPlayAgain')
-    })
-
-    socket.on('unReadyToPlayAgain', (id) => {
-        socket.to(id).emit('unReadyToPlayAgain')
-    })
-    socket.on('restart', (id) => {
-        socket.to(id).emit('restart')
-        socket.emit('restart')
-    })
-})
+io.on('connection', handleSocketEvents)
 
 server.listen(PORT, (error) => {
     if (error) {

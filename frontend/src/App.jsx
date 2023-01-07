@@ -13,7 +13,7 @@ function App() {
                 <Route path='/newRoom' element={<CreateRoom />} />
                 <Route path='/public' element={<EmptyRooms />} />
                 <Route path='/chess' element={<ChessGame />} />
-                {/* <Route path="/practice" element={<ChessBoard/>} /> */}
+                <Route path="/practice" element={<ChessBoard/>} />
             </Routes>
         </BrowserRouter>
     )
