@@ -3,8 +3,8 @@ import { createSlice } from '@reduxjs/toolkit'
 const initialState = {
     id: '',
     initialized: true,
-    participants: 0,
     color: undefined,
+    participants: 0,
     readyPlayers: 0
 }
 

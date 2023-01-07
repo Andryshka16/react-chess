@@ -3,7 +3,7 @@ import cors from 'cors'
 import { createServer } from 'http'
 import { Server } from 'socket.io'
 
-import handleSocketEvents from './handleSocketEvents'
+import handleSocketEvents from './handleSocketEvents.js'
 
 const PORT = process.env.PORT || 4000
 const origin = 'http://localhost:3000'
