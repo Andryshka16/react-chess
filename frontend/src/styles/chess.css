@@ -1,5 +1,6 @@
 @import './chess/indicators.css';
 @import './chess/notation.css';
+@import './chess/gameover.css';
 
 .chess {
     position: relative;

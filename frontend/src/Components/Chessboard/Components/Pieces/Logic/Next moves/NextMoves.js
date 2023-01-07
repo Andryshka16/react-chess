@@ -1,10 +1,4 @@
-import {
-    bishopMoves,
-    rookMoves,
-    knightMoves,
-    kingMoves,
-    pawnMoves
-} from './Piece moves/'
+import { bishopMoves, rookMoves, knightMoves, kingMoves, pawnMoves } from './Piece moves/'
 
 import useFilterMoves from './Filtration'
 import { useSelector } from 'react-redux'
@@ -12,10 +6,7 @@ import { useSelector } from 'react-redux'
 export function useNextMovesInclude() {
     const { nextMoves } = useSelector((store) => store.chess)
 
-    return ([x, y]) =>
-        nextMoves
-            .map((i) => i.toString())
-            .includes([x, y].toString())
+    return ([x, y]) => nextMoves.map((i) => i.toString()).includes([x, y].toString())
 }
 
 export default function useGetNextMoves() {

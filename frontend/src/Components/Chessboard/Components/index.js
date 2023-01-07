@@ -5,3 +5,4 @@ export {default as CheckIndicator} from "./Indicators/CheckIndicator"
 export { default as NextMoves } from './Indicators/NextMoves'
 export { default as HiglightedMoves } from './Indicators/HiglightedMoves'
 export { default as Promotion } from './Indicators/Pawn promotion/Promotion'
+export { default as GameOver } from './Indicators/GameOver/GameOver'

@@ -9,7 +9,7 @@ export default function RemoveBtn({ id }) {
 
     return (
         <button
-            className="btn remove-btn"
+            className='btn remove-btn'
             onClick={() => {
                 socket.emit('removeRoom', id)
                 dispatch(deleteRoom())

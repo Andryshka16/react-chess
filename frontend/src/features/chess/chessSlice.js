@@ -19,5 +19,7 @@ export const {
     setCoverMoves,
     movePiece,
     setPromoted,
+    setMate,
+    setDraw,
     restart
 } = chessSlice.actions

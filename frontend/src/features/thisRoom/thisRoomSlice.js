@@ -5,7 +5,7 @@ const initialState = {
     initialized: true,
     participants: 0,
     color: undefined,
-    online: false
+    readyPlayers: 0
 }
 
 const thisRoomSLice = createSlice({
@@ -30,6 +30,15 @@ const thisRoomSLice = createSlice({
             state.initialized = true
             state.participants = 2
         },
+        readyToPlay: (state) => {
+            state.readyPlayers += 1
+        },
+        unReadyToPlay: (state) => {
+            state.readyPlayers -= 1
+        },
+        setReadyPlayers: (state, {payload}) => {
+            state.readyPlayers = payload
+        },
         deleteRoom: () => {
             return initialState
         }
@@ -37,4 +46,13 @@ const thisRoomSLice = createSlice({
 })
 
 export default thisRoomSLice.reducer
-export const { initializeRoom, connectTo, handleConnection, deleteRoom } = thisRoomSLice.actions
+
+export const {
+    initializeRoom,
+    connectTo,
+    handleConnection,
+    deleteRoom,
+    readyToPlay,
+    unReadyToPlay,
+    setReadyPlayers
+} = thisRoomSLice.actions

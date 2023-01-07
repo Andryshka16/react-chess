@@ -4,6 +4,7 @@
 @import './styles/room.css';
 @import './styles/chessGame.css';
 @import './styles/alert.css';
+@import './styles/alert.css';
 
 body {
     margin: 0;

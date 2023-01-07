@@ -18,6 +18,12 @@ const reducers = {
     setChess: (_, { payload }) => {
         return payload
     },
+    setDraw: (state) => {
+        state.draw = true
+    },
+    setMate: (state) => {
+        state.mate = true
+    },
     restart: () => initialState,
     setPromoted,
     movePiece

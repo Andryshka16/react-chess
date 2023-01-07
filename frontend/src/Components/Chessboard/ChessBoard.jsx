@@ -5,7 +5,8 @@ import {
     Notation,
     NextMoves,
     CheckIndicator,
-    HiglightedMoves
+    HiglightedMoves,
+    GameOver
 } from './Components'
 import useCheckSituation from './Components/Pieces/Logic/King activity/Check situation'
 import { useSelector } from 'react-redux'
@@ -25,6 +26,7 @@ export default function Chess() {
             <HiglightedMoves />
             <Notation />
             <Promotion />
+            <GameOver />
             <CheckIndicator />
         </div>
     )

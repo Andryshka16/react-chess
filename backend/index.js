@@ -43,12 +43,23 @@ io.on('connection', (socket) => {
     socket.on('createRoom', (room) => {
         socket.broadcast.emit('addRoom', room)
         socket.emit('addRoom', room)
-        // rooms.push(room)
     })
+
     socket.on('removeRoom', (id) => {
         socket.broadcast.emit('removeRoom', id)
         socket.emit('removeRoom', id)
-        // rooms = rooms.filter((elm) => elm.id !== id)
+    })
+
+    socket.on('readyToPlayAgain', (id) => {
+        socket.to(id).emit('readyToPlayAgain')
+    })
+
+    socket.on('unReadyToPlayAgain', (id) => {
+        socket.to(id).emit('unReadyToPlayAgain')
+    })
+    socket.on('restart', (id) => {
+        socket.to(id).emit('restart')
+        socket.emit('restart')
     })
 })
 

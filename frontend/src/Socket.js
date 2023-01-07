@@ -1,8 +1,8 @@
 import { useDispatch } from 'react-redux'
 import { useEffect } from 'react'
 import { newRoom, removeRoom, updateRooms } from './features/emptyRooms/emptyRoomsSlice'
-import { handleConnection } from './features/thisRoom/thisRoomSlice'
-import { setChess } from './features/chess/chessSlice'
+import { handleConnection, readyToPlay, setReadyPlayers, unReadyToPlay } from './features/thisRoom/thisRoomSlice'
+import { restart, setChess } from './features/chess/chessSlice'
 import { io } from 'socket.io-client'
 
 const server = 'http://localhost:4000/'
@@ -26,6 +26,16 @@ function useSocketHandlers() {
         })
         socket.on('userConnected', ([rooms, connected]) => {
             dispatch(updateRooms(rooms))
+        })
+        socket.on('readyToPlayAgain', () => {
+            dispatch(readyToPlay())
+        })
+        socket.on('unReadyToPlayAgain', () => {
+            dispatch(unReadyToPlay())
+        })
+        socket.on('restart', () => {
+            dispatch(restart())
+            dispatch(setReadyPlayers(0))
         })
     }, [socket])
 }
