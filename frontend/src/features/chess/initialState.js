@@ -1,4 +1,4 @@
-import FenToNormal from './fenConverter'
+import FenToConverter from './fenConverter'
 
 // const gameField = [
 //     ['0', '0', '0', '0', '0', '0', '0', '0'],
@@ -22,7 +22,7 @@ const gameField = [
     ['wR', 'wN', 'wB', 'wQ', 'wK', 'wB', 'wN', 'wR']
 ]
 
-// const gameField = FenToNormal('k7/2Q1p3/8/3P4/8/5B2/8/K7')
+// const gameField = FenToConverter('k7/2Q1p3/8/3P4/8/5B2/8/K7')
 
 const initialState = {
     gameField,
