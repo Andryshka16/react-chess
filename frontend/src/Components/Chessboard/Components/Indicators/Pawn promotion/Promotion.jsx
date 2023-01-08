@@ -19,7 +19,7 @@ export default function Promotion() {
 
     let { x2, y2 } = promoted
 
-    const x = x2
+    const x = initialized ? x2 : 7 - x2
     const y = initialized ? y2 : 7 - y2
 
     const choices = getChoices([x, y])

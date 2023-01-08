@@ -12,9 +12,7 @@ export default function setPromoted(state, { payload }) {
     } else {
         state.gameField[y2][x2] = payload.name
         state.promoted = null
-    }
-
-    if (payload.id) {
         socket.emit('handleChessMove', [state, payload.id])
     }
+
 }

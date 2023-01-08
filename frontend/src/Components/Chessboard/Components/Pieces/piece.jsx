@@ -33,7 +33,7 @@ export default function Piece({ x, y }) {
 
     let styles = {
         top: `${(initialized ? y : 7 - y) * 80}px`,
-        left: `${x * 80}px`,
+        left: `${(initialized ? x : 7 - x) * 80}px`,
         transform: `scale(${scale})`,
         marginTop: marginTop[name[1]],
         pointerEvents:

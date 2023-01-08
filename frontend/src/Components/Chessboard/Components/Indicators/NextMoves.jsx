@@ -8,7 +8,7 @@ export default function NextMoves() {
     return nextMoves.map(([x, y]) => {
         const styles = {
             top: `${(initialized ? y : 7 - y) * 80}px`,
-            left: `${x * 80}px`
+            left: `${(initialized ? x : 7 - x) * 80}px`
         }
 
         return gameField[y][x] === '0' ? (

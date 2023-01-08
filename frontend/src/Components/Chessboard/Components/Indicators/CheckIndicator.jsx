@@ -10,7 +10,7 @@ export default function CheckIndicator() {
     const [x, y] = check
 
     const styles = {
-        left: `${x * 80}px`,
+        left: `${(initialized ? x : 7 - x) * 80}px`,
         top: `${(initialized ? y : 7 - y) * 80}px`
     }
 

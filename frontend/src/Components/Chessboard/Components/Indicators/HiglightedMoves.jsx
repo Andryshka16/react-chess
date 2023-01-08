@@ -11,7 +11,7 @@ export default function LastMove() {
 
     const styles = (x, y) => ({
         top: `${(initialized ? y : 7 - y) * 80}px`,
-        left: `${x * 80}px`
+        left: `${(initialized ? x : 7 - x) * 80}px`
     })
 
     return highLighted.map(

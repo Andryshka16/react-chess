@@ -11,9 +11,11 @@ export default function useHandleCellClick(x, y) {
 
     const dispatch = useDispatch()
     const nextMovesInclude = useNextMovesInclude()
+    x = initialized ? x : 7 - x
+    y = initialized ? y : 7 - y
 
-    if (nextMovesInclude([x, initialized ? y : 7 - y])) {
-        return () => dispatch(movePiece([x, initialized ? y : 7 - y, id]))
+    if (nextMovesInclude([x, y])) {
+        return () => dispatch(movePiece([x, y, id]))
     }
 
     return () => {
