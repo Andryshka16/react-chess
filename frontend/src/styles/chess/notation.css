@@ -10,16 +10,12 @@
 .digits {
     z-index: 0;
     position: absolute;
-    right: 4px;
-    top: -1px;
     user-select: none;
 }
 
 .letters {
     z-index: 0;
     position: absolute;
-    bottom: -1px;
-    left: 4px;
     letter-spacing: 31.4px;
     user-select: none;
 }

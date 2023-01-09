@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { ChessBoard, CreateRoom, ChessGame, EmptyRooms, Navbar, Alert } from './Components/'
+import { CreateRoom, ChessGame, EmptyRooms, Navbar, Alert } from './Components/'
+import Practice from './Components/Practice/Practice'
 import useSocketHandlers from './Socket'
 
 function App() {
@@ -13,7 +14,7 @@ function App() {
                 <Route path='/newRoom' element={<CreateRoom />} />
                 <Route path='/public' element={<EmptyRooms />} />
                 <Route path='/chess' element={<ChessGame />} />
-                <Route path="/practice" element={<ChessBoard/>} />
+                <Route path='/practice' element={<Practice />} />
             </Routes>
         </BrowserRouter>
     )

@@ -14,12 +14,17 @@ import { useEffect } from 'react'
 
 export default function Chess() {
     const { gameField } = useSelector((store) => store.chess)
+    const { initialized } = useSelector((store) => store.thisRoom)
     const checkSituation = useCheckSituation()
+
+    const styles = {
+        rotate: (initialized ? 0 : 180) + 'deg'
+    }
 
     useEffect(checkSituation, [gameField])
 
     return (
-        <div className='chess'>
+        <div className='chess' style={styles}>
             <Cells />
             <Pieces />
             <NextMoves />

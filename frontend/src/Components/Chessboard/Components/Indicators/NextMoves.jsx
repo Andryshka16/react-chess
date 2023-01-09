@@ -3,12 +3,11 @@ import { useSelector } from 'react-redux'
 export default function NextMoves() {
     const { gameField, nextMoves } = useSelector((store) => store.chess)
     const [color1, color2] = useSelector((store) => store.chess.colors)
-    const { initialized } = useSelector((store) => store.thisRoom)
 
     return nextMoves.map(([x, y]) => {
         const styles = {
-            top: `${(initialized ? y : 7 - y) * 80}px`,
-            left: `${(initialized ? x : 7 - x) * 80}px`
+            top: `${y * 80}px`,
+            left: `${x * 80}px`
         }
 
         return gameField[y][x] === '0' ? (

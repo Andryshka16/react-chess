@@ -13,14 +13,10 @@ function getChoices([x, y]) {
 export default function Promotion() {
     const dispatch = useDispatch()
     const { promoted } = useSelector((store) => store.chess)
-    const { initialized } = useSelector((store) => store.thisRoom)
 
     if (!promoted) return
 
-    let { x2, y2 } = promoted
-
-    const x = initialized ? x2 : 7 - x2
-    const y = initialized ? y2 : 7 - y2
+    let { x2: x, y2: y } = promoted
 
     const choices = getChoices([x, y])
 

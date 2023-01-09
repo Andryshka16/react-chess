@@ -32,10 +32,13 @@ export default function Piece({ x, y }) {
     let scale = scales[name[1]] || 0.7
 
     let styles = {
-        top: `${(initialized ? y : 7 - y) * 80}px`,
-        left: `${(initialized ? x : 7 - x) * 80}px`,
+        // top: `${(initialized ? y : 7 - y) * 80}px`,
+        // left: `${(initialized ? x : 7 - x) * 80}px`,
+        top: `${y * 80}px`,
+        left: `${x * 80}px`,
         transform: `scale(${scale})`,
         marginTop: marginTop[name[1]],
+        rotate: (initialized ? 0 : 180) + 'deg',
         pointerEvents:
             ((!nextMovesArray.length || name[0] !== turn) && !nextMovesInclude([x, y])) ||
             (color && color !== turn)
