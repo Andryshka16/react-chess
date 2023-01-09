@@ -32,8 +32,6 @@ export default function Piece({ x, y }) {
     let scale = scales[name[1]] || 0.7
 
     let styles = {
-        // top: `${(initialized ? y : 7 - y) * 80}px`,
-        // left: `${(initialized ? x : 7 - x) * 80}px`,
         top: `${y * 80}px`,
         left: `${x * 80}px`,
         transform: `scale(${scale})`,

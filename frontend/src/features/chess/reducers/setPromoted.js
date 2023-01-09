@@ -14,5 +14,4 @@ export default function setPromoted(state, { payload }) {
         state.promoted = null
         socket.emit('handleChessMove', [state, payload.id])
     }
-
 }
