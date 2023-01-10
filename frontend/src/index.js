@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client'
 import App from './App'
 import { configureStore } from '@reduxjs/toolkit'
 import { Provider } from 'react-redux'
-import { chess, emptyRooms, thisRoom, alert } from './features/'
+import { chess, emptyRooms, thisRoom, alert, online, practice } from './features/'
 import './index.css'
 
 const store = configureStore({
@@ -11,7 +11,9 @@ const store = configureStore({
         chess,
         emptyRooms,
         thisRoom,
-        alert
+        alert,
+        online,
+        practice
     }
 })
 

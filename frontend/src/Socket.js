@@ -4,6 +4,7 @@ import { newRoom, removeRoom, updateRooms } from './features/emptyRooms/emptyRoo
 import { handleConnection, readyToPlay, setReadyPlayers, unReadyToPlay } from './features/thisRoom/thisRoomSlice'
 import { restart, setChess } from './features/chess/chessSlice'
 import { io } from 'socket.io-client'
+import { setOnlineChess } from './features/online/onlineSlice'
 
 const server = 'http://localhost:4000/'
 const socket = io(server)
@@ -16,7 +17,7 @@ function useSocketHandlers() {
             dispatch(newRoom(room))
         })
         socket.on('handleChessMove', (chess) => {
-            dispatch(setChess(chess))
+            dispatch(setOnlineChess(chess))
         })
         socket.on('joinRoom', (id) => {
             dispatch(handleConnection(id))

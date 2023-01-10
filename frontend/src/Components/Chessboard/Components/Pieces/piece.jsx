@@ -5,7 +5,7 @@ import useGetNextMoves from './Logic/Next moves/NextMoves'
 import useStartDragging from './DragAndDrop'
 
 export default function Piece({ x, y }) {
-    const { gameField, turn } = useSelector((store) => store.chess)
+    const { gameField, turn, online } = useSelector((store) => store.chess)
     const { id, initialized, color } = useSelector((store) => store.thisRoom)
     const dispatch = useDispatch()
     const getNextMoves = useGetNextMoves()
@@ -39,7 +39,7 @@ export default function Piece({ x, y }) {
         rotate: (initialized ? 0 : 180) + 'deg',
         pointerEvents:
             ((!nextMovesArray.length || name[0] !== turn) && !nextMovesInclude([x, y])) ||
-            (color && color !== turn)
+            (online && color && color !== turn)
                 ? 'none'
                 : 'all'
     }

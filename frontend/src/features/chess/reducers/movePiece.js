@@ -1,5 +1,7 @@
 import { socket } from '../../../Socket'
 
+import { current } from '@reduxjs/toolkit'
+
 export default function movePiece(state, { payload }) {
     const [x2, y2, roomID] = payload
     const { x1, y1, name } = state.selected
@@ -42,7 +44,7 @@ export default function movePiece(state, { payload }) {
     state.coverMoves = []
     state.nextMoves = []
 
-    if (roomID && !state.promoted) {
+    if (state.online) {
         socket.emit('handleChessMove', [state, roomID])
     }
 }

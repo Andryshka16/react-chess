@@ -10,6 +10,7 @@ import FenToConverter from './fenConverter'
 //     ['0', '0', '0', '0', '0', '0', '0', '0'],
 //     ['0', 'wQ', '0', '0', 'wK', '0', '0', '0']
 // ]
+// const gameField = FenToConverter('k7/2Q1p3/8/3P4/8/5B2/8/K7')
 
 const gameField = [
     ['bR', 'bN', 'bB', 'bQ', 'bK', 'bB', 'bN', 'bR'],
@@ -22,7 +23,6 @@ const gameField = [
     ['wR', 'wN', 'wB', 'wQ', 'wK', 'wB', 'wN', 'wR']
 ]
 
-// const gameField = FenToConverter('k7/2Q1p3/8/3P4/8/5B2/8/K7')
 
 const initialState = {
     gameField,
@@ -38,7 +38,8 @@ const initialState = {
     castlingMoved: [],
     coverMoves: [],
     draw: false,
-    mate: false
+    mate: false,
+    online: false
 }
 
 export default initialState

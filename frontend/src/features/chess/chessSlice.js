@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-import reducers from './reducers'
+import reducers from './reducers/basicReducers'
 import initialState from './initialState'
 
 const chessSlice = createSlice({
